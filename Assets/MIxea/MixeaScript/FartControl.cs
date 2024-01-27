@@ -35,12 +35,13 @@ public class FartControl : MonoBehaviour
 
     void Update()
     {
-        AvoidFall();
     }
 
     private void FixedUpdate()
     {
-        if(farting == false)
+        AvoidFall();
+
+        if (farting == false)
         {
             FartCountdown();
         }
@@ -70,6 +71,8 @@ public class FartControl : MonoBehaviour
         RaycastHit2D hit2 = Physics2D.Raycast(floorDetect2.transform.position, Vector2.down, 1);
         Debug.DrawRay(floorDetect1.transform.position, Vector2.down, Color.green);
         Debug.DrawRay(floorDetect2.transform.position, Vector2.down, Color.green);
+
+        Debug.Log(hit.collider);
 
         if (hit.collider == null || hit2.collider == null)
         {
