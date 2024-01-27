@@ -34,6 +34,7 @@ public class FartControl : MonoBehaviour
         fartCreated = false;
 
         hitBox = GameObject.Find("Fart Hitbox");
+        hitBox.SetActive(false);
     }
 
     void Update()
