@@ -6,15 +6,19 @@ TagManager:
   tags:
   - Wall
   - Floor
+<<<<<<< Updated upstream
   - Enemy
   - Enemy Hitbox
   - Obstacle
   - Next Level
+=======
+  - Ground
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - 

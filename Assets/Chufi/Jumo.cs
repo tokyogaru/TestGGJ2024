@@ -5,18 +5,12 @@ using UnityEngine.AI;
 
 public class Jumo : MonoBehaviour
 {
-     private bool onGround;
+    private bool onGround;
     private float jumpPressure;
     private float minJump;
     private float maxJumpPressure;
     private Rigidbody2D rb;
     private Vector3 originalScale;
-
-    // Velocidad horizontal del jugador
-    public float moveSpeed = 5f;
-
-    // Componente de script a desactivar/activar
-    public MonoBehaviour scriptComponent;
 
     private void Start()
     {
@@ -30,39 +24,27 @@ public class Jumo : MonoBehaviour
 
     private void Update()
     {
-        // Movimiento horizontal
-        float moveInput = Input.GetAxisRaw("Horizontal");
-        rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
-
-        // Saltar
-        if (Input.GetKeyDown(KeyCode.Space) && onGround)
+        if (onGround)
         {
-            jumpPressure = minJump;
-            transform.localScale = new Vector2(originalScale.x, 0.5f);
-            onGround = false;
-        }
-
-        // Mantener presionado para saltar más alto
-        if (Input.GetKey(KeyCode.Space) && !onGround)
-        {
-            if (jumpPressure < maxJumpPressure)
+            if (Input.GetKey(KeyCode.Space))
             {
-                jumpPressure += Time.deltaTime * 50f;
+                if (jumpPressure < maxJumpPressure)
+                {
+                    jumpPressure += Time.deltaTime * 50f;
+                    transform.localScale = new Vector2(originalScale.x, 0.5f); // Escalar en el eje Y a -1
+                }
             }
-        }
-
-        // Realizar el salto
-        if (Input.GetKeyUp(KeyCode.Space) && !onGround)
-        {
-            rb.velocity = new Vector2(0f, jumpPressure);
-            jumpPressure = 0f;
-            transform.localScale = originalScale;
-        }
-
-        // Activar/desactivar el componente de script según el estado del jugador
-        if (scriptComponent != null)
-        {
-            scriptComponent.enabled = onGround;
+            else
+            {
+                if (jumpPressure > 0f)
+                {
+                    rb.velocity = new Vector2(0f, jumpPressure);
+                    jumpPressure = 0f;
+                    onGround = false;
+                    transform.localScale = originalScale; // Restaurar la escala original
+                }
+            }
+            
         }
     }
 
@@ -71,14 +53,6 @@ public class Jumo : MonoBehaviour
         if (other.gameObject.CompareTag("Ground"))
         {
             onGround = true;
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag("Ground"))
-        {
-            onGround = false;
         }
     }
 }

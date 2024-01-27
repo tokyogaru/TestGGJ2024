@@ -6,23 +6,29 @@ public class PieMov : MonoBehaviour
 {
     [SerializeField] GameObject piernaDer;
     [SerializeField] GameObject piernaIzq;
+
     [SerializeField] GameObject pieDer;
     [SerializeField] GameObject pieIzq;
+
     [SerializeField] float legScale = 0.5f; // Escala de las piernas
     [SerializeField] float legPos = 0.5f;   // Posición de las piernas
+
     [SerializeField] float footPos = 0.1f;  // Posición de los pies
+
     [SerializeField] float tiempoMaximoTeclaPresionada = 3.0f; // Tiempo máximo que se permite mantener presionada la tecla
 
-    public MonoBehaviour scriptComponent; // Referencia al componente Jumo
 
     private Vector3 initialPiernaDerPosition;
     private Vector3 initialPiernaIzqPosition;
     private Vector3 initialPieDerPosition;
     private Vector3 initialPieIzqPosition;
+
     private bool reachedMaxXDer = false;
     private bool reachedMaxXIzq = false;
+
     private bool movingRightLeg = false; // Indica si se está moviendo la pierna derecha
     private bool movingLeftLeg = false;
+
     private float tiempoTeclaPresionada = 0.0f; // Tiempo que se ha mantenido presionada la tecla
 
     void Start()
@@ -36,16 +42,6 @@ public class PieMov : MonoBehaviour
 
     void Update()
     {
-        // Desactivar el componente Jumo mientras se están moviendo las piernas
-        if (movingLeftLeg || movingRightLeg)
-        {
-            scriptComponent.enabled = false;
-        }
-        else
-        {
-            scriptComponent.enabled = true;
-        }
-
         // Mover y escalar la pierna derecha con la tecla D
         if (!movingLeftLeg && !reachedMaxXDer && Input.GetKeyDown(KeyCode.D))
         {
@@ -66,6 +62,7 @@ public class PieMov : MonoBehaviour
             else
             {
                 reachedMaxXDer = true;
+                //Debug.Log("Se alcanzó la posición máxima en el eje X para la pierna derecha.");
             }
         }
 
@@ -99,11 +96,13 @@ public class PieMov : MonoBehaviour
             else
             {
                 reachedMaxXIzq = true;
+                //Debug.Log("Se alcanzó la posición máxima en el eje X para la pierna izquierda.");
             }
         }
 
         if (movingLeftLeg && Input.GetKeyUp(KeyCode.A))
         {
+            
             tiempoTeclaPresionada = 0.0f;
             movingLeftLeg = false;
             piernaIzq.transform.localPosition = initialPiernaIzqPosition;
@@ -112,14 +111,14 @@ public class PieMov : MonoBehaviour
             reachedMaxXIzq = false;
         }
 
-        if (movingRightLeg && Input.GetKey(KeyCode.D))
+        if(movingRightLeg && Input.GetKey(KeyCode.D))
         {
             if (tiempoTeclaPresionada > tiempoMaximoTeclaPresionada)
             {
                 Debug.Log("¡Has perdido!");
             }
         }
-        if (movingLeftLeg && Input.GetKey(KeyCode.A))
+        if(movingLeftLeg && Input.GetKey(KeyCode.A))
         {
             if (tiempoTeclaPresionada > tiempoMaximoTeclaPresionada)
             {

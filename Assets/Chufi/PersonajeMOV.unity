@@ -515,8 +515,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 963126105}
-  - component: {fileID: 963126106}
-  - component: {fileID: 963126108}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -540,47 +538,6 @@ Transform:
   - {fileID: 1574649934}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &963126106
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963126104}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!114 &963126108
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963126104}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59326ea1de36271458416c6abce53ab6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  scriptComponent: {fileID: 1669968191}
 --- !u!1 &981396182
 GameObject:
   m_ObjectHideFlags: 0
@@ -761,6 +718,8 @@ GameObject:
   - component: {fileID: 1574649936}
   - component: {fileID: 1574649935}
   - component: {fileID: 1574649937}
+  - component: {fileID: 1574649938}
+  - component: {fileID: 1574649939}
   m_Layer: 0
   m_Name: sprite_cuerpo
   m_TagString: Untagged
@@ -865,6 +824,45 @@ MonoBehaviour:
   cuerpo: {fileID: 1574649934}
   pieIzq: {fileID: 1948161209}
   pieDer: {fileID: 671973657}
+--- !u!114 &1574649938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1574649933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59326ea1de36271458416c6abce53ab6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!50 &1574649939
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1574649933}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1669968189
 GameObject:
   m_ObjectHideFlags: 0
@@ -921,8 +919,7 @@ MonoBehaviour:
   legScale: 0.015
   legPos: 0.01
   footPos: 0.017
-  tiempoMaximoTeclaPresionada: 1
-  scriptComponent: {fileID: 963126108}
+  tiempoMaximoTeclaPresionada: 1.5
 --- !u!1 &1757224532
 GameObject:
   m_ObjectHideFlags: 0

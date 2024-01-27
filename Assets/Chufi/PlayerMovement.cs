@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-public Transform cuerpo;
+    public Transform cuerpo;
 public Transform pieIzq;
 public Transform pieDer;
 
@@ -40,5 +40,6 @@ private void Update() {
 void MoveBody(Vector2 target) {
     cuerpo.position = new Vector3(target.x, cuerpo.position.y, cuerpo.position.z);
 }
+
 
 }
