@@ -19,6 +19,7 @@ public class FartControl : MonoBehaviour
     private float restWaitCurrent;
 
     private bool fartCreated;
+    private GameObject hitBox;
 
 
     void Start()
@@ -31,6 +32,8 @@ public class FartControl : MonoBehaviour
         farting = false;
         fartTimerCurrent = fartTimer;
         fartCreated = false;
+
+        hitBox = GameObject.Find("Fart Hitbox");
     }
 
     void Update()
@@ -122,6 +125,7 @@ public class FartControl : MonoBehaviour
                 fartTimerCurrent = fartTimer;
                 farting = false;
                 fartCreated = false;
+                hitBox.SetActive(false);
             }
             else
             {
@@ -129,6 +133,7 @@ public class FartControl : MonoBehaviour
                 if (fartCreated == false)
                 {
                     fartCreated = true;
+                    hitBox.SetActive(true);
 
                     //Put fart code here
                 }
