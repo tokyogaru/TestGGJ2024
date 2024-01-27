@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FartControl : MonoBehaviour
+public class MissileControl : MonoBehaviour
 {
     [SerializeField] private float speed;
     private bool moveRight;
@@ -10,16 +10,17 @@ public class FartControl : MonoBehaviour
     private Transform floorDetect1;
     private Transform floorDetect2;
 
-    private bool farting;
-    [SerializeField] private float fartTimer;
-    private float fartTimerCurrent;
-    [SerializeField] private float fartStartup;
-    private float fartStartupCurrent;
+    private bool shooting;
+    [SerializeField] private float shootTimer;
+    private float shootTimerCurrent;
+    [SerializeField] private float shootStartup;
+    private float shootStartupCurrent;
     [SerializeField] private float restWait;
     private float restWaitCurrent;
 
-    private bool fartCreated;
-    private GameObject hitBox;
+    private bool missileCreated;
+    public GameObject missile;
+    [SerializeField] private Transform missileSpawner;
 
 
     void Start()
@@ -29,12 +30,11 @@ public class FartControl : MonoBehaviour
         floorDetect1 = gameObject.transform.Find("Floor Detect 1");
         floorDetect2 = gameObject.transform.Find("Floor Detect 2");
 
-        farting = false;
-        fartTimerCurrent = fartTimer;
-        fartCreated = false;
+        shooting = false;
+        shootTimerCurrent = shootTimer;
+        missileCreated = false;
 
-        hitBox = GameObject.Find("Fart Hitbox");
-        hitBox.SetActive(false);
+        missileSpawner = gameObject.transform.Find("Missile Spawner");
     }
 
     void Update()
@@ -45,18 +45,19 @@ public class FartControl : MonoBehaviour
     {
         AvoidFall();
 
-        if (farting == false)
+        if (shooting == false)
         {
-            FartCountdown();
+            ShootCountdown();
         }
         else
         {
-            Farting();
+            Shooting();
         }
     }
 
     private void OnCollisionEnter2D(Collision2D col)
     {
+        //Change directions
         if (col.gameObject.CompareTag("Wall"))
         {
             moveRight = !moveRight;
@@ -65,7 +66,6 @@ public class FartControl : MonoBehaviour
         if (col.gameObject.CompareTag("Player"))
         {
             moveRight = !moveRight;
-            //col.gameObject.GetComponent<PlayerHealth>().health -= 5;
         }
     }
 
@@ -96,46 +96,46 @@ public class FartControl : MonoBehaviour
         }
     }
 
-    void FartCountdown()
+    void ShootCountdown()
     {
-        if (fartTimerCurrent >= 0)
+        if (shootTimerCurrent >= 0)
         {
             Moving();
-            fartTimerCurrent -= Time.deltaTime;
+            shootTimerCurrent -= Time.deltaTime;
         }
         else
         {
-            //Reset Farting Timers
-            fartStartupCurrent = fartStartup;
+            //Reset shooting Timers
+            shootStartupCurrent = shootStartup;
             restWaitCurrent = restWait;
-            //Start farting
-            farting = true;
+            //Start shooting
+            shooting = true;
         }
     }
 
-    void Farting()
+    void Shooting()
     {
-        //FartCharge time
-        if (fartStartupCurrent <= 0)
+        //shootCharge time
+        if (shootStartupCurrent <= 0)
         {
-            //Resting after fart time
-            if(restWaitCurrent <= 0)
+            //Resting after shoot time
+            if (restWaitCurrent <= 0)
             {
-                //Start FartCountdown()
-                fartTimerCurrent = fartTimer;
-                farting = false;
-                fartCreated = false;
-                hitBox.SetActive(false);
+                //Start shootCountdown()
+                shootTimerCurrent = shootTimer;
+                shooting = false;
+
+                missileCreated = false;
+                //missile.SetActive(false);
             }
             else
             {
-                //Create fart cloud once
-                if (fartCreated == false)
+                //Create missile once
+                if (missileCreated == false)
                 {
-                    fartCreated = true;
-                    hitBox.SetActive(true);
-
-                    //Put fart code here
+                    missileCreated = true;
+                    //missile.SetActive(true);
+                    Instantiate(missile, missileSpawner.position, missileSpawner.rotation);
                 }
 
                 //Timer
@@ -145,7 +145,7 @@ public class FartControl : MonoBehaviour
         else
         {
             //Timer
-            fartStartupCurrent -= Time.deltaTime;
+            shootStartupCurrent -= Time.deltaTime;
         }
     }
 

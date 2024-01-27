@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/MIxea/MixeaScene.unity
+    guid: 1b45fdb30f9ec314e824d7e4d83b266b
+  - enabled: 1
+    path: Assets/MIxea/MixeaScene2.unity
+    guid: 92c0319f87a9ec64b9931056a162508d
   m_configObjects: {}

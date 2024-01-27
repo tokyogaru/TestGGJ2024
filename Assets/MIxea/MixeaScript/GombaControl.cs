@@ -38,7 +38,7 @@ public class GombaControl : MonoBehaviour
 
         if (col.gameObject.CompareTag("Player"))
         {
-            Destroy(gameObject);
+            moveRight = !moveRight;
         }
     }
 
