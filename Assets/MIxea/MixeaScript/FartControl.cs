@@ -21,6 +21,8 @@ public class FartControl : MonoBehaviour
     private bool fartCreated;
     private GameObject hitBox;
 
+    public Sprite sp1, sp2;
+
 
     void Start()
     {
@@ -35,6 +37,8 @@ public class FartControl : MonoBehaviour
 
         hitBox = GameObject.Find("Fart Hitbox");
         hitBox.SetActive(false);
+
+        sp1 = GetComponent<SpriteRenderer>().sprite;
     }
 
     void Update()
@@ -48,10 +52,12 @@ public class FartControl : MonoBehaviour
         if (farting == false)
         {
             FartCountdown();
+            GetComponent<SpriteRenderer>().sprite = sp1;
         }
         else
         {
             Farting();
+            GetComponent<SpriteRenderer>().sprite = sp2;
         }
     }
 
@@ -134,8 +140,6 @@ public class FartControl : MonoBehaviour
                 {
                     fartCreated = true;
                     hitBox.SetActive(true);
-
-                    //Put fart code here
                 }
 
                 //Timer

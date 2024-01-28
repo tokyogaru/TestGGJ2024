@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] private int health = 100;
+    [SerializeField] private int hpMax = 100, hpCurrent;
 
     public float bounce = 5;
     private Rigidbody2D rb;
+
+    public HealthBar hpBar;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        hpBar.SetMaxHp(hpMax);
+        hpCurrent = hpMax;
     }
 
     // Update is called once per frame
@@ -63,15 +68,16 @@ public class PlayerHealth : MonoBehaviour
 
     void LooseHp(int dmg)
     {
-        if (health <= 0)
+        if (hpCurrent <= 1)
         {
             Destroy(gameObject);
         }
 
-        health -= dmg;
-        if(health < 0)
+        hpCurrent -= dmg;
+        if(hpCurrent < 1)
         {
-            health = 0;
+            hpCurrent = 1;
         }
+        hpBar.SetHp(hpCurrent);
     }
 }
