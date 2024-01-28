@@ -33,11 +33,11 @@ public class Jumo : MonoBehaviour
     {
         if (onGround)
         {
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKey(KeyCode.W))
             {
                 if (jumpPressure < maxJumpPressure)
                 {
-                    jumpPressure += Time.deltaTime * 50f;
+                    jumpPressure += Time.deltaTime * 30f;
                     spriteRenderer.sprite = agachado;
                     transform.localScale = new Vector2(originalScale.x, 0.5f); // Escalar en el eje Y a -1
                 }
