@@ -6,30 +6,34 @@ public class PieMov : MonoBehaviour
 {
     [SerializeField] GameObject piernaDer;
     [SerializeField] GameObject piernaIzq;
-
     [SerializeField] GameObject pieDer;
     [SerializeField] GameObject pieIzq;
+    [SerializeField] GameObject cuerpo;
 
-    [SerializeField] float legScale = 0.5f; // Escala de las piernas
-    [SerializeField] float legPos = 0.5f;   // Posición de las piernas
+    [SerializeField] float legScale = 0.5f;
+    [SerializeField] float legPos = 0.5f;
+    [SerializeField] float footPos = 0.1f;
+    [SerializeField] float tiempoMaximoTeclaPresionada = 3.0f;
 
-    [SerializeField] float footPos = 0.1f;  // Posición de los pies
+    [SerializeField] private Sprite normal;
 
-    [SerializeField] float tiempoMaximoTeclaPresionada = 3.0f; // Tiempo máximo que se permite mantener presionada la tecla
+    [SerializeField] private Sprite pose;
 
+    [SerializeField] private Sprite perder;
 
     private Vector3 initialPiernaDerPosition;
     private Vector3 initialPiernaIzqPosition;
     private Vector3 initialPieDerPosition;
     private Vector3 initialPieIzqPosition;
 
+    [SerializeField] private SpriteRenderer spriteRendererCuerpo;
+
+
     private bool reachedMaxXDer = false;
     private bool reachedMaxXIzq = false;
-
-    private bool movingRightLeg = false; // Indica si se está moviendo la pierna derecha
+    private bool movingRightLeg = false;
     private bool movingLeftLeg = false;
-
-    private float tiempoTeclaPresionada = 0.0f; // Tiempo que se ha mantenido presionada la tecla
+    private float tiempoTeclaPresionada = 0.0f;
 
     void Start()
     {
@@ -38,22 +42,41 @@ public class PieMov : MonoBehaviour
         initialPiernaIzqPosition = piernaIzq.transform.localPosition;
         initialPieDerPosition = pieDer.transform.localPosition;
         initialPieIzqPosition = pieIzq.transform.localPosition;
+
+        // Ocultar los GameObjects al inicio
+        SetGameObjectActive(false, true); // Desactivar la pierna y el pie derecho
+        SetGameObjectActive(false, false); // Desactivar la pierna y el pie izquierdo
+
+        spriteRendererCuerpo = cuerpo.GetComponent<SpriteRenderer>();
+
+        // Verificar si los SpriteRenderer se encontraron correctamente
+        if (spriteRendererCuerpo != null)
+        {
+
+            spriteRendererCuerpo.sprite = normal;
+        }
+        else
+        {
+            Debug.LogError("a");
+        }
     }
 
     void Update()
     {
-        // Mover y escalar la pierna derecha con la tecla D
         if (!movingLeftLeg && !reachedMaxXDer && Input.GetKeyDown(KeyCode.D))
         {
             movingRightLeg = true;
+            spriteRendererCuerpo.sprite = pose;
+            spriteRendererCuerpo.flipX = false;
+            SetGameObjectActive(true, true); // Mostrar pierna y pie derecho
+
         }
 
         if (movingRightLeg)
         {
             tiempoTeclaPresionada += Time.deltaTime;
 
-            // Verificar si se alcanzó la posición máxima en el eje X para la pierna derecha
-            if (piernaDer.transform.localPosition.x < 1.9f)
+            if (piernaDer.transform.localPosition.x < 2.0f)
             {
                 piernaDer.transform.localPosition += new Vector3(legPos, 0, 0);
                 piernaDer.transform.localScale += new Vector3(legScale, 0, 0);
@@ -62,7 +85,6 @@ public class PieMov : MonoBehaviour
             else
             {
                 reachedMaxXDer = true;
-                //Debug.Log("Se alcanzó la posición máxima en el eje X para la pierna derecha.");
             }
         }
 
@@ -74,20 +96,28 @@ public class PieMov : MonoBehaviour
             piernaDer.transform.localScale = Vector3.one;
             pieDer.transform.localPosition = initialPieDerPosition;
             reachedMaxXDer = false;
+
+            // Ocultar pierna y pie derecho cuando dejes de presionar la tecla
+            SetGameObjectActive(false, true);
+            spriteRendererCuerpo.sprite = normal;
+
+
         }
 
-        // Mover y escalar la pierna izquierda con la tecla A
         if (!movingRightLeg && !reachedMaxXIzq && Input.GetKeyDown(KeyCode.A))
         {
             movingLeftLeg = true;
+            spriteRendererCuerpo.sprite = pose;
+            spriteRendererCuerpo.flipX = true;
+            SetGameObjectActive(true, false); // Mostrar pierna y pie izquierdo
+
         }
 
         if (movingLeftLeg)
         {
             tiempoTeclaPresionada += Time.deltaTime;
 
-            // Verificar si se alcanzó la posición máxima en el eje X para la pierna izquierda
-            if (piernaIzq.transform.localPosition.x > -1.9f)
+            if (piernaIzq.transform.localPosition.x > -2.0f)
             {
                 piernaIzq.transform.localPosition -= new Vector3(legPos, 0, 0);
                 piernaIzq.transform.localScale += new Vector3(legScale, 0, 0);
@@ -96,36 +126,60 @@ public class PieMov : MonoBehaviour
             else
             {
                 reachedMaxXIzq = true;
-                //Debug.Log("Se alcanzó la posición máxima en el eje X para la pierna izquierda.");
             }
         }
 
         if (movingLeftLeg && Input.GetKeyUp(KeyCode.A))
         {
-            
             tiempoTeclaPresionada = 0.0f;
             movingLeftLeg = false;
             piernaIzq.transform.localPosition = initialPiernaIzqPosition;
             piernaIzq.transform.localScale = Vector3.one;
             pieIzq.transform.localPosition = initialPieIzqPosition;
             reachedMaxXIzq = false;
+
+            // Ocultar pierna y pie izquierdo cuando dejes de presionar la tecla
+            SetGameObjectActive(false, false);
+            spriteRendererCuerpo.sprite = normal;
+
         }
 
-        if(movingRightLeg && Input.GetKey(KeyCode.D))
+        if (movingRightLeg && Input.GetKey(KeyCode.D))
         {
             if (tiempoTeclaPresionada > tiempoMaximoTeclaPresionada)
             {
                 Debug.Log("¡Has perdido!");
+                spriteRendererCuerpo.sprite = normal;
             }
         }
-        if(movingLeftLeg && Input.GetKey(KeyCode.A))
+        if (movingLeftLeg && Input.GetKey(KeyCode.A))
         {
             if (tiempoTeclaPresionada > tiempoMaximoTeclaPresionada)
             {
                 Debug.Log("¡Has perdido!");
+                spriteRendererCuerpo.sprite = normal;
             }
+        }
+        if (movingLeftLeg && movingRightLeg)
+        {
+            spriteRendererCuerpo.sprite = pose;
         }
     }
+
+    void SetGameObjectActive(bool active, bool rightSide)
+    {
+        if (rightSide)
+        {
+            Debug.Log("Activando/desactivando lado derecho: " + active);
+            piernaDer.SetActive(active);
+            pieDer.SetActive(active);
+        }
+        else
+        {
+            Debug.Log("Activando/desactivando lado izquierdo: " + active);
+            piernaIzq.SetActive(active);
+            pieIzq.SetActive(active);
+        }
+    }
+
 }
-
-

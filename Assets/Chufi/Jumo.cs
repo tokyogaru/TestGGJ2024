@@ -12,6 +12,12 @@ public class Jumo : MonoBehaviour
     private Rigidbody2D rb;
     private Vector3 originalScale;
 
+    [SerializeField] private Sprite agachado;
+
+    [SerializeField] private Sprite normal;
+
+    private SpriteRenderer spriteRenderer;
+
     private void Start()
     {
         onGround = true;
@@ -20,6 +26,7 @@ public class Jumo : MonoBehaviour
         maxJumpPressure = 15f;
         rb = GetComponent<Rigidbody2D>();
         originalScale = transform.localScale;
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
@@ -31,6 +38,7 @@ public class Jumo : MonoBehaviour
                 if (jumpPressure < maxJumpPressure)
                 {
                     jumpPressure += Time.deltaTime * 50f;
+                    spriteRenderer.sprite = agachado;
                     transform.localScale = new Vector2(originalScale.x, 0.5f); // Escalar en el eje Y a -1
                 }
             }
@@ -41,6 +49,7 @@ public class Jumo : MonoBehaviour
                     rb.velocity = new Vector2(0f, jumpPressure);
                     jumpPressure = 0f;
                     onGround = false;
+                    spriteRenderer.sprite = normal;
                     transform.localScale = originalScale; // Restaurar la escala original
                 }
             }

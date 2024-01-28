@@ -350,7 +350,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2fda68b87f173b4469097944b22b60c6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 767aeb62a756e5c4e89ffefb3bf2a218, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -387,7 +387,7 @@ Transform:
   m_GameObject: {fileID: 461579254}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.00000011920929, y: 0, z: 0}
+  m_LocalPosition: {x: 0.00000011920929, y: 0.382, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -454,7 +454,7 @@ Transform:
   m_GameObject: {fileID: 671973656}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.345, y: -0.518, z: 0}
+  m_LocalPosition: {x: 1.2250001, y: -0.13600004, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -549,7 +549,7 @@ GameObject:
   - component: {fileID: 981396183}
   - component: {fileID: 981396184}
   m_Layer: 0
-  m_Name: sprite_pierna
+  m_Name: sprite_piernaDer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -564,7 +564,7 @@ Transform:
   m_GameObject: {fileID: 981396182}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.021, y: -0.518, z: 0}
+  m_LocalPosition: {x: 0.859, y: -0.13600004, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -611,7 +611,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 401fa540ba4108b4aab35b8078cac71a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f06555cbe29d3724e869bdef19e00767, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -633,7 +633,7 @@ GameObject:
   - component: {fileID: 1054871953}
   - component: {fileID: 1054871954}
   m_Layer: 0
-  m_Name: sprite_pata
+  m_Name: sprite_pata2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -695,7 +695,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2fda68b87f173b4469097944b22b60c6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 767aeb62a756e5c4e89ffefb3bf2a218, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -746,7 +746,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.054, y: 0.35}
+  m_AnchoredPosition: {x: -0.054, y: 0.344}
   m_SizeDelta: {x: 0.64, y: 1.28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1574649935
@@ -798,7 +798,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 91f5dc299a40c22438d8c09157593210, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 956819ad920a0d44badfeb5baa58c258, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -836,6 +836,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59326ea1de36271458416c6abce53ab6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agachado: {fileID: 21300000, guid: 4d4961fb11ba956488ee28fbb9e01424, type: 3}
+  normal: {fileID: 21300000, guid: 7a2866d12aae4c74b8a1a5c45c7662e4, type: 3}
 --- !u!50 &1574649939
 Rigidbody2D:
   serializedVersion: 4
@@ -916,10 +918,14 @@ MonoBehaviour:
   piernaIzq: {fileID: 2048099701}
   pieDer: {fileID: 671973656}
   pieIzq: {fileID: 1948161208}
+  cuerpo: {fileID: 1574649933}
   legScale: 0.015
-  legPos: 0.01
+  legPos: 0.015
   footPos: 0.017
   tiempoMaximoTeclaPresionada: 1.5
+  normal: {fileID: 21300000, guid: 7a2866d12aae4c74b8a1a5c45c7662e4, type: 3}
+  pose: {fileID: 21300000, guid: 956819ad920a0d44badfeb5baa58c258, type: 3}
+  spriteRendererCuerpo: {fileID: 1574649936}
 --- !u!1 &1757224532
 GameObject:
   m_ObjectHideFlags: 0
@@ -1168,7 +1174,7 @@ Transform:
   m_GameObject: {fileID: 1948161208}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: -0.44300002, y: -0.519, z: 0}
+  m_LocalPosition: {x: -1.225, y: -0.13700002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1231,7 +1237,7 @@ GameObject:
   - component: {fileID: 2048099702}
   - component: {fileID: 2048099703}
   m_Layer: 0
-  m_Name: sprite_pierna (1)
+  m_Name: sprite_piernaIzq
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1246,7 +1252,7 @@ Transform:
   m_GameObject: {fileID: 2048099701}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
-  m_LocalPosition: {x: -0.07, y: -0.519, z: 0}
+  m_LocalPosition: {x: -0.859, y: -0.13700002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1293,7 +1299,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 401fa540ba4108b4aab35b8078cac71a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f06555cbe29d3724e869bdef19e00767, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
