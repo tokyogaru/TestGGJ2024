@@ -74,6 +74,7 @@ public class MissileControl : MonoBehaviour
 
         if (col.gameObject.CompareTag("Player"))
         {
+            Debug.Log("player col");
             ChangeDirection();
         }
     }
