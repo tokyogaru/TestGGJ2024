@@ -10,6 +10,7 @@ public class PlayerHealth : MonoBehaviour
     private Rigidbody2D rb;
 
     public HealthBar hpBar;
+    public GameoverMenu overMenu;
 
     // Start is called before the first frame update
     void Start()
@@ -70,7 +71,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (hpCurrent <= 1)
         {
-            Destroy(gameObject);
+            overMenu.PauseGame();
         }
 
         hpCurrent -= dmg;
