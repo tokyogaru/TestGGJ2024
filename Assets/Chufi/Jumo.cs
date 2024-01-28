@@ -29,7 +29,7 @@ public class Jumo : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    private void Update()
+    void Update()
     {
         if (onGround)
         {

@@ -824,6 +824,7 @@ MonoBehaviour:
   cuerpo: {fileID: 1574649934}
   pieIzq: {fileID: 1948161209}
   pieDer: {fileID: 671973657}
+  velocidadMovimiento: 300
 --- !u!114 &1574649938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -919,12 +920,13 @@ MonoBehaviour:
   pieDer: {fileID: 671973656}
   pieIzq: {fileID: 1948161208}
   cuerpo: {fileID: 1574649933}
-  legScale: 0.015
-  legPos: 0.015
-  footPos: 0.017
-  tiempoMaximoTeclaPresionada: 1.5
+  legScale: 1
+  legPos: 0.5
+  footPos: 1
+  tiempoMaximoTeclaPresionada: 3
   normal: {fileID: 21300000, guid: 7a2866d12aae4c74b8a1a5c45c7662e4, type: 3}
   pose: {fileID: 21300000, guid: 956819ad920a0d44badfeb5baa58c258, type: 3}
+  perder: {fileID: 0}
   spriteRendererCuerpo: {fileID: 1574649936}
 --- !u!1 &1757224532
 GameObject:
