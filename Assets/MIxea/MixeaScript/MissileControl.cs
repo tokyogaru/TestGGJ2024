@@ -152,6 +152,9 @@ public class MissileControl : MonoBehaviour
                 {
                     missileCreated = true;
                     Instantiate(missile, missileSpawner.position, missileSpawner.rotation);
+
+                    //SFX
+                    missileSpawner.GetComponent<AudioSource>().Play();
                 }
 
                 //Timer
