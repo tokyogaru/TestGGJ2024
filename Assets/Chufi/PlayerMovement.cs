@@ -13,8 +13,6 @@ public class PlayerMovement : MonoBehaviour
     private bool moviendoseDerecha = false;
     private bool moviendoseIzquierda = false;
 
-    [SerializeField] private float velocidadMovimiento = 5f; // Velocidad de movimiento ajustable
-
     void Update()
     {
         if (!moviendoseIzquierda && Input.GetKeyDown(KeyCode.D))
@@ -40,14 +38,6 @@ public class PlayerMovement : MonoBehaviour
 
     void MoveBody(Vector2 target)
     {
-        // Calcula la posición objetivo en el eje X, manteniendo la posición Y y Z
-        Vector3 targetPosition = new Vector3(target.x, cuerpo.position.y, cuerpo.position.z);
-
-        // Calcula la dirección y distancia al objetivo
-        Vector3 direction = (targetPosition - cuerpo.position).normalized;
-        float distanceToMove = velocidadMovimiento * Time.deltaTime;
-
-        // Mueve el cuerpo hacia la posición del pie objetivo
-        cuerpo.position += direction * distanceToMove;
+        cuerpo.position = new Vector3(target.x, cuerpo.position.y, cuerpo.position.z);
     }
 }
