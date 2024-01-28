@@ -22,19 +22,26 @@ public class MissileControl : MonoBehaviour
     public GameObject missile;
     [SerializeField] private Transform missileSpawner;
 
+    public Sprite spIdle, spShoot, spDie;
+    private SpriteRenderer spRend;
+
 
     void Start()
     {
         moveRight = true;
 
-        floorDetect1 = gameObject.transform.Find("Floor Detect 1");
-        floorDetect2 = gameObject.transform.Find("Floor Detect 2");
+        floorDetect1 = transform.Find("Floor Detect 1");
+        floorDetect2 = transform.Find("Floor Detect 2");
 
         shooting = false;
         shootTimerCurrent = shootTimer;
         missileCreated = false;
 
-        missileSpawner = gameObject.transform.Find("Missile Spawner");
+        missileSpawner = transform.Find("Missile Spawner");
+
+        spRend = GetComponent<SpriteRenderer>();
+        spRend.flipX = true;
+        spIdle = spRend.sprite;
     }
 
     void Update()
@@ -48,10 +55,12 @@ public class MissileControl : MonoBehaviour
         if (shooting == false)
         {
             ShootCountdown();
+            GetComponent<SpriteRenderer>().sprite = spIdle;
         }
         else
         {
             Shooting();
+            GetComponent<SpriteRenderer>().sprite = spShoot;
         }
     }
 
@@ -60,12 +69,12 @@ public class MissileControl : MonoBehaviour
         //Change directions
         if (col.gameObject.CompareTag("Wall"))
         {
-            moveRight = !moveRight;
+            ChangeDirection();
         }
 
         if (col.gameObject.CompareTag("Player"))
         {
-            moveRight = !moveRight;
+            ChangeDirection();
         }
     }
 
@@ -80,7 +89,7 @@ public class MissileControl : MonoBehaviour
         if (hit.collider == null || hit2.collider == null)
         {
             //Change directions
-            moveRight = !moveRight;
+            ChangeDirection();
         }
     }
 
@@ -94,6 +103,14 @@ public class MissileControl : MonoBehaviour
         {
             transform.Translate(-1 * Time.deltaTime * speed, 0, 0);
         }
+    }
+
+    void ChangeDirection()
+    {
+        moveRight = !moveRight;
+        spRend.flipX = !spRend.flipX;
+
+        missileSpawner.transform.localPosition = new Vector3(missileSpawner.transform.localPosition.x * -1, missileSpawner.transform.localPosition.y, missileSpawner.transform.localPosition.z);
     }
 
     void ShootCountdown()
@@ -126,7 +143,6 @@ public class MissileControl : MonoBehaviour
                 shooting = false;
 
                 missileCreated = false;
-                //missile.SetActive(false);
             }
             else
             {
@@ -134,7 +150,6 @@ public class MissileControl : MonoBehaviour
                 if (missileCreated == false)
                 {
                     missileCreated = true;
-                    //missile.SetActive(true);
                     Instantiate(missile, missileSpawner.position, missileSpawner.rotation);
                 }
 
