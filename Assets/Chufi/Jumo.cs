@@ -5,12 +5,13 @@ using UnityEngine.AI;
 
 public class Jumo : MonoBehaviour
 {
-    private bool onGround;
+    public bool onGround;
     private float jumpPressure;
     private float minJump;
     private float maxJumpPressure;
     private Rigidbody2D rb;
     private Vector3 originalScale;
+    public float jumpForce = 50;
 
     [SerializeField] private Sprite agachado;
 
@@ -33,11 +34,11 @@ public class Jumo : MonoBehaviour
     {
         if (onGround)
         {
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKey(KeyCode.W))
             {
                 if (jumpPressure < maxJumpPressure)
                 {
-                    jumpPressure += Time.deltaTime * 50f;
+                    jumpPressure += Time.deltaTime * jumpForce;
                     spriteRenderer.sprite = agachado;
                     transform.localScale = new Vector2(originalScale.x, 0.5f); // Escalar en el eje Y a -1
                 }
@@ -46,14 +47,13 @@ public class Jumo : MonoBehaviour
             {
                 if (jumpPressure > 0f)
                 {
+                    StartCoroutine(LockJump());
                     rb.velocity = new Vector2(0f, jumpPressure);
                     jumpPressure = 0f;
-                    onGround = false;
                     spriteRenderer.sprite = normal;
                     transform.localScale = originalScale; // Restaurar la escala original
                 }
             }
-            
         }
     }
 
@@ -63,6 +63,11 @@ public class Jumo : MonoBehaviour
         {
             onGround = true;
         }
+    }
+    IEnumerator LockJump()
+    {
+        yield return new WaitForSeconds(0.025f);
+        onGround = false;
     }
 }
 

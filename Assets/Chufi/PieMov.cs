@@ -32,6 +32,10 @@ public class PieMov : MonoBehaviour
     private bool movingLeftLeg = false;
     private float tiempoTeclaPresionada = 0.0f;
 
+    public Transform posCuerpo;
+    public Transform posPieIzq;
+    public Transform posPieDer;
+
     void Start()
     {
         // Guardar las posiciones iniciales
@@ -85,16 +89,8 @@ public class PieMov : MonoBehaviour
 
         if (movingRightLeg && Input.GetKeyUp(KeyCode.D))
         {
-            tiempoTeclaPresionada = 0.0f;
-            movingRightLeg = false;
-            piernaDer.transform.localPosition = initialPiernaDerPosition;
-            piernaDer.transform.localScale = Vector3.one;
-            pieDer.transform.localPosition = initialPieDerPosition;
-            reachedMaxXDer = false;
+            StartCoroutine(StopDer());
 
-            // Ocultar pierna y pie derecho cuando dejes de presionar la tecla
-            SetGameObjectActive(false, true);
-            spriteRendererCuerpo.sprite = normal;
         }
 
         if (!movingRightLeg && !reachedMaxXIzq && Input.GetKeyDown(KeyCode.A))
@@ -123,16 +119,8 @@ public class PieMov : MonoBehaviour
 
         if (movingLeftLeg && Input.GetKeyUp(KeyCode.A))
         {
-            tiempoTeclaPresionada = 0.0f;
-            movingLeftLeg = false;
-            piernaIzq.transform.localPosition = initialPiernaIzqPosition;
-            piernaIzq.transform.localScale = Vector3.one;
-            pieIzq.transform.localPosition = initialPieIzqPosition;
-            reachedMaxXIzq = false;
+            StartCoroutine(StopIzq());
 
-            // Ocultar pierna y pie izquierdo cuando dejes de presionar la tecla
-            SetGameObjectActive(false, false);
-            spriteRendererCuerpo.sprite = normal;
         }
 
         if (movingRightLeg && Input.GetKey(KeyCode.D))
@@ -170,5 +158,34 @@ public class PieMov : MonoBehaviour
             pieIzq.SetActive(active);
         }
     }
+    IEnumerator StopDer()
+    {
+        posCuerpo.position = new Vector3((posPieDer.position.x + 0.75f), posCuerpo.localPosition.y, posCuerpo.localPosition.z);
+        tiempoTeclaPresionada = 0.0f;
+        movingRightLeg = false;
+        piernaDer.transform.localPosition = initialPiernaDerPosition;
+        piernaDer.transform.localScale = new Vector3(0, 1, 1);
+        pieDer.transform.localPosition = initialPieDerPosition;
+        reachedMaxXDer = false;
 
+        // Ocultar pierna y pie derecho cuando dejes de presionar la tecla
+        SetGameObjectActive(false, true);
+        spriteRendererCuerpo.sprite = normal;
+        return null;
+    }
+    IEnumerator StopIzq()
+    {
+        posCuerpo.position = new Vector3((posPieIzq.position.x + -0.75f), posCuerpo.localPosition.y, posCuerpo.localPosition.z);
+        tiempoTeclaPresionada = 0.0f;
+        movingLeftLeg = false;
+        piernaIzq.transform.localPosition = initialPiernaIzqPosition;
+        piernaIzq.transform.localScale = new Vector3(0, 1, 1);
+        pieIzq.transform.localPosition = initialPieIzqPosition;
+        reachedMaxXIzq = false;
+
+        // Ocultar pierna y pie izquierdo cuando dejes de presionar la tecla
+        SetGameObjectActive(false, false);
+        spriteRendererCuerpo.sprite = normal;
+        return null;
+    }
 }
