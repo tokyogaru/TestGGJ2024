@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class PieMov : MonoBehaviour
 {
-     [SerializeField] GameObject piernaDer;
-    [SerializeField] GameObject piernaIzq;
-    [SerializeField] GameObject pieDer;
-    [SerializeField] GameObject pieIzq;
+    [SerializeField] static GameObject piernaDer;
+    [SerializeField] static GameObject piernaIzq;
+    [SerializeField] static GameObject pieDer;
+    [SerializeField] static GameObject pieIzq;
     [SerializeField] GameObject cuerpo;
 
-    [SerializeField] float legScale = 0.5f;
-    [SerializeField] float legPos = 0.5f;
-    [SerializeField] float footPos = 0.1f;
+    [SerializeField] static float legScale = 1f;
+    [SerializeField] static float legPos = 0.5f;
+    [SerializeField] static float footPos = 1f;
     [SerializeField] float tiempoMaximoTeclaPresionada = 3.0f;
 
     [SerializeField] private Sprite normal;
@@ -38,6 +38,11 @@ public class PieMov : MonoBehaviour
 
     void Start()
     {
+        piernaDer = GameObject.Find("Player/sprite_cuerpo/pata/sprite_piernaDer");
+        piernaIzq = GameObject.Find("Player/sprite_cuerpo/pata/sprite_piernaIzq");
+        pieDer = GameObject.Find("Player/sprite_cuerpo/pata/pieDer");
+        pieIzq = GameObject.Find("Player/sprite_cuerpo/pata/pieIzq");
+
         // Guardar las posiciones iniciales
         initialPiernaDerPosition = piernaDer.transform.localPosition;
         initialPiernaIzqPosition = piernaIzq.transform.localPosition;
@@ -160,7 +165,7 @@ public class PieMov : MonoBehaviour
     }
     IEnumerator StopDer()
     {
-        posCuerpo.position = new Vector3((posPieDer.position.x + 0.75f), posCuerpo.localPosition.y, posCuerpo.localPosition.z);
+        posCuerpo.position = new Vector3((posPieDer.position.x + 0.75f), posCuerpo.localPosition.y, posCuerpo.localPosition.z);       
         tiempoTeclaPresionada = 0.0f;
         movingRightLeg = false;
         piernaDer.transform.localPosition = initialPiernaDerPosition;
@@ -188,4 +193,10 @@ public class PieMov : MonoBehaviour
         spriteRendererCuerpo.sprite = normal;
         return null;
     }
+
+    public static void stopMove()
+    {
+        Debug.Log("Stop");
+    }
+       
 }

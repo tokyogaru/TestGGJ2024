@@ -423,6 +423,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6395803395304244840}
   - component: {fileID: 5597914808411485646}
+  - component: {fileID: 5703326841880986456}
   m_Layer: 0
   m_Name: pieDer
   m_TagString: Untagged
@@ -491,6 +492,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.26}
   m_EdgeRadius: 0
+--- !u!114 &5703326841880986456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4929169438588363346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d359473458bd0c459ff70855f1f613a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6549906390576949525
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,14 +553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5167ea44f82599a4abc14da2ef372dd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  piernaDer: {fileID: 266097134151385533}
-  piernaIzq: {fileID: 1978639182972072430}
-  pieDer: {fileID: 4929169438588363346}
-  pieIzq: {fileID: 7990577243140208913}
   cuerpo: {fileID: 8707734998630003419}
-  legScale: 1
-  legPos: 0.5
-  footPos: 1
   tiempoMaximoTeclaPresionada: 3
   normal: {fileID: 21300000, guid: 7a2866d12aae4c74b8a1a5c45c7662e4, type: 3}
   pose: {fileID: 21300000, guid: 956819ad920a0d44badfeb5baa58c258, type: 3}
@@ -633,6 +639,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4220616667815067005}
   - component: {fileID: 3297730017388936930}
+  - component: {fileID: 2938367746359563635}
   m_Layer: 0
   m_Name: pieIzq
   m_TagString: Untagged
@@ -701,6 +708,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.26}
   m_EdgeRadius: 0
+--- !u!114 &2938367746359563635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7990577243140208913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d359473458bd0c459ff70855f1f613a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8323649557040441384
 GameObject:
   m_ObjectHideFlags: 0
@@ -896,6 +915,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onGround: 0
   jumpForce: 10
+  jumpTime: 0.5
   agachado: {fileID: 21300000, guid: 4d4961fb11ba956488ee28fbb9e01424, type: 3}
   normal: {fileID: 21300000, guid: 7a2866d12aae4c74b8a1a5c45c7662e4, type: 3}
 --- !u!50 &2161678200589255399
