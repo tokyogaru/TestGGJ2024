@@ -31,12 +31,7 @@ public class GombaControl : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.CompareTag("Wall"))
-        {
-            moveRight = !moveRight;
-        }
-
-        if (col.gameObject.CompareTag("Player"))
+        if (col.gameObject.CompareTag("Wall") || col.gameObject.CompareTag("Player") || col.gameObject.CompareTag("Enemy"))
         {
             moveRight = !moveRight;
         }
