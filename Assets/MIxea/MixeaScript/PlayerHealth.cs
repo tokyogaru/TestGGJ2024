@@ -12,6 +12,11 @@ public class PlayerHealth : MonoBehaviour
     public HealthBar hpBar;
     public GameoverMenu overMenu;
 
+    [Header("Sfx")]
+    [SerializeField] private AudioClip sfxHurt;
+    [SerializeField] private AudioClip sfxDeath;
+    [SerializeField] private AudioClip sfxHit;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +37,7 @@ public class PlayerHealth : MonoBehaviour
         if (col.CompareTag("Enemy"))
         {
             Destroy(col.gameObject);
+            SoundManager.Instance.PlaySound(sfxHit, transform, 1f, 0);
 
             //Jump again
             rb.velocity = new Vector2(rb.velocity.x, bounce);
@@ -39,7 +45,7 @@ public class PlayerHealth : MonoBehaviour
 
         if (col.CompareTag("Enemy Hitbox"))
         {
-            //Jump again
+
             LooseHp(5);
             Debug.Log("Damaged");
         }
@@ -69,14 +75,18 @@ public class PlayerHealth : MonoBehaviour
 
     void LooseHp(int dmg)
     {
-        if (hpCurrent <= 1)
+        if (hpCurrent == 1)
         {
             overMenu.PauseGame();
         }
 
         hpCurrent -= dmg;
-        if(hpCurrent < 1)
+
+        SoundManager.Instance.PlaySound(sfxHurt, transform, 1f, 0);
+
+        if (hpCurrent < 1)
         {
+            //1hp Magic pixel
             hpCurrent = 1;
         }
         hpBar.SetHp(hpCurrent);

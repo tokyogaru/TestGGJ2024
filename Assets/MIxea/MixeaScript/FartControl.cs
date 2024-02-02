@@ -23,6 +23,9 @@ public class FartControl : MonoBehaviour
 
     public Sprite sp1, sp2;
 
+    [Header("Sfx")]
+    [SerializeField] private AudioClip sfxFart;
+
 
     void Start()
     {
@@ -140,6 +143,8 @@ public class FartControl : MonoBehaviour
                 {
                     fartCreated = true;
                     hitBox.SetActive(true);
+
+                    SoundManager.Instance.PlaySound(sfxFart, transform, 1f, 3);
                 }
 
                 //Timer

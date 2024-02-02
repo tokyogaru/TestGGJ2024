@@ -25,6 +25,10 @@ public class MissileControl : MonoBehaviour
     public Sprite spIdle, spShoot, spDie;
     private SpriteRenderer spRend;
 
+    [Header("Sfx")]
+    [SerializeField] private AudioClip sfxCharge;
+    [SerializeField] private AudioClip sfxShoot;
+
 
     void Start()
     {
@@ -128,6 +132,7 @@ public class MissileControl : MonoBehaviour
             restWaitCurrent = restWait;
             //Start shooting
             shooting = true;
+            SoundManager.Instance.PlaySound(sfxCharge, transform, 1f, 3);
         }
     }
 
@@ -154,7 +159,7 @@ public class MissileControl : MonoBehaviour
                     Instantiate(missile, missileSpawner.position, missileSpawner.rotation);
 
                     //SFX
-                    missileSpawner.GetComponent<AudioSource>().Play();
+                    SoundManager.Instance.PlaySound(sfxShoot, transform, 1f, 3);
                 }
 
                 //Timer
