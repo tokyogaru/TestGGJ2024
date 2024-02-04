@@ -10,6 +10,7 @@ public class WallDetectDer : MonoBehaviour
         {
             Debug.Log("WallDerTrue");
             PieMov.walledDer = true;
+            
         }
     }
     public void OnTriggerExit2D(Collider2D collision)

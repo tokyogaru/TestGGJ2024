@@ -60,7 +60,7 @@ public class Jumo : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Wall"))
+        if (other.gameObject.CompareTag("Ground"))
         {
             onGround = true;
         }
