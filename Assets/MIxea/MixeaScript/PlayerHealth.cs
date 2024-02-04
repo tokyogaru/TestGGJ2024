@@ -58,6 +58,14 @@ public class PlayerHealth : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, bounce *2);
         }
 
+        if (col.CompareTag("Pit"))
+        {
+            LooseHp(5);
+
+            //Jump away
+            rb.velocity = new Vector2(rb.velocity.x, bounce * 5);
+        }
+
         if (col.CompareTag("Next Level"))
         {
             col.GetComponent<SceneManaging>().NextScene();
