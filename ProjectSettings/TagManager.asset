@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Enemy Hitbox
   - Ground
+  - Pit
   layers:
   - Default
   - TransparentFX
