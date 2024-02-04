@@ -23,6 +23,12 @@ public class FartControl : MonoBehaviour
 
     public Sprite sp1, sp2;
 
+    public Camera camRef;
+    [SerializeField] private float screenBorder = 10;
+    private Vector3 targetScreenPos;
+
+    private bool isOffscreen;
+
     [Header("Sfx")]
     [SerializeField] private AudioClip sfxFart;
 
@@ -42,25 +48,45 @@ public class FartControl : MonoBehaviour
         hitBox.SetActive(false);
 
         sp1 = GetComponent<SpriteRenderer>().sprite;
+
+        camRef = Camera.main;
+        isOffscreen = true;
     }
 
     void Update()
     {
+        //Check if in camera
+        targetScreenPos = camRef.WorldToScreenPoint(gameObject.transform.position);
+
+        isOffscreen = targetScreenPos.x <= screenBorder || targetScreenPos.x >= Screen.width || targetScreenPos.y <= screenBorder || targetScreenPos.y >= Screen.height;
+
+        /*
+        if (isOffscreen)
+        {
+            Debug.Log(gameObject.name + " Is OffScreen");
+        }
+        else
+        {
+            Debug.Log("Is OnScreen");
+        }*/
     }
 
     private void FixedUpdate()
     {
         AvoidFall();
 
-        if (farting == false)
+        if (!isOffscreen)
         {
-            FartCountdown();
-            GetComponent<SpriteRenderer>().sprite = sp1;
-        }
-        else
-        {
-            Farting();
-            GetComponent<SpriteRenderer>().sprite = sp2;
+            if (farting == false)
+            {
+                FartCountdown();
+                GetComponent<SpriteRenderer>().sprite = sp1;
+            }
+            else
+            {
+                Farting();
+                GetComponent<SpriteRenderer>().sprite = sp2;
+            }
         }
     }
 
