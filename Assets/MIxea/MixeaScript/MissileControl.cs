@@ -25,6 +25,13 @@ public class MissileControl : MonoBehaviour
     public Sprite spIdle, spShoot, spDie;
     private SpriteRenderer spRend;
 
+
+    public Camera camRef;
+    [SerializeField] private float screenBorder = 10;
+    private Vector3 targetScreenPos;
+
+    private bool isOffscreen;
+
     [Header("Sfx")]
     [SerializeField] private AudioClip sfxCharge;
     [SerializeField] private AudioClip sfxShoot;
@@ -46,25 +53,44 @@ public class MissileControl : MonoBehaviour
         spRend = GetComponent<SpriteRenderer>();
         spRend.flipX = true;
         spIdle = spRend.sprite;
+
+        camRef = Camera.main;
+        isOffscreen = true;
     }
 
     void Update()
     {
+        //Check if in camera
+        targetScreenPos = camRef.WorldToScreenPoint(gameObject.transform.position);
+
+        isOffscreen = targetScreenPos.x <= screenBorder || targetScreenPos.x >= Screen.width || targetScreenPos.y <= screenBorder || targetScreenPos.y >= Screen.height;
+
+        /*
+        if (isOffscreen)
+        {
+            Debug.Log(gameObject.name + " Is OffScreen");
+        }
+        else
+        {
+            Debug.Log("Is OnScreen");
+        }*/
     }
 
     private void FixedUpdate()
     {
         AvoidFall();
-
-        if (shooting == false)
+        if (!isOffscreen)
         {
-            ShootCountdown();
-            GetComponent<SpriteRenderer>().sprite = spIdle;
-        }
-        else
-        {
-            Shooting();
-            GetComponent<SpriteRenderer>().sprite = spShoot;
+            if (shooting == false)
+            {
+                ShootCountdown();
+                GetComponent<SpriteRenderer>().sprite = spIdle;
+            }
+            else
+            {
+                Shooting();
+                GetComponent<SpriteRenderer>().sprite = spShoot;
+            }
         }
     }
 
