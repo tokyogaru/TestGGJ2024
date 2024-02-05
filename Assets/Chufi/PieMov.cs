@@ -15,6 +15,7 @@ public class PieMov : MonoBehaviour
     private Vector3 originalScale;
 
     public GameObject noMoveExclamation;
+    public GameObject cry;
     
     [SerializeField] static float legScaleDer = 1f;
     [SerializeField] static float legPosDer = 0.5f;
@@ -27,7 +28,7 @@ public class PieMov : MonoBehaviour
 
     [SerializeField] public Sprite normal;
     [SerializeField] public Sprite pose;
-    [SerializeField] private Sprite perder;
+    [SerializeField] public Sprite perder;
     [SerializeField] private Sprite noMove;
 
     private Vector3 initialPiernaDerPosition;
@@ -76,8 +77,10 @@ public class PieMov : MonoBehaviour
         piernaDer.SetActive(false);
         piernaIzq.SetActive(false);
 
-        noMoveExclamation = GameObject.Find("Player/nomove_particle");
+        noMoveExclamation = GameObject.Find("Player/sprite_cuerpo/nomove_particle");
+        cry = GameObject.Find("Player/sprite_cuerpo/PLAYERdeath_particles");
         noMoveExclamation.SetActive(false);
+        cry.SetActive(false);
 
 
         spriteRendererCuerpo = cuerpo.GetComponent<SpriteRenderer>();

@@ -21,7 +21,7 @@ public class PlayerEffect : MonoBehaviour
     private float currentRotation = 0f;
     private bool isRotating;
 
-    private Vector3 originalScale;
+    public Vector3 originalScale;
     [SerializeField] private float pulseSpeed = 1.0f;
     [SerializeField] private float minScale = 0.5f;
     [SerializeField] private float maxScale = 1.0f;
@@ -41,6 +41,8 @@ public class PlayerEffect : MonoBehaviour
         originalScale = transform.localScale;
         originalPosition = transform.position;
         pieMov = pata.GetComponent<PieMov>();
+        isPulsating = false;
+        isRotating = false;
     }
 
     // Update is called once per frame
@@ -48,6 +50,9 @@ public class PlayerEffect : MonoBehaviour
     {
         if (PieMov.movingRightLeg && Input.GetKey(KeyCode.D))
         {
+            isPulsating = false;
+            isRotating = false;
+
             if (pieMov.tiempoTeclaPresionada > pieMov.tiempoMaximoTeclaPresionada)
             {
                 Flash(Color.magenta);
@@ -63,6 +68,8 @@ public class PlayerEffect : MonoBehaviour
 
         if (PieMov.movingLeftLeg && Input.GetKey(KeyCode.A))
         {
+            isPulsating = false;
+            isRotating = false;
             if (pieMov.tiempoTeclaPresionada > pieMov.tiempoMaximoTeclaPresionada)
             {
                 Flash(Color.magenta);
@@ -71,6 +78,7 @@ public class PlayerEffect : MonoBehaviour
                 StartPulse();
                 Debug.Log("¡Has perdido!");
             }
+
         }
         if (PieMov.movingLeftLeg && Input.GetKeyUp(KeyCode.A))
         {
@@ -103,7 +111,7 @@ public class PlayerEffect : MonoBehaviour
 
             // Aplicar la escala al objeto en ambos ejes
             transform.localScale = originalScale * scale;
-            
+
         }
     }
 
@@ -175,7 +183,7 @@ public class PlayerEffect : MonoBehaviour
         transform.localScale = Vector3.Scale(originalScale, newScale);
         yield return new WaitForSeconds(0.5f);
 
-        
+
         transform.localScale = originalScale;
     }
 

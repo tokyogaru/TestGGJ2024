@@ -40,14 +40,14 @@ public class TestEffect : MonoBehaviour
         flashMaterial = new Material(flashMaterial);
         originalScale = transform.localScale;
         originalPosition = transform.position;
-        pointA = originalPosition + Vector3.up * 0.08f; ;
+        pointA = originalPosition + Vector3.up * 0.08f; 
         pointB = originalPosition + Vector3.up * -0.08f;
     }
 
     private void Update()
     {
         // Verificar si se presiona una tecla, por ejemplo, la tecla "Espacio".
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))///morirenemigos
         {
             //daño
             Flash(Color.magenta);
@@ -55,7 +55,7 @@ public class TestEffect : MonoBehaviour
             transform.localScale = Vector3.Scale(originalScale, newScale); // Aplica la nueva escala al objeto
         }
 
-        if (Input.GetKey(KeyCode.Z))
+        if (Input.GetKey(KeyCode.Z)) //Movimiento enemigos
         {
             // Rotar en el eje Z constantemente dentro del rango de -1 a 1.
             float rotation = Mathf.Sin(Time.time * rotationSpeed) * 1f - 0.5f;
@@ -70,7 +70,7 @@ public class TestEffect : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         }
 
-        if (Input.GetKeyDown(KeyCode.L))
+        if (Input.GetKeyDown(KeyCode.L))//usado
         {
             //daño jugador
             Flash(Color.magenta);
