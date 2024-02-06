@@ -32,6 +32,10 @@ public class FartControl : MonoBehaviour
     [Header("Sfx")]
     [SerializeField] private AudioClip sfxFart;
 
+    [SerializeField] float rotationSpeed;
+
+    private Vector3 originalPosition;
+
 
     void Start()
     {
@@ -51,6 +55,8 @@ public class FartControl : MonoBehaviour
 
         camRef = Camera.main;
         isOffscreen = true;
+
+        originalPosition = transform.position;
     }
 
     void Update()
@@ -95,11 +101,13 @@ public class FartControl : MonoBehaviour
         if (col.gameObject.CompareTag("Wall"))
         {
             moveRight = !moveRight;
+            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         }
 
         if (col.gameObject.CompareTag("Player"))
         {
             moveRight = !moveRight;
+            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
             //col.gameObject.GetComponent<PlayerHealth>().health -= 5;
         }
     }
@@ -124,11 +132,19 @@ public class FartControl : MonoBehaviour
         if (moveRight)
         {
             transform.Translate(Time.deltaTime * speed, 0, 0);
+            MoveChar();
         }
         else
         {
             transform.Translate(-1 * Time.deltaTime * speed, 0, 0);
+            MoveChar();
         }
+    }
+    void MoveChar()
+    {
+        float rotation = Mathf.Sin(Time.time * rotationSpeed) * 1f - 0.5f;
+        transform.rotation = Quaternion.Euler(0f, 0f, rotation * 5f);
+
     }
 
     void FartCountdown()

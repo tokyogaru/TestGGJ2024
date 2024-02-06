@@ -129,7 +129,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.89, y: 0.28}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0.64, y: 1.28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &1234126158795596508
@@ -253,6 +253,7 @@ MonoBehaviour:
   bounce: 5
   hpBar: {fileID: 0}
   overMenu: {fileID: 0}
+  touchEnemy: 0
   pieMov: {fileID: 0}
   pata: {fileID: 0}
   sfxHurt: {fileID: 8300000, guid: d83b9d17534054b438eb9a4d12a19d1d, type: 3}
@@ -319,6 +320,7 @@ MonoBehaviour:
   duration: 0.2
   rotationSpeed: 5
   rotationSpeedPlayer: 300
+  originalScale: {x: 0, y: 0, z: 0}
   pulseSpeed: 6
   minScale: 0.5
   maxScale: 1

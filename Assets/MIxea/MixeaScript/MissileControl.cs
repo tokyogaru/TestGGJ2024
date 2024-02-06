@@ -36,6 +36,14 @@ public class MissileControl : MonoBehaviour
     [SerializeField] private AudioClip sfxCharge;
     [SerializeField] private AudioClip sfxShoot;
 
+    [SerializeField] float rotationSpeed;
+
+    private Vector3 originalPosition;
+
+    private SpriteRenderer spriteRenderer;
+
+    private Vector3 originalScale;
+
 
     void Start()
     {
@@ -56,6 +64,10 @@ public class MissileControl : MonoBehaviour
 
         camRef = Camera.main;
         isOffscreen = true;
+
+        originalPosition = transform.position;
+        originalScale = transform.localScale;
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -100,12 +112,14 @@ public class MissileControl : MonoBehaviour
         if (col.gameObject.CompareTag("Wall"))
         {
             ChangeDirection();
+            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         }
 
         if (col.gameObject.CompareTag("Player"))
         {
             Debug.Log("player col");
             ChangeDirection();
+            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         }
     }
 
@@ -129,11 +143,19 @@ public class MissileControl : MonoBehaviour
         if (moveRight)
         {
             transform.Translate(Time.deltaTime * speed, 0, 0);
+           
         }
         else
         {
             transform.Translate(-1 * Time.deltaTime * speed, 0, 0);
+           
         }
+    }
+    void MoveChar()
+    {
+        float rotation = Mathf.Sin(Time.time * rotationSpeed) * 1f - 0.5f;
+        transform.rotation = Quaternion.Euler(0f, 0f, rotation * 5f);
+
     }
 
     void ChangeDirection()
@@ -149,6 +171,7 @@ public class MissileControl : MonoBehaviour
         if (shootTimerCurrent >= 0)
         {
             Moving();
+            StopCoroutine(RedFadeAndScale());
             shootTimerCurrent -= Time.deltaTime;
         }
         else
@@ -158,7 +181,9 @@ public class MissileControl : MonoBehaviour
             restWaitCurrent = restWait;
             //Start shooting
             shooting = true;
+            StartCoroutine(RedFadeAndScale());
             SoundManager.Instance.PlaySound(sfxCharge, transform, 1f, 3);
+            
         }
     }
 
@@ -197,6 +222,44 @@ public class MissileControl : MonoBehaviour
             //Timer
             shootStartupCurrent -= Time.deltaTime;
         }
+    }
+    private IEnumerator RedFadeAndScale()
+    {
+        float elapsedTime = 0f;
+        float duration = 1f; // Duración total de la transición (5 segundos)
+
+        // Guardar el color original y la escala original
+        Color originalColor = spriteRenderer.color;
+        Vector3 originalScale = transform.localScale;
+
+        // Cambiar gradualmente el color a rojo
+        while (elapsedTime < duration)
+        {
+            // Calcular el factor de progreso de la transición
+            float t = elapsedTime / duration;
+
+            // Calcular el nuevo color interpolando entre el color original y el rojo
+            Color newColor = Color.Lerp(originalColor, Color.red, t);
+
+            // Aplicar el nuevo color al objeto
+            spriteRenderer.color = newColor;
+
+            // Escalar gradualmente en el eje Y
+            transform.localScale = Vector3.Lerp(originalScale, new Vector3(originalScale.x, 0.5f, originalScale.z), t);
+
+            // Mover el objeto de izquierda a derecha rápidamente
+            float moveX = Mathf.PingPong(Time.time * 5f, 1f) - 0.5f; // Rango de movimiento de -1 a 1
+            transform.position += Vector3.right * moveX * Time.deltaTime * 5f; // Movimiento rápido de izquierda a derecha
+
+            // Actualizar el tiempo transcurrido
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Al terminar la transición, restaurar el color, la escala y la posición originales
+        spriteRenderer.color = originalColor;
+        transform.localScale = originalScale;
+        
     }
 
 }

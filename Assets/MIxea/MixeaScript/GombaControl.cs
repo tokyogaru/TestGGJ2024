@@ -10,12 +10,18 @@ public class GombaControl : MonoBehaviour
     private Transform floorDetect1;
     private Transform floorDetect2;
 
+    [SerializeField] float rotationSpeed;
+
+    private Vector3 originalPosition;
+
+
     void Start()
     {
         moveRight = true;
 
         floorDetect1 = gameObject.transform.Find("Floor Detect 1");
         floorDetect2 = gameObject.transform.Find("Floor Detect 2");
+        originalPosition = transform.position;
     }
 
     void Update()
@@ -34,6 +40,7 @@ public class GombaControl : MonoBehaviour
         if (col.gameObject.CompareTag("Wall") || col.gameObject.CompareTag("Player") || col.gameObject.CompareTag("Enemy"))
         {
             moveRight = !moveRight;
+            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         }
     }
 
@@ -55,10 +62,18 @@ public class GombaControl : MonoBehaviour
         if (moveRight)
         {
             transform.Translate(Time.deltaTime * speed, 0, 0);
+            MoveChar();
         }
         else
         {
             transform.Translate(-1 * Time.deltaTime * speed, 0, 0);
+            MoveChar();
         }
+    }
+    void MoveChar()
+    {
+        float rotation = Mathf.Sin(Time.time * rotationSpeed) * 1f - 0.5f;
+        transform.rotation = Quaternion.Euler(0f, 0f, rotation * 5f);
+
     }
 }

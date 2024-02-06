@@ -8,7 +8,7 @@ public class PieMov : MonoBehaviour
     [SerializeField] public static GameObject piernaIzq;
     [SerializeField] public static GameObject pieDer;
     [SerializeField] public static GameObject pieIzq;
-    [SerializeField] GameObject cuerpo;
+    [SerializeField] GameObject sprite;
     public GameObject spritePieDer;
     public GameObject spritePieIzq;
 
@@ -83,7 +83,7 @@ public class PieMov : MonoBehaviour
         cry.SetActive(false);
 
 
-        spriteRendererCuerpo = cuerpo.GetComponent<SpriteRenderer>();
+        spriteRendererCuerpo = sprite.GetComponent<SpriteRenderer>();
 
         // Verificar si los SpriteRenderer se encontraron correctamente
         if (spriteRendererCuerpo != null)

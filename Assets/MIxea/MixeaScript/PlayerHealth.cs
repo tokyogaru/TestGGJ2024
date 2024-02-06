@@ -21,7 +21,7 @@ public class PlayerHealth : MonoBehaviour
     private GameObject enemyDeath;
 
     PlayerEffect effectEnemy;
-    GameObject effectEnemyObject;
+    public GameObject effectEnemyObject;
 
     [Header("Sfx")]
     [SerializeField] private AudioClip sfxHurt;
@@ -37,7 +37,7 @@ public class PlayerHealth : MonoBehaviour
         hpCurrent = hpMax;
 
         pieMov = pata.GetComponent<PieMov>();
-        particleHit = GameObject.Find("Player/sprite_cuerpo/hit_particle");
+        particleHit = GameObject.Find("hit_particle");
         enemyDeath = GameObject.Find("ENEMYdeath_particles");
         particleHit.SetActive(false);
         enemyDeath.SetActive(false);

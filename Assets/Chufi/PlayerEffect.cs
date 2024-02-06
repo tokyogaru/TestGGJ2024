@@ -43,16 +43,21 @@ public class PlayerEffect : MonoBehaviour
         pieMov = pata.GetComponent<PieMov>();
         isPulsating = false;
         isRotating = false;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.D))
+        {
+            pieMov.tiempoTeclaPresionada = 0;
+            pieMov.spriteRendererCuerpo.sprite = pieMov.pose;
+            pieMov.spriteRendererCuerpo.flipX = false;
+        }
         if (PieMov.movingRightLeg && Input.GetKey(KeyCode.D))
         {
-            isPulsating = false;
-            isRotating = false;
-
+            
             if (pieMov.tiempoTeclaPresionada > pieMov.tiempoMaximoTeclaPresionada)
             {
                 Flash(Color.magenta);
@@ -60,16 +65,23 @@ public class PlayerEffect : MonoBehaviour
                 isRotating = true;
                 StartPulse();
                 Debug.Log("¡Has perdido!");
+                
 
             }
 
 
         }
+        if(Input.GetKeyDown(KeyCode.A))
+        {
+            pieMov.tiempoTeclaPresionada = 0;
+            pieMov.spriteRendererCuerpo.sprite = pieMov.pose;
+            pieMov.spriteRendererCuerpo.flipX = true;
+        }
 
         if (PieMov.movingLeftLeg && Input.GetKey(KeyCode.A))
         {
-            isPulsating = false;
-            isRotating = false;
+            
+    
             if (pieMov.tiempoTeclaPresionada > pieMov.tiempoMaximoTeclaPresionada)
             {
                 Flash(Color.magenta);

@@ -13,11 +13,13 @@ public class Jumo : MonoBehaviour
     private Vector3 originalScale;
     public float jumpForce = 50;
     public float jumpTime = 0.5f;
-    [SerializeField] private Sprite agachado;
 
-    [SerializeField] private Sprite normal;
+     [SerializeField] GameObject sprite;
 
     private SpriteRenderer spriteRenderer;
+
+    public Sprite agachado;
+    public Sprite normal;
 
     private void Start()
     {
@@ -27,7 +29,8 @@ public class Jumo : MonoBehaviour
         maxJumpPressure = 15f;
         rb = GetComponent<Rigidbody2D>();
         originalScale = transform.localScale;
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = sprite.GetComponent<SpriteRenderer>();
+
     }
 
     void Update()
