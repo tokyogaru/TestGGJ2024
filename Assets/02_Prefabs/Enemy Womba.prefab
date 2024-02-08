@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 4289190864427528991}
   - component: {fileID: 1707732306994467817}
   - component: {fileID: 3490320651706745977}
+  - component: {fileID: 8504217668614163874}
   m_Layer: 0
   m_Name: Enemy Womba
   m_TagString: Enemy
@@ -252,6 +253,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2.85
+  rotationSpeed: 0
+--- !u!114 &8504217668614163874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7639380762425980840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fd7b2a47d24e264292d6cfa859e9f27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableScript: {fileID: 3490320651706745977}
 --- !u!1 &7649141136597201312
 GameObject:
   m_ObjectHideFlags: 0

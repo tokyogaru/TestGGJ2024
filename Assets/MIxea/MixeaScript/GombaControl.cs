@@ -10,9 +10,6 @@ public class GombaControl : MonoBehaviour
     private Transform floorDetect1;
     private Transform floorDetect2;
 
-    private BoxCollider2D[] selfColliders;
-    private Rigidbody2D rb;
-
     [SerializeField] float rotationSpeed;
 
     private Vector3 originalPosition;
@@ -25,9 +22,6 @@ public class GombaControl : MonoBehaviour
         floorDetect1 = gameObject.transform.Find("Floor Detect 1");
         floorDetect2 = gameObject.transform.Find("Floor Detect 2");
         originalPosition = transform.position;
-
-        selfColliders = gameObject.GetComponents<BoxCollider2D>();
-        rb = gameObject.GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -83,13 +77,4 @@ public class GombaControl : MonoBehaviour
 
     }
 
-    public void DeathSelf()
-    {
-        foreach(var col in selfColliders)
-        {
-            col.enabled = false;
-            rb.gravityScale = 0f;
-            this.enabled = false;
-        }
-    }
 }
