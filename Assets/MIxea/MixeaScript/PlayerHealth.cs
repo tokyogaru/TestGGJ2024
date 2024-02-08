@@ -12,6 +12,8 @@ public class PlayerHealth : MonoBehaviour
     public HealthBar hpBar;
     public GameoverMenu overMenu;
 
+    private bool lastHit;
+
     public bool touchEnemy;
 
     public PieMov pieMov;
@@ -35,6 +37,7 @@ public class PlayerHealth : MonoBehaviour
 
         hpBar.SetMaxHp(hpMax);
         hpCurrent = hpMax;
+        lastHit = false;
 
         pieMov = pata.GetComponent<PieMov>();
         particleHit = GameObject.Find("hit_particle");
@@ -62,6 +65,7 @@ public class PlayerHealth : MonoBehaviour
             //Jump again
             rb.velocity = new Vector2(rb.velocity.x, bounce);
         }
+        /*
         if(touchEnemy)
         {
             effectEnemy.Flash(Color.magenta);
@@ -72,21 +76,20 @@ public class PlayerHealth : MonoBehaviour
         }
         else
         {
-            particleHit.SetActive(false);
             enemyDeath.SetActive(false);
-        }
+        }*/
 
         if (col.CompareTag("Enemy Hitbox"))
         {
 
-            LooseHp(5);
+            LooseHp(25);
             
             Debug.Log("Damaged");
         }
 
         if (col.CompareTag("Obstacle"))
         {
-            LooseHp(5);
+            LooseHp(25);
 
             //Jump away
             rb.velocity = new Vector2(rb.velocity.x, bounce *2);
@@ -94,7 +97,7 @@ public class PlayerHealth : MonoBehaviour
 
         if (col.CompareTag("Pit"))
         {
-            LooseHp(5);
+            LooseHp(25);
 
             //Jump away
             rb.velocity = new Vector2(rb.velocity.x, bounce * 5);
@@ -110,7 +113,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Enemy"))
         {
-            LooseHp(5);
+            LooseHp(25);
 
             Debug.Log("Collided");
         }
@@ -119,7 +122,7 @@ public class PlayerHealth : MonoBehaviour
     void LooseHp(int dmg)
     {
         
-        if (hpCurrent == 1 || hpCurrent <= 1)
+        if (hpCurrent == 25 || hpCurrent <= 25)
         {
             StartCoroutine(LoseAnim());
         }
@@ -127,10 +130,15 @@ public class PlayerHealth : MonoBehaviour
         hpCurrent -= dmg;
         SoundManager.Instance.PlaySound(sfxHurt, transform, 1f, 0);
 
-        if (hpCurrent < 1)
+        if (hpCurrent < 25 && lastHit == false)
         {
             //1hp Magic pixel
-            hpCurrent = 1;
+            lastHit = true;
+            hpCurrent = 10;
+        }
+        if (hpCurrent <= 0)
+        {
+            hpCurrent = 0;
         }
         hpBar.SetHp(hpCurrent);
     }
