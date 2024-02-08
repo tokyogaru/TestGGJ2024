@@ -19,11 +19,11 @@ public class PlayerHealth : MonoBehaviour
     public PieMov pieMov;
     public GameObject pata;
 
-    PlayerEffect effectEnemy;
-    public GameObject effectEnemyObject;
 
     private GameObject particleHit; 
-    private GameObject enemyDeath;
+    
+
+
     [SerializeField] private GameObject particleMad;
 
     [Header("Sfx")]
@@ -43,11 +43,8 @@ public class PlayerHealth : MonoBehaviour
 
         pieMov = pata.GetComponent<PieMov>();
         particleHit = GameObject.Find("hit_particle");
-        enemyDeath = GameObject.Find("ENEMYdeath_particles");
-        particleHit.SetActive(false);
-        enemyDeath.SetActive(false);
 
-        effectEnemy = effectEnemyObject.GetComponent<PlayerEffect>();
+        particleHit.SetActive(false);
     }
 
     // Update is called once per frame
@@ -60,26 +57,13 @@ public class PlayerHealth : MonoBehaviour
     {
         if (col.CompareTag("Enemy"))
         {
-            touchEnemy = true;
-            Destroy(col.gameObject);
+            particleHit.SetActive(true);
             SoundManager.Instance.PlaySound(sfxHit, transform, 1f, 0);
 
             //Jump again
             rb.velocity = new Vector2(rb.velocity.x, bounce);
         }
-        /*
-        if(touchEnemy)
-        {
-            effectEnemy.Flash(Color.magenta);
-            Vector3 newScale = new Vector3(1f, 0.5f, 1f); // Define la nueva escala (50% de la escala original en el eje Y)
-            transform.localScale = Vector3.Scale(effectEnemy.originalScale, newScale); // Aplica la nueva escala al objeto
-            particleHit.SetActive(true);
-            enemyDeath.SetActive(true);
-        }
-        else
-        {
-            enemyDeath.SetActive(false);
-        }*/
+      particleHit.SetActive(false);
 
         if (col.CompareTag("Enemy Hitbox"))
         {
