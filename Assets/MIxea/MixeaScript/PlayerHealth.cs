@@ -19,11 +19,12 @@ public class PlayerHealth : MonoBehaviour
     public PieMov pieMov;
     public GameObject pata;
 
-    private GameObject particleHit; 
-    private GameObject enemyDeath;
-
     PlayerEffect effectEnemy;
     public GameObject effectEnemyObject;
+
+    private GameObject particleHit; 
+    private GameObject enemyDeath;
+    [SerializeField] private GameObject particleMad;
 
     [Header("Sfx")]
     [SerializeField] private AudioClip sfxHurt;
@@ -38,6 +39,7 @@ public class PlayerHealth : MonoBehaviour
         hpBar.SetMaxHp(hpMax);
         hpCurrent = hpMax;
         lastHit = false;
+        particleMad.SetActive(false);
 
         pieMov = pata.GetComponent<PieMov>();
         particleHit = GameObject.Find("hit_particle");
@@ -135,9 +137,11 @@ public class PlayerHealth : MonoBehaviour
             //1hp Magic pixel
             lastHit = true;
             hpCurrent = 10;
+            particleMad.SetActive(true);
         }
         if (hpCurrent <= 0)
         {
+            particleMad.SetActive(false);
             hpCurrent = 0;
         }
         hpBar.SetHp(hpCurrent);
