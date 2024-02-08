@@ -207,6 +207,7 @@ MonoBehaviour:
   onGround: 0
   jumpForce: 10
   jumpTime: 0.5
+  sprite: {fileID: 0}
   agachado: {fileID: 21300000, guid: 4d4961fb11ba956488ee28fbb9e01424, type: 3}
   normal: {fileID: 21300000, guid: 7a2866d12aae4c74b8a1a5c45c7662e4, type: 3}
 --- !u!50 &8210101088382291497
@@ -234,7 +235,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &4206650594024320418
 MonoBehaviour:
@@ -249,13 +250,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpMax: 100
-  hpCurrent: 80
+  hpCurrent: 100
   bounce: 5
   hpBar: {fileID: 0}
   overMenu: {fileID: 0}
   touchEnemy: 0
   pieMov: {fileID: 0}
   pata: {fileID: 0}
+  effectEnemyObject: {fileID: 0}
   sfxHurt: {fileID: 8300000, guid: d83b9d17534054b438eb9a4d12a19d1d, type: 3}
   sfxDeath: {fileID: 8300000, guid: 6286126d3ac55ff4cbb675b64490294a, type: 3}
   sfxHit: {fileID: 8300000, guid: 6390511983ecdd842aed79418204990f, type: 3}
@@ -1006,7 +1008,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5167ea44f82599a4abc14da2ef372dd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cuerpo: {fileID: 3948409094907487749}
+  sprite: {fileID: 0}
   spritePieDer: {fileID: 6100608261328231848}
   spritePieIzq: {fileID: 4909193955572268408}
   noMoveExclamation: {fileID: 0}

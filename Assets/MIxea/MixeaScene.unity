@@ -253,6 +253,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &152811404 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3902258330736468057, guid: da284b741e59e9040a7bd70b86f18920, type: 3}
+  m_PrefabInstance: {fileID: 7163296243409880393}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27e60c64b1c80594a8e3d1b26163d844, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &206194322
 GameObject:
   m_ObjectHideFlags: 0
@@ -559,6 +570,10 @@ MonoBehaviour:
   bounce: 5
   hpBar: {fileID: 0}
   overMenu: {fileID: 941910692}
+  touchEnemy: 0
+  pieMov: {fileID: 0}
+  pata: {fileID: 0}
+  effectEnemyObject: {fileID: 0}
   sfxHurt: {fileID: 0}
   sfxDeath: {fileID: 0}
   sfxHit: {fileID: 0}
@@ -1985,11 +2000,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2555391833827710822, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.77
+      value: 10.18
       objectReference: {fileID: 0}
     - target: {fileID: 2555391833827710822, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.92
+      value: 7.53
       objectReference: {fileID: 0}
     - target: {fileID: 2555391833827710822, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2023,9 +2038,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4206650594024320418, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+      propertyPath: hpBar
+      value: 
+      objectReference: {fileID: 152811404}
+    - target: {fileID: 4206650594024320418, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+      propertyPath: overMenu
+      value: 
+      objectReference: {fileID: 941910692}
+    - target: {fileID: 4206650594024320418, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+      propertyPath: hpCurrent
+      value: 29
+      objectReference: {fileID: 0}
     - target: {fileID: 8076753325229536510, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8210101088382291497, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
