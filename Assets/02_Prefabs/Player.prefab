@@ -365,8 +365,8 @@ MonoBehaviour:
   touchEnemy: 0
   pieMov: {fileID: 0}
   pata: {fileID: 0}
-  particleMad: {fileID: 3753820132326118477}
   effectEnemyObject: {fileID: 0}
+  particleMad: {fileID: 3753820132326118477}
   sfxHurt: {fileID: 8300000, guid: d83b9d17534054b438eb9a4d12a19d1d, type: 3}
   sfxDeath: {fileID: 8300000, guid: 6286126d3ac55ff4cbb675b64490294a, type: 3}
   sfxHit: {fileID: 8300000, guid: 6390511983ecdd842aed79418204990f, type: 3}
@@ -1145,12 +1145,24 @@ PrefabInstance:
       value: hit_particle
       objectReference: {fileID: 0}
     - target: {fileID: 1886299048167569629, guid: 22b9725f40450fa4c8716876b321123e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1886299048167569629, guid: 22b9725f40450fa4c8716876b321123e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1886299048167569629, guid: 22b9725f40450fa4c8716876b321123e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1886299048167569629, guid: 22b9725f40450fa4c8716876b321123e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.030000031
       objectReference: {fileID: 0}
     - target: {fileID: 1886299048167569629, guid: 22b9725f40450fa4c8716876b321123e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.68000007
+      value: -0.45
       objectReference: {fileID: 0}
     - target: {fileID: 1886299048167569629, guid: 22b9725f40450fa4c8716876b321123e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1208,11 +1220,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6192213000384626861, guid: 0df597b4396b96546a972606df05374d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.68
+      value: -0.006
       objectReference: {fileID: 0}
     - target: {fileID: 6192213000384626861, guid: 0df597b4396b96546a972606df05374d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.385
+      value: 0.521
       objectReference: {fileID: 0}
     - target: {fileID: 6192213000384626861, guid: 0df597b4396b96546a972606df05374d, type: 3}
       propertyPath: m_LocalPosition.z
