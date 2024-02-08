@@ -15,7 +15,7 @@ public class GombaControl : MonoBehaviour
 
     [SerializeField] float rotationSpeed;
 
-    private Vector3 originalPosition;
+    
 
 
     void Start()
@@ -24,7 +24,7 @@ public class GombaControl : MonoBehaviour
 
         floorDetect1 = gameObject.transform.Find("Floor Detect 1");
         floorDetect2 = gameObject.transform.Find("Floor Detect 2");
-        originalPosition = transform.position;
+       
 
         selfColliders = gameObject.GetComponents<BoxCollider2D>();
         rb = gameObject.GetComponent<Rigidbody2D>();
@@ -68,20 +68,15 @@ public class GombaControl : MonoBehaviour
         if (moveRight)
         {
             transform.Translate(Time.deltaTime * speed, 0, 0);
-            MoveChar();
+           
         }
         else
         {
             transform.Translate(-1 * Time.deltaTime * speed, 0, 0);
-            MoveChar();
+            
         }
     }
-    void MoveChar()
-    {
-        float rotation = Mathf.Sin(Time.time * rotationSpeed) * 1f - 0.5f;
-        transform.rotation = Quaternion.Euler(0f, 0f, rotation * 5f);
-
-    }
+    
 
     public void DeathSelf()
     {

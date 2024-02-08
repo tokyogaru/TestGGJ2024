@@ -20,8 +20,12 @@ public class PlayerHealth : MonoBehaviour
     public GameObject pata;
 
 
-    private GameObject particleHit; 
     
+    
+    public PlayerEffect playerEffect;
+    public GameObject scriptEffect;
+
+
 
 
     [SerializeField] private GameObject particleMad;
@@ -35,16 +39,16 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
+        scriptEffect.GetComponent<SpriteRenderer>();
         hpBar.SetMaxHp(hpMax);
         hpCurrent = hpMax;
         lastHit = false;
         particleMad.SetActive(false);
 
         pieMov = pata.GetComponent<PieMov>();
-        particleHit = GameObject.Find("hit_particle");
+        
 
-        particleHit.SetActive(false);
+        playerEffect = scriptEffect.GetComponent<PlayerEffect>();
     }
 
     // Update is called once per frame
@@ -57,26 +61,28 @@ public class PlayerHealth : MonoBehaviour
     {
         if (col.CompareTag("Enemy"))
         {
-            particleHit.SetActive(true);
+            PlayerEffect.particleHit.SetActive(true);
+            PlayerEffect.particleDeadEnemy.SetActive(true);
             SoundManager.Instance.PlaySound(sfxHit, transform, 1f, 0);
 
             //Jump again
             rb.velocity = new Vector2(rb.velocity.x, bounce);
         }
-      particleHit.SetActive(false);
+      PlayerEffect.particleHit.SetActive(false);
+      PlayerEffect.particleDeadEnemy.SetActive(false);
 
         if (col.CompareTag("Enemy Hitbox"))
         {
 
             LooseHp(25);
-            
+            playerEffect.Flash(Color.magenta);
             Debug.Log("Damaged");
         }
 
         if (col.CompareTag("Obstacle"))
         {
             LooseHp(25);
-
+            playerEffect.Flash(Color.magenta);
             //Jump away
             rb.velocity = new Vector2(rb.velocity.x, bounce *2);
         }
@@ -84,7 +90,7 @@ public class PlayerHealth : MonoBehaviour
         if (col.CompareTag("Pit"))
         {
             LooseHp(25);
-
+            
             //Jump away
             rb.velocity = new Vector2(rb.velocity.x, bounce * 5);
         }
@@ -99,7 +105,8 @@ public class PlayerHealth : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Enemy"))
         {
-            LooseHp(25);
+            
+            
 
             Debug.Log("Collided");
         }
@@ -110,10 +117,11 @@ public class PlayerHealth : MonoBehaviour
         
         if (hpCurrent == 25 || hpCurrent <= 25)
         {
-            StartCoroutine(LoseAnim());
+            
         }
-
+        
         hpCurrent -= dmg;
+        playerEffect.Flash(Color.magenta);
         SoundManager.Instance.PlaySound(sfxHurt, transform, 1f, 0);
 
         if (hpCurrent < 25 && lastHit == false)
@@ -127,6 +135,7 @@ public class PlayerHealth : MonoBehaviour
         {
             particleMad.SetActive(false);
             hpCurrent = 0;
+            StartCoroutine(LoseAnim());
         }
         hpBar.SetHp(hpCurrent);
     }

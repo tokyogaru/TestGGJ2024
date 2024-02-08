@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerEffect : MonoBehaviour
 {
-    [SerializeField] private Material flashMaterial;
+    [SerializeField] public Material flashMaterial;
 
     [SerializeField] private float duration;
 
@@ -14,9 +14,9 @@ public class PlayerEffect : MonoBehaviour
 
     private Vector3 originalPosition;
 
-    private SpriteRenderer spriteRenderer;
-    private Material originalMaterial;
-    private Coroutine flashRoutine;
+    public SpriteRenderer spriteRenderer;
+    public Material originalMaterial;
+    public Coroutine flashRoutine;
 
     private float currentRotation = 0f;
     private bool isRotating;
@@ -31,6 +31,10 @@ public class PlayerEffect : MonoBehaviour
 
     public GameObject pata;
 
+    public static GameObject particleHit; 
+
+    public static GameObject particleDeadEnemy; 
+
     public bool isPulsating;
     // Start is called before the first frame update
     void Start()
@@ -43,6 +47,10 @@ public class PlayerEffect : MonoBehaviour
         pieMov = pata.GetComponent<PieMov>();
         isPulsating = false;
         isRotating = false;
+        particleHit = GameObject.Find("hit_particle");
+        particleHit.SetActive(false);
+        particleDeadEnemy = GameObject.Find("ENEMYdeath_particles");
+        particleDeadEnemy.SetActive(false);
         
     }
 
@@ -126,6 +134,8 @@ public class PlayerEffect : MonoBehaviour
 
         }
     }
+
+   
 
     private void StartPulse()
     {

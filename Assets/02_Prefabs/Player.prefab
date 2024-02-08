@@ -365,7 +365,6 @@ MonoBehaviour:
   touchEnemy: 0
   pieMov: {fileID: 0}
   pata: {fileID: 0}
-  effectEnemyObject: {fileID: 0}
   particleMad: {fileID: 3753820132326118477}
   sfxHurt: {fileID: 8300000, guid: d83b9d17534054b438eb9a4d12a19d1d, type: 3}
   sfxDeath: {fileID: 8300000, guid: 6286126d3ac55ff4cbb675b64490294a, type: 3}
@@ -1220,11 +1219,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6192213000384626861, guid: 0df597b4396b96546a972606df05374d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.006
+      value: 0.639
       objectReference: {fileID: 0}
     - target: {fileID: 6192213000384626861, guid: 0df597b4396b96546a972606df05374d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.521
+      value: 0.228
       objectReference: {fileID: 0}
     - target: {fileID: 6192213000384626861, guid: 0df597b4396b96546a972606df05374d, type: 3}
       propertyPath: m_LocalPosition.z
