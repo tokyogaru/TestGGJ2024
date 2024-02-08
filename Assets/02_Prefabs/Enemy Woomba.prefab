@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5945829060080379328}
   - component: {fileID: 9130631695422817590}
   - component: {fileID: 6446212894051029670}
+  - component: {fileID: 2733982745135829267}
   m_Layer: 0
   m_Name: Enemy Woomba
   m_TagString: Enemy
@@ -169,7 +170,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2.85
-  rotationSpeed: 0
+  enemyEff: {fileID: 0}
+  enemyFxs: {fileID: 0}
+--- !u!114 &2733982745135829267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216480708403585399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c96feb96eee5548bc897d1e9764cf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableScript: {fileID: 6446212894051029670}
 --- !u!1 &225924404946708351
 GameObject:
   m_ObjectHideFlags: 0
