@@ -328,6 +328,7 @@ GameObject:
   - component: {fileID: 1175778672555882960}
   - component: {fileID: 2123421249435599166}
   - component: {fileID: 6362187280687957951}
+  - component: {fileID: 8176222690336992534}
   m_Layer: 0
   m_Name: Enemy Farter
   m_TagString: Enemy
@@ -546,6 +547,19 @@ MonoBehaviour:
   screenBorder: 10
   sfxFart: {fileID: 8300000, guid: 918f1d3350c4dda4183982ee1e11302b, type: 3}
   rotationSpeed: 0
+--- !u!114 &8176222690336992534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7433179302837577395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fd7b2a47d24e264292d6cfa859e9f27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableScript: {fileID: 6362187280687957951}
 --- !u!1 &7522537230031202291
 GameObject:
   m_ObjectHideFlags: 0

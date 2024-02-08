@@ -36,7 +36,7 @@ public class EnemyEffects : MonoBehaviour
         Vector3 newScale = new Vector3(1f, 0.5f, 1f); // Define la nueva escala (50% de la escala original en el eje Y)
         transform.localScale = Vector3.Scale(originalScale, newScale);
     }
-    void MoveChar()
+    public void MoveChar()
     {
         float rotation = Mathf.Sin(Time.time * rotationSpeed) * 1f - 0.5f;
         transform.rotation = Quaternion.Euler(0f, 0f, rotation * 5f);

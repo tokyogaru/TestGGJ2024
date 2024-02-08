@@ -63,6 +63,8 @@ public class PlayerHealth : MonoBehaviour
         {
             PlayerEffect.particleHit.SetActive(true);
             PlayerEffect.particleDeadEnemy.SetActive(true);
+
+            //col.GetComponent<DeathController>().DeathSelf();
             SoundManager.Instance.PlaySound(sfxHit, transform, 1f, 0);
 
             //Jump again

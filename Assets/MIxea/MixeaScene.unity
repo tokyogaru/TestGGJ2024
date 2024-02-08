@@ -573,10 +573,28 @@ MonoBehaviour:
   touchEnemy: 0
   pieMov: {fileID: 0}
   pata: {fileID: 0}
-  effectEnemyObject: {fileID: 0}
+  playerEffect: {fileID: 0}
+  scriptEffect: {fileID: 0}
+  particleMad: {fileID: 0}
   sfxHurt: {fileID: 0}
   sfxDeath: {fileID: 0}
   sfxHit: {fileID: 0}
+--- !u!1 &253229028 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4836649049670227704, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
+  m_PrefabInstance: {fileID: 5243717522814153383}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &253229030 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4009639913286174160, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
+  m_PrefabInstance: {fileID: 5243717522814153383}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253229028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf7fd1939e410eb47b1ac6e74d103389, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &289441400
 GameObject:
   m_ObjectHideFlags: 3
@@ -1697,63 +1715,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7545113271335135716, guid: da284b741e59e9040a7bd70b86f18920, type: 3}
   m_PrefabInstance: {fileID: 7163296243409880393}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &737198423508870949
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.12
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7639380762425980840, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_Name
-      value: Enemy Womba
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
 --- !u!1001 &848946946774090185
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1990,6 +1951,95 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0adc45fa07dba6f428f36bef2c9ef612, type: 3}
+--- !u!1001 &5243717522814153383
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 216480708403585399, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
+      propertyPath: m_Name
+      value: Enemy Womba
+      objectReference: {fileID: 0}
+    - target: {fileID: 3694881888293263655, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3694881888293263655, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3694881888293263655, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3694881888293263655, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3694881888293263655, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3694881888293263655, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3694881888293263655, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3694881888293263655, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3694881888293263655, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3694881888293263655, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4278441549018126244, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4278441549018126244, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4278441549018126244, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4278441549018126244, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4278441549018126244, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4278441549018126244, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446212894051029670, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
+      propertyPath: enemyEff
+      value: 
+      objectReference: {fileID: 253229030}
+    - target: {fileID: 6446212894051029670, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
+      propertyPath: enemyFxs
+      value: 
+      objectReference: {fileID: 253229028}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
 --- !u!1001 &5312073313536126498
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2240,7 +2290,7 @@ SceneRoots:
   - {fileID: 206194325}
   - {fileID: 1770261123}
   - {fileID: 983123513}
-  - {fileID: 737198423508870949}
+  - {fileID: 5243717522814153383}
   - {fileID: 2623213938541951537}
   - {fileID: 831248450}
   - {fileID: 8356946624741175626}

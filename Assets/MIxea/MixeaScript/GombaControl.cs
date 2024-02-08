@@ -10,10 +10,9 @@ public class GombaControl : MonoBehaviour
     private Transform floorDetect1;
     private Transform floorDetect2;
 
-    [SerializeField] float rotationSpeed;
+    public EnemyEffects enemyEff;
 
-    
-
+    public GameObject enemyFxs;
 
     void Start()
     {
@@ -21,14 +20,8 @@ public class GombaControl : MonoBehaviour
 
         floorDetect1 = gameObject.transform.Find("Floor Detect 1");
         floorDetect2 = gameObject.transform.Find("Floor Detect 2");
-<<<<<<< HEAD
-       
 
-        selfColliders = gameObject.GetComponents<BoxCollider2D>();
-        rb = gameObject.GetComponent<Rigidbody2D>();
-=======
-        originalPosition = transform.position;
->>>>>>> 3966cb58a70ae5d81f8d6177b23dd074b53efba7
+        enemyEff = enemyFxs.GetComponent<EnemyEffects>();
     }
 
     void Update()
@@ -66,6 +59,8 @@ public class GombaControl : MonoBehaviour
 
     void Moving()
     {
+        enemyEff.MoveChar();
+
         if (moveRight)
         {
             transform.Translate(Time.deltaTime * speed, 0, 0);
@@ -77,6 +72,4 @@ public class GombaControl : MonoBehaviour
             
         }
     }
-    
-
 }

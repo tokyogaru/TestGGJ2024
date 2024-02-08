@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 9184273869458603202}
   - component: {fileID: 7514033103917917487}
   - component: {fileID: 5975269048440455289}
+  - component: {fileID: 5357670101986624067}
   m_Layer: 0
   m_Name: Enemy Missile
   m_TagString: Enemy
@@ -298,6 +299,19 @@ MonoBehaviour:
   sfxCharge: {fileID: 8300000, guid: 8545a922bd5e61a48a820e9ef59c5fbd, type: 3}
   sfxShoot: {fileID: 8300000, guid: 38a695a54e6aa9c4d85ed072c16e83ee, type: 3}
   rotationSpeed: 0
+--- !u!114 &5357670101986624067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5498303652314511349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fd7b2a47d24e264292d6cfa859e9f27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableScript: {fileID: 5975269048440455289}
 --- !u!1 &6634551936397790117
 GameObject:
   m_ObjectHideFlags: 0
