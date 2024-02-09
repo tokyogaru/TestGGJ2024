@@ -157,7 +157,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 956819ad920a0d44badfeb5baa58c258, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -185,6 +185,8 @@ MonoBehaviour:
   duration: 0.2
   rotationSpeed: 5
   rotationSpeedPlayer: 300
+  spriteRenderer: {fileID: 0}
+  originalMaterial: {fileID: 0}
   originalScale: {x: 0, y: 0, z: 0}
   pulseSpeed: 6
   minScale: 0.5
@@ -365,6 +367,8 @@ MonoBehaviour:
   touchEnemy: 0
   pieMov: {fileID: 0}
   pata: {fileID: 0}
+  playerEffect: {fileID: 0}
+  scriptEffect: {fileID: 0}
   particleMad: {fileID: 3753820132326118477}
   sfxHurt: {fileID: 8300000, guid: d83b9d17534054b438eb9a4d12a19d1d, type: 3}
   sfxDeath: {fileID: 8300000, guid: 6286126d3ac55ff4cbb675b64490294a, type: 3}
@@ -430,6 +434,8 @@ MonoBehaviour:
   duration: 0.2
   rotationSpeed: 5
   rotationSpeedPlayer: 300
+  spriteRenderer: {fileID: 0}
+  originalMaterial: {fileID: 0}
   originalScale: {x: 0, y: 0, z: 0}
   pulseSpeed: 6
   minScale: 0.5

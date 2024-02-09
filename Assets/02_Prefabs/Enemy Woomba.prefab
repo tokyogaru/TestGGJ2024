@@ -5067,7 +5067,7 @@ GameObject:
   - component: {fileID: 8875843439330026373}
   - component: {fileID: 4009639913286174160}
   m_Layer: 0
-  m_Name: EffectEnemyPeo
+  m_Name: EffectEnemyWoomba
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
