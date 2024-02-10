@@ -36,6 +36,11 @@ public class FartControl : MonoBehaviour
 
     private Vector3 originalPosition;
 
+    public EnemyEffects enemyEff;
+
+    public GameObject enemyFxs;
+
+
 
     void Start()
     {
@@ -51,12 +56,14 @@ public class FartControl : MonoBehaviour
         hitBox = GameObject.Find("Fart Hitbox");
         hitBox.SetActive(false);
 
-        sp1 = GetComponent<SpriteRenderer>().sprite;
+        sp1 = enemyEff.GetComponent<SpriteRenderer>().sprite;
 
         camRef = Camera.main;
         isOffscreen = true;
 
         originalPosition = transform.position;
+
+        enemyEff = enemyFxs.GetComponent<EnemyEffects>();
     }
 
     void Update()
@@ -86,12 +93,14 @@ public class FartControl : MonoBehaviour
             if (farting == false)
             {
                 FartCountdown();
-                GetComponent<SpriteRenderer>().sprite = sp1;
+                
+                enemyEff.GetComponent<SpriteRenderer>().sprite = sp1;
             }
             else
             {
                 Farting();
-                GetComponent<SpriteRenderer>().sprite = sp2;
+                enemyEff.StopCoroutine(enemyEff.RechargerPeo());
+                enemyEff.GetComponent<SpriteRenderer>().sprite = sp2;
             }
         }
     }
@@ -132,19 +141,13 @@ public class FartControl : MonoBehaviour
         if (moveRight)
         {
             transform.Translate(Time.deltaTime * speed, 0, 0);
-            MoveChar();
+            enemyEff.MoveChar();
         }
         else
         {
             transform.Translate(-1 * Time.deltaTime * speed, 0, 0);
-            MoveChar();
+            enemyEff.MoveChar();
         }
-    }
-    void MoveChar()
-    {
-        float rotation = Mathf.Sin(Time.time * rotationSpeed) * 1f - 0.5f;
-        transform.rotation = Quaternion.Euler(0f, 0f, rotation * 5f);
-
     }
 
     void FartCountdown()
@@ -160,6 +163,7 @@ public class FartControl : MonoBehaviour
             fartStartupCurrent = fartStartup;
             restWaitCurrent = restWait;
             //Start farting
+            enemyEff.StartCoroutine(enemyEff.RechargerPeo());
             farting = true;
         }
     }
@@ -170,7 +174,7 @@ public class FartControl : MonoBehaviour
         if (fartStartupCurrent <= 0)
         {
             //Resting after fart time
-            if(restWaitCurrent <= 0)
+            if (restWaitCurrent <= 0)
             {
                 //Start FartCountdown()
                 fartTimerCurrent = fartTimer;
@@ -185,7 +189,7 @@ public class FartControl : MonoBehaviour
                 {
                     fartCreated = true;
                     hitBox.SetActive(true);
-
+                    
                     SoundManager.Instance.PlaySound(sfxFart, transform, 1f, 3);
                 }
 

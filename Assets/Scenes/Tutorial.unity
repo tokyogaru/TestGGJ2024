@@ -131,13 +131,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6362187280687957951, guid: a9e53a3bdfb2a204cba8f47d5a26f5a8, type: 3}
+      propertyPath: camRef
+      value: 
+      objectReference: {fileID: 385756728}
     - target: {fileID: 7038519682469610154, guid: a9e53a3bdfb2a204cba8f47d5a26f5a8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 103.18
+      value: -3.91
       objectReference: {fileID: 0}
     - target: {fileID: 7038519682469610154, guid: a9e53a3bdfb2a204cba8f47d5a26f5a8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 41.38
+      value: 45.97
       objectReference: {fileID: 0}
     - target: {fileID: 7038519682469610154, guid: a9e53a3bdfb2a204cba8f47d5a26f5a8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -365,63 +369,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &228731485
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 81.10581
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 41.71398
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7639380762425980840, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_Name
-      value: Enemy Womba (4)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
 --- !u!1 &232796189
 GameObject:
   m_ObjectHideFlags: 3
@@ -515,6 +462,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &240720044 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4009639913286174160, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
+  m_PrefabInstance: {fileID: 580108137}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf7fd1939e410eb47b1ac6e74d103389, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &289776577
@@ -761,63 +719,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &352220540
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 71.530945
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 41.54035
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7639380762425980840, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_Name
-      value: Enemy Womba (3)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
 --- !u!1 &385756724
 GameObject:
   m_ObjectHideFlags: 0
@@ -995,6 +896,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3694881888293263655, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 42.6
+      objectReference: {fileID: 0}
     - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.427992
@@ -1132,6 +1037,14 @@ PrefabInstance:
       propertyPath: pieMov
       value: 
       objectReference: {fileID: 602330369}
+    - target: {fileID: 4206650594024320418, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+      propertyPath: enemyEff
+      value: 
+      objectReference: {fileID: 240720044}
+    - target: {fileID: 4206650594024320418, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+      propertyPath: enemyFxs
+      value: 
+      objectReference: {fileID: 991908078}
     - target: {fileID: 4206650594024320418, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
       propertyPath: overMenu
       value: 
@@ -1524,6 +1437,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1100453661654273166, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
   m_PrefabInstance: {fileID: 602330367}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &991908078 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7522537230031202291, guid: a9e53a3bdfb2a204cba8f47d5a26f5a8, type: 3}
+  m_PrefabInstance: {fileID: 5718275}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1063920090
 GameObject:
   m_ObjectHideFlags: 0
@@ -1608,63 +1526,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &1099444191
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 60.467693
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 41.49076
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7639380762425980840, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_Name
-      value: Enemy Womba (2)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
 --- !u!1 &1199920610
 GameObject:
   m_ObjectHideFlags: 0
@@ -2022,6 +1883,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Missile (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5975269048440455289, guid: 5ca7cdcd8a6fa3b46bbc76a36397f61b, type: 3}
+      propertyPath: camRef
+      value: 
+      objectReference: {fileID: 385756728}
     - target: {fileID: 7098110655874081203, guid: 5ca7cdcd8a6fa3b46bbc76a36397f61b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -12.558855
@@ -2067,63 +1932,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ca7cdcd8a6fa3b46bbc76a36397f61b, type: 3}
---- !u!1001 &1765444700
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 44.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 40.68
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7639380762425980840, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_Name
-      value: Enemy Womba (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
 --- !u!1 &1768312157
 GameObject:
   m_ObjectHideFlags: 0
@@ -3600,6 +3408,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Missile
       objectReference: {fileID: 0}
+    - target: {fileID: 5975269048440455289, guid: 5ca7cdcd8a6fa3b46bbc76a36397f61b, type: 3}
+      propertyPath: camRef
+      value: 
+      objectReference: {fileID: 385756728}
     - target: {fileID: 5975269048440455289, guid: 5ca7cdcd8a6fa3b46bbc76a36397f61b, type: 3}
       propertyPath: rotationSpeed
       value: 1
@@ -17514,79 +17326,6 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
---- !u!1001 &1901787460
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3490320651706745977, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: pointA.y
-      value: -0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3490320651706745977, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: pointB.y
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3490320651706745977, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: moveSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3490320651706745977, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: rotationSpeed
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -9.547415
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 43.14
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504125690352898040, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7639380762425980840, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
-      propertyPath: m_Name
-      value: Enemy Womba (5)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
 --- !u!1 &1914447988
 GameObject:
   m_ObjectHideFlags: 0
@@ -17688,7 +17427,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1918107646
 Transform:
   m_ObjectHideFlags: 0
@@ -17988,13 +17727,8 @@ SceneRoots:
   - {fileID: 289776577}
   - {fileID: 580108137}
   - {fileID: 1851724961}
-  - {fileID: 1765444700}
-  - {fileID: 1099444191}
-  - {fileID: 352220540}
-  - {fileID: 228731485}
   - {fileID: 5718275}
   - {fileID: 602330367}
   - {fileID: 814251751}
   - {fileID: 817075895}
-  - {fileID: 1901787460}
   - {fileID: 1642991267}

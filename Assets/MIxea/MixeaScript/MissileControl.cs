@@ -44,6 +44,10 @@ public class MissileControl : MonoBehaviour
 
     private Vector3 originalScale;
 
+    public EnemyEffects enemyEff;
+
+    public GameObject enemyFxs;
+
 
     void Start()
     {
@@ -58,7 +62,7 @@ public class MissileControl : MonoBehaviour
 
         missileSpawner = transform.Find("Missile Spawner");
 
-        spRend = GetComponent<SpriteRenderer>();
+        spRend = enemyEff.GetComponent<SpriteRenderer>();
         spRend.flipX = true;
         spIdle = spRend.sprite;
 
@@ -67,7 +71,9 @@ public class MissileControl : MonoBehaviour
 
         originalPosition = transform.position;
         originalScale = transform.localScale;
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = enemyEff.GetComponent<SpriteRenderer>();
+
+        enemyEff = enemyFxs.GetComponent<EnemyEffects>();
     }
 
     void Update()
@@ -96,12 +102,12 @@ public class MissileControl : MonoBehaviour
             if (shooting == false)
             {
                 ShootCountdown();
-                GetComponent<SpriteRenderer>().sprite = spIdle;
+                enemyEff.GetComponent<SpriteRenderer>().sprite = spIdle;
             }
             else
             {
                 Shooting();
-                GetComponent<SpriteRenderer>().sprite = spShoot;
+                enemyEff.GetComponent<SpriteRenderer>().sprite = spShoot;
             }
         }
     }
@@ -143,20 +149,17 @@ public class MissileControl : MonoBehaviour
         if (moveRight)
         {
             transform.Translate(Time.deltaTime * speed, 0, 0);
+            enemyEff.MoveChar();
            
         }
         else
         {
             transform.Translate(-1 * Time.deltaTime * speed, 0, 0);
+            enemyEff.MoveChar();
            
         }
     }
-    void MoveChar()
-    {
-        float rotation = Mathf.Sin(Time.time * rotationSpeed) * 1f - 0.5f;
-        transform.rotation = Quaternion.Euler(0f, 0f, rotation * 5f);
-
-    }
+    
 
     void ChangeDirection()
     {
@@ -171,7 +174,6 @@ public class MissileControl : MonoBehaviour
         if (shootTimerCurrent >= 0)
         {
             Moving();
-            StopCoroutine(RedFadeAndScale());
             shootTimerCurrent -= Time.deltaTime;
         }
         else
@@ -179,9 +181,10 @@ public class MissileControl : MonoBehaviour
             //Reset shooting Timers
             shootStartupCurrent = shootStartup;
             restWaitCurrent = restWait;
+            enemyEff.StartCoroutine(enemyEff.RedFadeAndScale());
             //Start shooting
+            
             shooting = true;
-            StartCoroutine(RedFadeAndScale());
             SoundManager.Instance.PlaySound(sfxCharge, transform, 1f, 3);
             
         }
@@ -198,7 +201,6 @@ public class MissileControl : MonoBehaviour
                 //Start shootCountdown()
                 shootTimerCurrent = shootTimer;
                 shooting = false;
-
                 missileCreated = false;
             }
             else
@@ -208,6 +210,7 @@ public class MissileControl : MonoBehaviour
                 {
                     missileCreated = true;
                     Instantiate(missile, missileSpawner.position, missileSpawner.rotation);
+                    enemyEff.StopCoroutine(enemyEff.RedFadeAndScale());
 
                     //SFX
                     SoundManager.Instance.PlaySound(sfxShoot, transform, 1f, 3);
@@ -223,43 +226,6 @@ public class MissileControl : MonoBehaviour
             shootStartupCurrent -= Time.deltaTime;
         }
     }
-    private IEnumerator RedFadeAndScale()
-    {
-        float elapsedTime = 0f;
-        float duration = 1f; // Duración total de la transición (5 segundos)
-
-        // Guardar el color original y la escala original
-        Color originalColor = spriteRenderer.color;
-        Vector3 originalScale = transform.localScale;
-
-        // Cambiar gradualmente el color a rojo
-        while (elapsedTime < duration)
-        {
-            // Calcular el factor de progreso de la transición
-            float t = elapsedTime / duration;
-
-            // Calcular el nuevo color interpolando entre el color original y el rojo
-            Color newColor = Color.Lerp(originalColor, Color.red, t);
-
-            // Aplicar el nuevo color al objeto
-            spriteRenderer.color = newColor;
-
-            // Escalar gradualmente en el eje Y
-            transform.localScale = Vector3.Lerp(originalScale, new Vector3(originalScale.x, 0.5f, originalScale.z), t);
-
-            // Mover el objeto de izquierda a derecha rápidamente
-            float moveX = Mathf.PingPong(Time.time * 5f, 1f) - 0.5f; // Rango de movimiento de -1 a 1
-            transform.position += Vector3.right * moveX * Time.deltaTime * 5f; // Movimiento rápido de izquierda a derecha
-
-            // Actualizar el tiempo transcurrido
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-
-        // Al terminar la transición, restaurar el color, la escala y la posición originales
-        spriteRenderer.color = originalColor;
-        transform.localScale = originalScale;
-        
-    }
+    
 
 }

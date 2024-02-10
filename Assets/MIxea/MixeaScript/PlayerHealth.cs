@@ -20,8 +20,8 @@ public class PlayerHealth : MonoBehaviour
     public GameObject pata;
 
 
-    
-    
+
+
     public PlayerEffect playerEffect;
     public GameObject scriptEffect;
 
@@ -35,6 +35,10 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private AudioClip sfxDeath;
     [SerializeField] private AudioClip sfxHit;
 
+    public EnemyEffects enemyEff;
+
+    public GameObject enemyFxs;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,15 +50,16 @@ public class PlayerHealth : MonoBehaviour
         particleMad.SetActive(false);
 
         pieMov = pata.GetComponent<PieMov>();
-        
+
 
         playerEffect = scriptEffect.GetComponent<PlayerEffect>();
+        enemyEff = enemyFxs.GetComponent<EnemyEffects>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -62,16 +67,15 @@ public class PlayerHealth : MonoBehaviour
         if (col.CompareTag("Enemy"))
         {
             PlayerEffect.particleHit.SetActive(true);
-            PlayerEffect.particleDeadEnemy.SetActive(true);
-
+            enemyEff.EnemysDead();
             col.GetComponent<DeathController>().DeathSelf();
+
             SoundManager.Instance.PlaySound(sfxHit, transform, 1f, 0);
 
             //Jump again
             rb.velocity = new Vector2(rb.velocity.x, bounce);
         }
-      PlayerEffect.particleHit.SetActive(false);
-      PlayerEffect.particleDeadEnemy.SetActive(false);
+        PlayerEffect.particleHit.SetActive(false);
 
         if (col.CompareTag("Enemy Hitbox"))
         {
@@ -86,13 +90,13 @@ public class PlayerHealth : MonoBehaviour
             LooseHp(25);
             playerEffect.Flash(Color.magenta);
             //Jump away
-            rb.velocity = new Vector2(rb.velocity.x, bounce *2);
+            rb.velocity = new Vector2(rb.velocity.x, bounce * 2);
         }
 
         if (col.CompareTag("Pit"))
         {
             LooseHp(25);
-            
+
             //Jump away
             rb.velocity = new Vector2(rb.velocity.x, bounce * 5);
         }
@@ -107,8 +111,8 @@ public class PlayerHealth : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Enemy"))
         {
-            
-            
+
+
 
             Debug.Log("Collided");
         }
@@ -116,12 +120,12 @@ public class PlayerHealth : MonoBehaviour
 
     void LooseHp(int dmg)
     {
-        
+
         if (hpCurrent == 25 || hpCurrent <= 25)
         {
-            
+
         }
-        
+
         hpCurrent -= dmg;
         playerEffect.Flash(Color.magenta);
         SoundManager.Instance.PlaySound(sfxHurt, transform, 1f, 0);
@@ -149,6 +153,6 @@ public class PlayerHealth : MonoBehaviour
         yield return new WaitForSeconds(2f);
         overMenu.PauseGame();
     }
-    
-   
+
+
 }
