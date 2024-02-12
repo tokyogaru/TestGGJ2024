@@ -16,7 +16,7 @@ public class PieMov : MonoBehaviour
 
     public GameObject noMoveExclamation;
     public GameObject cry;
-    
+
     [SerializeField] static float legScaleDer = 1f;
     [SerializeField] static float legPosDer = 0.5f;
     [SerializeField] static float footPosDer = 1f;
@@ -52,11 +52,15 @@ public class PieMov : MonoBehaviour
     public static bool movingLeftLeg = false;
     public float tiempoTeclaPresionada = 0.0f;
 
-
-
     public Transform posCuerpo;
     public Transform posPieIzq;
     public Transform posPieDer;
+
+    public Jumo jump;
+
+    public GameObject jumpObj;
+
+
 
     void Start()
     {
@@ -82,7 +86,7 @@ public class PieMov : MonoBehaviour
         noMoveExclamation.SetActive(false);
         cry.SetActive(false);
 
-
+        jump = jumpObj.GetComponent<Jumo>();
         spriteRendererCuerpo = sprite.GetComponent<SpriteRenderer>();
 
         // Verificar si los SpriteRenderer se encontraron correctamente
@@ -108,7 +112,10 @@ public class PieMov : MonoBehaviour
             spriteRendererCuerpo.flipX = false;
             spritePieDer.SetActive(true);
             piernaDer.SetActive(true); // Mostrar pierna y pie derecho
+            pieDer.SetActive(true);
         }
+
+
 
         if (movingRightLeg)
         {
@@ -123,13 +130,19 @@ public class PieMov : MonoBehaviour
             else
             {
                 reachedMaxXDer = true;
+
             }
         }
 
         if (movingRightLeg && Input.GetKeyUp(KeyCode.D))
         {
             StartCoroutine(StopDer());
-            
+            spriteRendererCuerpo.sprite = normal;
+            if (!jump.onGround)
+            {
+                jump.spriteRenderer.sprite = jump.caida;
+            }
+
         }
 
         if (!movingRightLeg && !reachedMaxXIzq && walledIzq == false && Input.GetKeyDown(KeyCode.A))
@@ -138,7 +151,8 @@ public class PieMov : MonoBehaviour
             spriteRendererCuerpo.sprite = pose;
             spriteRendererCuerpo.flipX = true;
             spritePieIzq.SetActive(true);
-            piernaIzq.SetActive(true); // Mostrar pierna y pie izquierdo
+            piernaIzq.SetActive(true);
+            pieIzq.SetActive(true);  // Mostrar pierna y pie izquierdo
         }
 
         if (movingLeftLeg)
@@ -161,9 +175,15 @@ public class PieMov : MonoBehaviour
         if (movingLeftLeg && Input.GetKeyUp(KeyCode.A))
         {
             StartCoroutine(StopIzq());
+            spriteRendererCuerpo.sprite = normal;
+            if (!jump.onGround)
+            {
+                jump.spriteRenderer.sprite = jump.caida;
+            }
+
         }
 
-        
+
 
         if (movingLeftLeg && movingRightLeg)
         {
@@ -182,6 +202,8 @@ public class PieMov : MonoBehaviour
         {
             stopMoveIzq();
             //StartCoroutine(StopIzq());
+            spritePieDer.SetActive(false);
+            piernaDer.SetActive(false);
             spriteRendererCuerpo.sprite = noMove;
             spriteRendererCuerpo.flipX = true;
         }
@@ -217,7 +239,7 @@ public class PieMov : MonoBehaviour
 
         spritePieDer.SetActive(false);
         piernaDer.SetActive(false);
-        spriteRendererCuerpo.sprite = normal;
+        //spriteRendererCuerpo.sprite = normal;
     }
     IEnumerator StopIzq()
     {
@@ -229,13 +251,13 @@ public class PieMov : MonoBehaviour
         piernaIzq.transform.localScale = new Vector3(0, 1, 1);
         pieIzq.transform.localPosition = initialPieIzqPosition;
         reachedMaxXIzq = false;
-        
+
 
         // Ocultar pierna y pie izquierdo cuando dejes de presionar la tecla
         resumeMove();
         spritePieIzq.SetActive(false);
         piernaIzq.SetActive(false);
-        spriteRendererCuerpo.sprite = normal;
+        //spriteRendererCuerpo.sprite = normal;
     }
 
     public void stopMoveDer()
@@ -248,7 +270,7 @@ public class PieMov : MonoBehaviour
         noMoveExclamation.SetActive(true);
         spritePieDer.SetActive(false);
         piernaDer.SetActive(false);
-      
+
     }
 
     public void stopMoveIzq()
@@ -261,6 +283,7 @@ public class PieMov : MonoBehaviour
         noMoveExclamation.SetActive(true);
         spritePieIzq.SetActive(false);
         piernaIzq.SetActive(false);
+
 
     }
     public void resumeMove()
@@ -276,5 +299,5 @@ public class PieMov : MonoBehaviour
         footPosIzq = 1f;
         noMoveExclamation.SetActive(false);
     }
-     
+
 }

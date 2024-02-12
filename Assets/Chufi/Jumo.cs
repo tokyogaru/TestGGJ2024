@@ -14,12 +14,22 @@ public class Jumo : MonoBehaviour
     public float jumpForce = 50;
     public float jumpTime = 0.5f;
 
-     [SerializeField] GameObject sprite;
+    [SerializeField] GameObject sprite;
 
-    private SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRenderer;
 
     public Sprite agachado;
     public Sprite normal;
+
+    public Sprite caida;
+
+    public PieMov pieMov;
+
+    public PlayerEffect playerEffect;
+
+    public GameObject pata;
+
+    public GameObject playerFX;
 
     private void Start()
     {
@@ -30,6 +40,8 @@ public class Jumo : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         originalScale = transform.localScale;
         spriteRenderer = sprite.GetComponent<SpriteRenderer>();
+        pieMov = pata.GetComponent<PieMov>();
+        playerEffect = playerFX.GetComponent<PlayerEffect>();
 
     }
 
@@ -37,7 +49,7 @@ public class Jumo : MonoBehaviour
     {
         if (onGround)
         {
-            
+
             if (Input.GetKey(KeyCode.W))
             {
                 if (jumpPressure < maxJumpPressure)
@@ -54,11 +66,16 @@ public class Jumo : MonoBehaviour
                     StartCoroutine(LockJump());
                     rb.velocity = new Vector2(0f, jumpPressure);
                     jumpPressure = 0f;
-                    spriteRenderer.sprite = normal;
+                    spriteRenderer.sprite = caida;
                     transform.localScale = originalScale; // Restaurar la escala original
                 }
+
             }
+            
+
         }
+
+
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -66,12 +83,15 @@ public class Jumo : MonoBehaviour
         if (other.gameObject.CompareTag("Ground"))
         {
             onGround = true;
+            spriteRenderer.sprite = normal;
         }
+
     }
     IEnumerator LockJump()
     {
         yield return new WaitForSeconds(0.025f);
         onGround = false;
+
     }
 }
 

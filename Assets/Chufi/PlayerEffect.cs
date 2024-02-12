@@ -31,9 +31,13 @@ public class PlayerEffect : MonoBehaviour
 
     public GameObject pata;
 
-    public static GameObject particleHit; 
+    public Jumo jump;
 
-    public static GameObject particleDeadEnemy; 
+    public GameObject jumpObj;
+
+    public static GameObject particleHit;
+
+    public static GameObject particleDeadEnemy;
 
     public bool isPulsating;
     // Start is called before the first frame update
@@ -45,19 +49,20 @@ public class PlayerEffect : MonoBehaviour
         originalScale = transform.localScale;
         originalPosition = transform.position;
         pieMov = pata.GetComponent<PieMov>();
+        jump = jumpObj.GetComponent<Jumo>();
         isPulsating = false;
         isRotating = false;
         particleHit = GameObject.Find("hit_particle");
         particleHit.SetActive(false);
         particleDeadEnemy = GameObject.Find("ENEMYdeath_particles");
         particleDeadEnemy.SetActive(false);
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.D))
         {
             pieMov.tiempoTeclaPresionada = 0;
             pieMov.spriteRendererCuerpo.sprite = pieMov.pose;
@@ -65,21 +70,22 @@ public class PlayerEffect : MonoBehaviour
         }
         if (PieMov.movingRightLeg && Input.GetKey(KeyCode.D))
         {
-            
+
             if (pieMov.tiempoTeclaPresionada > pieMov.tiempoMaximoTeclaPresionada)
             {
                 Flash(Color.magenta);
                 currentRotation = 0f;
                 isRotating = true;
                 StartPulse();
+                pieMov.spritePieDer.SetActive(false);
+                PieMov.piernaDer.SetActive(false); // Mostrar pierna y pie derecho
                 Debug.Log("¡Has perdido!");
-                
 
             }
 
 
         }
-        if(Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A))
         {
             pieMov.tiempoTeclaPresionada = 0;
             pieMov.spriteRendererCuerpo.sprite = pieMov.pose;
@@ -88,28 +94,48 @@ public class PlayerEffect : MonoBehaviour
 
         if (PieMov.movingLeftLeg && Input.GetKey(KeyCode.A))
         {
-            
-    
+
+
             if (pieMov.tiempoTeclaPresionada > pieMov.tiempoMaximoTeclaPresionada)
             {
                 Flash(Color.magenta);
                 currentRotation = 0f;
                 isRotating = true;
                 StartPulse();
+                pieMov.spritePieIzq.SetActive(false);
+                PieMov.piernaIzq.SetActive(false);
                 Debug.Log("¡Has perdido!");
             }
 
         }
-        if (PieMov.movingLeftLeg && Input.GetKeyUp(KeyCode.A))
+        if (jump.onGround && PieMov.movingLeftLeg && Input.GetKeyUp(KeyCode.A))
         {
             StartCoroutine(MoveFinalPlayerScale());
-            Invoke("StopCoroutine(MoveFinalPlayerScale)", 5f);
+            Invoke("StopCoroutine(MoveFinalPlayerScale())", 5f);
         }
-        if (PieMov.movingRightLeg && Input.GetKeyUp(KeyCode.D))
+        if (!jump.onGround && Input.GetKeyUp(KeyCode.A))
+        {
+            jump.spriteRenderer.sprite = jump.caida;
+
+            pieMov.spritePieIzq.SetActive(false);
+        }
+
+
+
+
+        if (jump.onGround && PieMov.movingRightLeg && Input.GetKeyUp(KeyCode.D))
         {
             StartCoroutine(MoveFinalPlayerScale());
-            Invoke("StopCoroutine(MoveFinalPlayerScale)", 5f);
+            Invoke("StopCoroutine(MoveFinalPlayerScale())", 5f);
         }
+        if (!jump.onGround && Input.GetKeyUp(KeyCode.D))
+        {
+            jump.spriteRenderer.sprite = jump.caida;
+            pieMov.spritePieDer.SetActive(false);
+
+        }
+
+
 
         if (isRotating)
         {
@@ -135,13 +161,13 @@ public class PlayerEffect : MonoBehaviour
         }
     }
 
-   
+
 
     private void StartPulse()
     {
         // Iniciar el efecto de palpito
         isPulsating = true;
-        pieMov.spriteRendererCuerpo.sprite = pieMov.pose;
+        pieMov.spriteRendererCuerpo.sprite = pieMov.normal;
 
     }
 
@@ -198,13 +224,12 @@ public class PlayerEffect : MonoBehaviour
         spriteRenderer.material = originalMaterial;
         flashRoutine = null;
     }
-    private IEnumerator MoveFinalPlayerScale()
+    public IEnumerator MoveFinalPlayerScale()
     {
 
         Vector3 newScale = new Vector3(0.5f, 1f, 1f);
         transform.localScale = Vector3.Scale(originalScale, newScale);
         yield return new WaitForSeconds(0.5f);
-
 
         transform.localScale = originalScale;
     }

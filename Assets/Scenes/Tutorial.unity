@@ -179,11 +179,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Farter
       objectReference: {fileID: 0}
+    - target: {fileID: 7433179302837577395, guid: a9e53a3bdfb2a204cba8f47d5a26f5a8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9e53a3bdfb2a204cba8f47d5a26f5a8, type: 3}
+--- !u!1 &17042215 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9109035332545668485, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+  m_PrefabInstance: {fileID: 602330367}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &37310290
 GameObject:
   m_ObjectHideFlags: 0
@@ -867,6 +876,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &435466083 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5497182784212387467, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+  m_PrefabInstance: {fileID: 602330367}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &459516854 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3699594861996573783, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
@@ -896,6 +910,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 216480708403585399, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3694881888293263655, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
       propertyPath: m_LocalPosition.y
       value: 42.6
@@ -1025,6 +1043,10 @@ PrefabInstance:
       propertyPath: rotationSpeedPlayer
       value: 300
       objectReference: {fileID: 0}
+    - target: {fileID: 3668536132829916347, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4206650594024320418, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
       propertyPath: pata
       value: 
@@ -1070,6 +1092,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 990394883}
     - target: {fileID: 5066304532123424568, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+      propertyPath: jump
+      value: 
+      objectReference: {fileID: 1108768669}
+    - target: {fileID: 5066304532123424568, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
       propertyPath: noMove
       value: 
       objectReference: {fileID: 21300000, guid: 45fdd94d5e7ad6d4585bfc601d6463de, type: 3}
@@ -1082,9 +1108,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 459516854}
     - target: {fileID: 5066304532123424568, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+      propertyPath: jumpObj
+      value: 
+      objectReference: {fileID: 1108768665}
+    - target: {fileID: 5066304532123424568, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
       propertyPath: duration
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5066304532123424568, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+      propertyPath: spritePieDer
+      value: 
+      objectReference: {fileID: 435466083}
+    - target: {fileID: 5066304532123424568, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+      propertyPath: spritePieIzq
+      value: 
+      objectReference: {fileID: 17042215}
     - target: {fileID: 5066304532123424568, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
       propertyPath: flashMaterial
       value: 
@@ -1101,14 +1139,46 @@ PrefabInstance:
       propertyPath: spriteRendererCuerpo
       value: 
       objectReference: {fileID: 459516856}
+    - target: {fileID: 7433432570397076982, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+      propertyPath: jump
+      value: 
+      objectReference: {fileID: 1108768669}
+    - target: {fileID: 7433432570397076982, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+      propertyPath: jumpObj
+      value: 
+      objectReference: {fileID: 1108768665}
+    - target: {fileID: 7433432570397076982, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 459516856}
     - target: {fileID: 8076753325229536510, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8480863735005550922, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+      propertyPath: pata
+      value: 
+      objectReference: {fileID: 602330368}
+    - target: {fileID: 8480863735005550922, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+      propertyPath: caida
+      value: 
+      objectReference: {fileID: 21300000, guid: 987ec0c4996caa642a72dd975060ff08, type: 3}
+    - target: {fileID: 8480863735005550922, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+      propertyPath: pieMov
+      value: 
+      objectReference: {fileID: 602330369}
+    - target: {fileID: 8480863735005550922, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
       propertyPath: sprite
       value: 
       objectReference: {fileID: 459516854}
+    - target: {fileID: 8480863735005550922, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+      propertyPath: playerFX
+      value: 
+      objectReference: {fileID: 459516854}
+    - target: {fileID: 8480863735005550922, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+      propertyPath: playerEffect
+      value: 
+      objectReference: {fileID: 459516857}
     - target: {fileID: 9014131602294496212, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.554
@@ -1116,6 +1186,10 @@ PrefabInstance:
     - target: {fileID: 9014131602294496212, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.299
+      objectReference: {fileID: 0}
+    - target: {fileID: 9109035332545668485, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2849193167381974037, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
@@ -1526,6 +1600,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1108768665 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3948409094907487749, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+  m_PrefabInstance: {fileID: 602330367}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1108768669 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8480863735005550922, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+  m_PrefabInstance: {fileID: 602330367}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1108768665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59326ea1de36271458416c6abce53ab6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1199920610
 GameObject:
   m_ObjectHideFlags: 0
@@ -1882,6 +1972,10 @@ PrefabInstance:
     - target: {fileID: 5498303652314511349, guid: 5ca7cdcd8a6fa3b46bbc76a36397f61b, type: 3}
       propertyPath: m_Name
       value: Enemy Missile (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5498303652314511349, guid: 5ca7cdcd8a6fa3b46bbc76a36397f61b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5975269048440455289, guid: 5ca7cdcd8a6fa3b46bbc76a36397f61b, type: 3}
       propertyPath: camRef
@@ -3407,6 +3501,10 @@ PrefabInstance:
     - target: {fileID: 5498303652314511349, guid: 5ca7cdcd8a6fa3b46bbc76a36397f61b, type: 3}
       propertyPath: m_Name
       value: Enemy Missile
+      objectReference: {fileID: 0}
+    - target: {fileID: 5498303652314511349, guid: 5ca7cdcd8a6fa3b46bbc76a36397f61b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5975269048440455289, guid: 5ca7cdcd8a6fa3b46bbc76a36397f61b, type: 3}
       propertyPath: camRef
