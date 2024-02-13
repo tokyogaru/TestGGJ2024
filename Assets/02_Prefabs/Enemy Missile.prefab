@@ -100,7 +100,6 @@ MonoBehaviour:
   flashMaterial: {fileID: 2100000, guid: 08614b2bb1beaaa4daf19dee6609baa0, type: 2}
   duration: 2
   spriteRenderer: {fileID: 2326142091269421602}
-  originalMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   rotationSpeed: 6
   particleDead: {fileID: 3293827455467384627}
 --- !u!1 &3574293778046584629
@@ -315,8 +314,8 @@ MonoBehaviour:
   spDie: {fileID: 21300000, guid: d2cda4f51df95fb4f99c4a21f0e7ad0e, type: 3}
   camRef: {fileID: 0}
   screenBorder: 10
-  sfxCharge: {fileID: 8300000, guid: 8545a922bd5e61a48a820e9ef59c5fbd, type: 3}
-  sfxShoot: {fileID: 8300000, guid: 38a695a54e6aa9c4d85ed072c16e83ee, type: 3}
+  sfxCharge: {fileID: 8300000, guid: fdd4309012f29b74ebfa2fdad4ab1c32, type: 3}
+  sfxShoot: {fileID: 8300000, guid: fd36f6e346697ea48a6721d603c7cec6, type: 3}
   rotationSpeed: 0
   enemyEff: {fileID: 49533077237906369}
   enemyFxs: {fileID: 2564803585036969182}
@@ -333,8 +332,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableScript: {fileID: 5975269048440455289}
-  enemyEff: {fileID: 49533077237906369}
-  enemyFxs: {fileID: 2564803585036969182}
 --- !u!1 &6634551936397790117
 GameObject:
   m_ObjectHideFlags: 0

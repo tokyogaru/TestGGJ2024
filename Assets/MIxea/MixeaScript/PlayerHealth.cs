@@ -31,6 +31,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private GameObject particleMad;
 
     [Header("Sfx")]
+    [SerializeField] private AudioClip sfxMadness;
     [SerializeField] private AudioClip sfxHurt;
     [SerializeField] private AudioClip sfxDeath;
     [SerializeField] private AudioClip sfxHit;
@@ -136,6 +137,8 @@ public class PlayerHealth : MonoBehaviour
             lastHit = true;
             hpCurrent = 10;
             particleMad.SetActive(true);
+
+            SoundManager.Instance.PlayMusic(sfxMadness, transform, 1f);
         }
         if (hpCurrent <= 0)
         {

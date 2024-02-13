@@ -492,7 +492,7 @@ MonoBehaviour:
   sp2: {fileID: 21300000, guid: 1e8b0d8d8e71ab74aa4d1a2d45f68ced, type: 3}
   camRef: {fileID: 0}
   screenBorder: 10
-  sfxFart: {fileID: 8300000, guid: 918f1d3350c4dda4183982ee1e11302b, type: 3}
+  sfxFart: {fileID: 8300000, guid: 32aabdfe2f30406418864360951abceb, type: 3}
   rotationSpeed: 0
   enemyEff: {fileID: 559989581034374852}
   enemyFxs: {fileID: 7522537230031202291}
