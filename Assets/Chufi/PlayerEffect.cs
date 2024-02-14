@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class PlayerEffect : MonoBehaviour
@@ -161,7 +162,22 @@ public class PlayerEffect : MonoBehaviour
         }
     }
 
-
+    public void AnimPulsePlayerIzq()
+    {
+        Flash(Color.magenta);
+        currentRotation = 0f;
+        isRotating = true;
+        StartPulse();
+        pieMov.enabled = false;
+    }
+    public void AnimPulsePlayerDer()
+    {
+        Flash(Color.magenta);
+        currentRotation = 0f;
+        isRotating = true;
+        StartPulse();
+        pieMov.enabled = false;
+    }
 
     private void StartPulse()
     {
@@ -232,8 +248,10 @@ public class PlayerEffect : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         transform.localScale = originalScale;
+
     }
 
 
 
 }
+
