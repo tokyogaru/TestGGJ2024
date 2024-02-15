@@ -181,7 +181,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7433179302837577395, guid: a9e53a3bdfb2a204cba8f47d5a26f5a8, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -912,7 +912,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 216480708403585399, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3694881888293263655, guid: fb0c16d6bbee8a04081eeb1a2834950a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1975,7 +1975,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5498303652314511349, guid: 5ca7cdcd8a6fa3b46bbc76a36397f61b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5975269048440455289, guid: 5ca7cdcd8a6fa3b46bbc76a36397f61b, type: 3}
       propertyPath: camRef
@@ -17525,7 +17525,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1918107646
 Transform:
   m_ObjectHideFlags: 0

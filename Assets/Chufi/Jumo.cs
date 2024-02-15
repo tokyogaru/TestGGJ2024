@@ -50,8 +50,11 @@ public class Jumo : MonoBehaviour
         if (onGround)
         {
 
-            if (Input.GetKey(KeyCode.W))
+            if (Input.GetKey(KeyCode.W) )
             {
+                pieMov.enabled = false;
+                playerEffect.enabled = false;
+
                 if (jumpPressure < maxJumpPressure)
                 {
                     jumpPressure += Time.deltaTime * (maxJumpPressure / jumpTime);
@@ -61,6 +64,8 @@ public class Jumo : MonoBehaviour
             }
             else
             {
+                pieMov.enabled = true;
+                playerEffect.enabled = true;
                 if (jumpPressure > 0f)
                 {
                     StartCoroutine(LockJump());

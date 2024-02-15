@@ -137,10 +137,14 @@ public class PieMov : MonoBehaviour
         if (movingRightLeg && Input.GetKeyUp(KeyCode.D))
         {
             StartCoroutine(StopDer());
-            spriteRendererCuerpo.sprite = normal;
-            if (!jump.onGround)
+            
+            if (!jump.onGround && movingRightLeg && Input.GetKeyUp(KeyCode.D))
             {
                 jump.spriteRenderer.sprite = jump.caida;
+            }
+            else
+            {
+                spriteRendererCuerpo.sprite = normal;
             }
 
         }
@@ -175,10 +179,16 @@ public class PieMov : MonoBehaviour
         if (movingLeftLeg && Input.GetKeyUp(KeyCode.A))
         {
             StartCoroutine(StopIzq());
-            spriteRendererCuerpo.sprite = normal;
-            if (!jump.onGround)
+            
+
+
+            if (!jump.onGround && movingLeftLeg && Input.GetKeyUp(KeyCode.A))
             {
                 jump.spriteRenderer.sprite = jump.caida;
+            }
+            else
+            {
+                spriteRendererCuerpo.sprite = normal;
             }
 
         }
@@ -202,30 +212,30 @@ public class PieMov : MonoBehaviour
         {
             stopMoveIzq();
             //StartCoroutine(StopIzq());
-            spritePieDer.SetActive(false);
-            piernaDer.SetActive(false);
             spriteRendererCuerpo.sprite = noMove;
             spriteRendererCuerpo.flipX = true;
         }
 
     }
 
-    public static void SetGameObjectActive(bool active, bool rightSide)
+    public void SetGameObjectActive(bool rightSide)
     {
         if (rightSide)
-        {
-            piernaDer.SetActive(active);
-            pieDer.SetActive(active);
+        {   
+            spritePieDer.SetActive(true);
+            piernaDer.SetActive(true);
+            pieDer.SetActive(true);
         }
         else
         {
-            piernaIzq.SetActive(active);
-            pieIzq.SetActive(active);
+            spritePieIzq.SetActive(true);
+            piernaIzq.SetActive(true);
+            pieIzq.SetActive(true);
         }
     }
     IEnumerator StopDer()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.0f);
         posCuerpo.position = new Vector3((posPieDer.position.x + 0.75f), posCuerpo.localPosition.y, posCuerpo.localPosition.z);
         tiempoTeclaPresionada = 0.0f;
         movingRightLeg = false;
@@ -239,11 +249,12 @@ public class PieMov : MonoBehaviour
 
         spritePieDer.SetActive(false);
         piernaDer.SetActive(false);
-        //spriteRendererCuerpo.sprite = normal;
+        pieDer.SetActive(false);
+        
     }
     IEnumerator StopIzq()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.0f);
         posCuerpo.position = new Vector3((posPieIzq.position.x + -0.75f), posCuerpo.localPosition.y, posCuerpo.localPosition.z);
         tiempoTeclaPresionada = 0.0f;
         movingLeftLeg = false;
@@ -257,7 +268,8 @@ public class PieMov : MonoBehaviour
         resumeMove();
         spritePieIzq.SetActive(false);
         piernaIzq.SetActive(false);
-        //spriteRendererCuerpo.sprite = normal;
+        pieIzq.SetActive(false);
+        
     }
 
     public void stopMoveDer()
@@ -270,6 +282,7 @@ public class PieMov : MonoBehaviour
         noMoveExclamation.SetActive(true);
         spritePieDer.SetActive(false);
         piernaDer.SetActive(false);
+        pieDer.SetActive(false);
 
     }
 
@@ -283,6 +296,7 @@ public class PieMov : MonoBehaviour
         noMoveExclamation.SetActive(true);
         spritePieIzq.SetActive(false);
         piernaIzq.SetActive(false);
+        pieIzq.SetActive(false);
 
 
     }

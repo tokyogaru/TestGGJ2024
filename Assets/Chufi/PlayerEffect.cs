@@ -63,7 +63,7 @@ public class PlayerEffect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.D) && !Input.GetKey(KeyCode.A))
         {
             pieMov.tiempoTeclaPresionada = 0;
             pieMov.spriteRendererCuerpo.sprite = pieMov.pose;
@@ -86,7 +86,7 @@ public class PlayerEffect : MonoBehaviour
 
 
         }
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A) && !Input.GetKey(KeyCode.D))
         {
             pieMov.tiempoTeclaPresionada = 0;
             pieMov.spriteRendererCuerpo.sprite = pieMov.pose;
@@ -109,12 +109,8 @@ public class PlayerEffect : MonoBehaviour
             }
 
         }
-        if (jump.onGround && PieMov.movingLeftLeg && Input.GetKeyUp(KeyCode.A))
-        {
-            StartCoroutine(MoveFinalPlayerScale());
-            Invoke("StopCoroutine(MoveFinalPlayerScale())", 5f);
-        }
-        if (!jump.onGround && Input.GetKeyUp(KeyCode.A))
+   
+        if (!jump.onGround && Input.GetKeyUp(KeyCode.A) && !Input.GetKey(KeyCode.D))
         {
             jump.spriteRenderer.sprite = jump.caida;
 
@@ -124,12 +120,8 @@ public class PlayerEffect : MonoBehaviour
 
 
 
-        if (jump.onGround && PieMov.movingRightLeg && Input.GetKeyUp(KeyCode.D))
-        {
-            StartCoroutine(MoveFinalPlayerScale());
-            Invoke("StopCoroutine(MoveFinalPlayerScale())", 5f);
-        }
-        if (!jump.onGround && Input.GetKeyUp(KeyCode.D))
+    
+        if (!jump.onGround && Input.GetKeyUp(KeyCode.D) && !Input.GetKey(KeyCode.A))
         {
             jump.spriteRenderer.sprite = jump.caida;
             pieMov.spritePieDer.SetActive(false);
@@ -240,17 +232,7 @@ public class PlayerEffect : MonoBehaviour
         spriteRenderer.material = originalMaterial;
         flashRoutine = null;
     }
-    public IEnumerator MoveFinalPlayerScale()
-    {
-
-        Vector3 newScale = new Vector3(0.5f, 1f, 1f);
-        transform.localScale = Vector3.Scale(originalScale, newScale);
-        yield return new WaitForSeconds(0.5f);
-
-        transform.localScale = originalScale;
-
-    }
-
+    
 
 
 }
