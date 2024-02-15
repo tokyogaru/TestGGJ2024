@@ -247,6 +247,7 @@ public class PieMov : MonoBehaviour
         // Ocultar pierna y pie derecho cuando dejes de presionar la tecla
         resumeMove();
 
+
         spritePieDer.SetActive(false);
         piernaDer.SetActive(false);
         pieDer.SetActive(false);
@@ -313,5 +314,6 @@ public class PieMov : MonoBehaviour
         footPosIzq = 1f;
         noMoveExclamation.SetActive(false);
     }
+    
 
 }
