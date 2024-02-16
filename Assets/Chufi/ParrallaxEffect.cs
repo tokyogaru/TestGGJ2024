@@ -23,7 +23,6 @@ public class ParrallaxEffect : MonoBehaviour
     {
 
         float deltaX = (camTransform.position.x - lastCamPos.x) * speed;
-        Debug.Log(deltaX);
         offset = new Vector2(deltaX, 0);
         mat.mainTextureOffset = offset;
     }
