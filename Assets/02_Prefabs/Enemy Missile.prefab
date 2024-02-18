@@ -101,6 +101,7 @@ MonoBehaviour:
   duration: 2
   spriteRenderer: {fileID: 2326142091269421602}
   rotationSpeed: 6
+  dead: {fileID: 21300000, guid: d2cda4f51df95fb4f99c4a21f0e7ad0e, type: 3}
   particleDead: {fileID: 3293827455467384627}
 --- !u!1 &3574293778046584629
 GameObject:
@@ -332,6 +333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableScript: {fileID: 5975269048440455289}
+  enemyFx: {fileID: 2564803585036969182}
 --- !u!1 &6634551936397790117
 GameObject:
   m_ObjectHideFlags: 0

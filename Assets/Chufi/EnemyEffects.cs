@@ -14,6 +14,8 @@ public class EnemyEffects : MonoBehaviour
     [SerializeField] float rotationSpeed;
     private Vector3 originalPosition;
 
+    public Sprite dead;
+
     public GameObject particleDead;
     // Start is called before the first frame update
     void Start()
@@ -34,12 +36,14 @@ public class EnemyEffects : MonoBehaviour
 
     }
 
-    public void EnemysDead()
+    public IEnumerator EnemysDead()
     {
         Flash(Color.magenta);
         Vector3 newScale = new Vector3(1f, 0.5f, 1f); // Define la nueva escala (50% de la escala original en el eje Y)
         transform.localScale = Vector3.Scale(originalScale, newScale);
         particleDead.SetActive(true);
+        spriteRenderer.sprite = dead;
+        yield return null;
     }
     public void MoveChar()
     {

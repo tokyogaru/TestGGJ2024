@@ -9,6 +9,8 @@ TagManager:
   - Enemy Hitbox
   - Ground
   - Pit
+  - Obstacle
+  - Peo
   layers:
   - Default
   - TransparentFX

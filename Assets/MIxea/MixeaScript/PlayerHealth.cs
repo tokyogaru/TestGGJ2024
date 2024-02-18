@@ -36,9 +36,10 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private AudioClip sfxDeath;
     [SerializeField] private AudioClip sfxHit;
 
-    public EnemyEffects enemyEff;
+    private EnemyEffects enemyEff;
+    
 
-    public GameObject enemyFxs;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -54,7 +55,7 @@ public class PlayerHealth : MonoBehaviour
 
 
         playerEffect = scriptEffect.GetComponent<PlayerEffect>();
-        enemyEff = enemyFxs.GetComponent<EnemyEffects>();
+        
     }
 
     // Update is called once per frame
@@ -68,7 +69,6 @@ public class PlayerHealth : MonoBehaviour
         if (col.CompareTag("Enemy"))
         {
             PlayerEffect.particleHit.SetActive(true);
-            enemyEff.EnemysDead();
             col.GetComponent<DeathController>().DeathSelf();
 
             SoundManager.Instance.PlaySound(sfxHit, transform, 1f, 0);

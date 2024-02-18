@@ -138,14 +138,7 @@ public class PieMov : MonoBehaviour
         {
             StartCoroutine(StopDer());
             
-            if (!jump.onGround && movingRightLeg && Input.GetKeyUp(KeyCode.D))
-            {
-                jump.spriteRenderer.sprite = jump.caida;
-            }
-            else
-            {
-                spriteRendererCuerpo.sprite = normal;
-            }
+            
 
         }
 
@@ -180,16 +173,6 @@ public class PieMov : MonoBehaviour
         {
             StartCoroutine(StopIzq());
             
-
-
-            if (!jump.onGround && movingLeftLeg && Input.GetKeyUp(KeyCode.A))
-            {
-                jump.spriteRenderer.sprite = jump.caida;
-            }
-            else
-            {
-                spriteRendererCuerpo.sprite = normal;
-            }
 
         }
 
@@ -247,7 +230,7 @@ public class PieMov : MonoBehaviour
         // Ocultar pierna y pie derecho cuando dejes de presionar la tecla
         resumeMove();
 
-
+        spriteRendererCuerpo.sprite = normal;
         spritePieDer.SetActive(false);
         piernaDer.SetActive(false);
         pieDer.SetActive(false);
@@ -267,6 +250,7 @@ public class PieMov : MonoBehaviour
 
         // Ocultar pierna y pie izquierdo cuando dejes de presionar la tecla
         resumeMove();
+        spriteRendererCuerpo.sprite = normal;
         spritePieIzq.SetActive(false);
         piernaIzq.SetActive(false);
         pieIzq.SetActive(false);

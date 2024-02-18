@@ -38,8 +38,6 @@ public class FartControl : MonoBehaviour
 
     public EnemyEffects enemyEff;
 
-    public GameObject enemyFxs;
-
 
 
     void Start()
@@ -63,7 +61,7 @@ public class FartControl : MonoBehaviour
 
         originalPosition = transform.position;
 
-        enemyEff = enemyFxs.GetComponent<EnemyEffects>();
+    
     }
 
     void Update()
@@ -112,6 +110,7 @@ public class FartControl : MonoBehaviour
             moveRight = !moveRight;
             transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         }
+        
 
         if (col.gameObject.CompareTag("Player"))
         {

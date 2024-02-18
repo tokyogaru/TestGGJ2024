@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3240975260049805731
 Transform:
   m_ObjectHideFlags: 0
@@ -185,7 +185,7 @@ MonoBehaviour:
   duration: 0.2
   rotationSpeed: 5
   rotationSpeedPlayer: 300
-  spriteRenderer: {fileID: 0}
+  spriteRenderer: {fileID: 7591620682064913289}
   originalMaterial: {fileID: 0}
   originalScale: {x: 0, y: 0, z: 0}
   pulseSpeed: 6
@@ -194,8 +194,8 @@ MonoBehaviour:
   moveSpeed: 1
   pieMov: {fileID: 5066304532123424568}
   pata: {fileID: 8589202020632628597}
-  jump: {fileID: 0}
-  jumpObj: {fileID: 0}
+  jump: {fileID: 8480863735005550922}
+  jumpObj: {fileID: 3948409094907487749}
   isPulsating: 0
 --- !u!1 &3948409094907487749
 GameObject:
@@ -211,7 +211,6 @@ GameObject:
   - component: {fileID: 8210101088382291497}
   - component: {fileID: 4206650594024320418}
   - component: {fileID: 2277177166313492237}
-  - component: {fileID: 5321266153578268792}
   m_Layer: 0
   m_Name: sprite_cuerpo
   m_TagString: Player
@@ -270,11 +269,11 @@ MonoBehaviour:
   spriteRenderer: {fileID: 7591620682064913289}
   agachado: {fileID: 21300000, guid: 4d4961fb11ba956488ee28fbb9e01424, type: 3}
   normal: {fileID: 21300000, guid: 7a2866d12aae4c74b8a1a5c45c7662e4, type: 3}
-  caida: {fileID: 0}
-  pieMov: {fileID: 0}
-  playerEffect: {fileID: 0}
-  pata: {fileID: 0}
-  playerFX: {fileID: 0}
+  caida: {fileID: 21300000, guid: 987ec0c4996caa642a72dd975060ff08, type: 3}
+  pieMov: {fileID: 5066304532123424568}
+  playerEffect: {fileID: 7433432570397076982}
+  pata: {fileID: 8589202020632628597}
+  playerFX: {fileID: 3699594861996573783}
 --- !u!50 &8210101088382291497
 Rigidbody2D:
   serializedVersion: 4
@@ -315,22 +314,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpMax: 100
-  hpCurrent: 100
+  hpCurrent: 80
   bounce: 5
   hpBar: {fileID: 0}
   overMenu: {fileID: 0}
   touchEnemy: 0
-  pieMov: {fileID: 0}
-  pata: {fileID: 0}
-  playerEffect: {fileID: 0}
-  scriptEffect: {fileID: 0}
+  pieMov: {fileID: 5066304532123424568}
+  pata: {fileID: 8589202020632628597}
+  playerEffect: {fileID: 7433432570397076982}
+  scriptEffect: {fileID: 3699594861996573783}
   particleMad: {fileID: 3753820132326118477}
   sfxMadness: {fileID: 8300000, guid: c098427d4f886454fbcb1c4ca4dc14b8, type: 3}
   sfxHurt: {fileID: 8300000, guid: 535b3757999a32f4e850184090162097, type: 3}
   sfxDeath: {fileID: 8300000, guid: 6286126d3ac55ff4cbb675b64490294a, type: 3}
   sfxHit: {fileID: 8300000, guid: 1c0524d3d873a06458e816e235187e43, type: 3}
-  enemyEff: {fileID: 0}
-  enemyFxs: {fileID: 0}
 --- !u!61 &2277177166313492237
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -376,34 +373,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
---- !u!114 &5321266153578268792
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3948409094907487749}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74cc974b29cb20040bb9be259972b79c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flashMaterial: {fileID: 2100000, guid: 08614b2bb1beaaa4daf19dee6609baa0, type: 2}
-  duration: 0.2
-  rotationSpeed: 5
-  rotationSpeedPlayer: 300
-  spriteRenderer: {fileID: 0}
-  originalMaterial: {fileID: 0}
-  originalScale: {x: 0, y: 0, z: 0}
-  pulseSpeed: 6
-  minScale: 0.5
-  maxScale: 1
-  moveSpeed: 1
-  pieMov: {fileID: 5066304532123424568}
-  pata: {fileID: 8589202020632628597}
-  jump: {fileID: 0}
-  jumpObj: {fileID: 0}
-  isPulsating: 0
 --- !u!1 &4909193955572268408
 GameObject:
   m_ObjectHideFlags: 0
@@ -929,23 +898,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5167ea44f82599a4abc14da2ef372dd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  spritePieDer: {fileID: 6100608261328231848}
-  spritePieIzq: {fileID: 4909193955572268408}
-  noMoveExclamation: {fileID: 0}
-  cry: {fileID: 0}
+  sprite: {fileID: 3699594861996573783}
+  spritePieDer: {fileID: 5497182784212387467}
+  spritePieIzq: {fileID: 9109035332545668485}
+  noMoveExclamation: {fileID: 2608696474026226933}
+  cry: {fileID: 1100453661654273166}
   tiempoMaximoTeclaPresionada: 3
   normal: {fileID: 21300000, guid: 7a2866d12aae4c74b8a1a5c45c7662e4, type: 3}
   pose: {fileID: 21300000, guid: 956819ad920a0d44badfeb5baa58c258, type: 3}
   perder: {fileID: 21300000, guid: 15335021787183345b2c2f5945c8df68, type: 3}
   noMove: {fileID: 21300000, guid: 45fdd94d5e7ad6d4585bfc601d6463de, type: 3}
-  spriteRendererCuerpo: {fileID: 0}
+  spriteRendererCuerpo: {fileID: 7591620682064913289}
   tiempoTeclaPresionada: 3
   posCuerpo: {fileID: 2555391833827710822}
   posPieIzq: {fileID: 9092370198697902102}
   posPieDer: {fileID: 978642705834781774}
-  jump: {fileID: 0}
-  jumpObj: {fileID: 0}
+  jump: {fileID: 8480863735005550922}
+  jumpObj: {fileID: 3948409094907487749}
 --- !u!1 &9109035332545668485
 GameObject:
   m_ObjectHideFlags: 0
@@ -1094,6 +1063,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea55cdffe533d8346907d08f3f8ee8b7, type: 3}
+--- !u!1 &2608696474026226933 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2395362050839294897, guid: ea55cdffe533d8346907d08f3f8ee8b7, type: 3}
+  m_PrefabInstance: {fileID: 364222603446945604}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4216693036419126153 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4578271305794557133, guid: ea55cdffe533d8346907d08f3f8ee8b7, type: 3}
@@ -1187,11 +1161,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6192213000384626861, guid: 0df597b4396b96546a972606df05374d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.554
       objectReference: {fileID: 0}
     - target: {fileID: 6192213000384626861, guid: 0df597b4396b96546a972606df05374d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.228
+      value: 0.299
       objectReference: {fileID: 0}
     - target: {fileID: 6192213000384626861, guid: 0df597b4396b96546a972606df05374d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1230,6 +1204,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0df597b4396b96546a972606df05374d, type: 3}
+--- !u!1 &1100453661654273166 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2860367139527186423, guid: 0df597b4396b96546a972606df05374d, type: 3}
+  m_PrefabInstance: {fileID: 2951977633473731449}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9014131602294496212 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6192213000384626861, guid: 0df597b4396b96546a972606df05374d, type: 3}

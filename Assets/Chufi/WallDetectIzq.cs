@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WallDetectIzq : MonoBehaviour
 {
+  
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Wall"))
@@ -11,6 +12,8 @@ public class WallDetectIzq : MonoBehaviour
             Debug.Log("WallIzqTrue");
             PieMov.walledIzq = true;
         }
+        
+        
     }
     public void OnTriggerExit2D(Collider2D collision)
     {

@@ -8,12 +8,15 @@ public class DeathController : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField] private Behaviour disableScript;
 
+    private EnemyEffects enemyEff;
+    public GameObject enemyFx;
+
 
     private void Start()
     {
         selfColliders = gameObject.GetComponents<BoxCollider2D>();
         rb = gameObject.GetComponent<Rigidbody2D>();
-        
+
     }
 
     private void Update()
@@ -32,7 +35,8 @@ public class DeathController : MonoBehaviour
         {
             col.enabled = false;
         }
-       
+        enemyEff = enemyFx.GetComponent<EnemyEffects>();
+        enemyEff.StartCoroutine(enemyEff.EnemysDead());
         rb.gravityScale = 0f;
         disableScript.enabled = false;
         Debug.Log("morido");

@@ -495,7 +495,6 @@ MonoBehaviour:
   sfxFart: {fileID: 8300000, guid: 32aabdfe2f30406418864360951abceb, type: 3}
   rotationSpeed: 0
   enemyEff: {fileID: 559989581034374852}
-  enemyFxs: {fileID: 7522537230031202291}
 --- !u!114 &8176222690336992534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -509,6 +508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableScript: {fileID: 6362187280687957951}
+  enemyFx: {fileID: 7522537230031202291}
 --- !u!1 &7522537230031202291
 GameObject:
   m_ObjectHideFlags: 0
@@ -610,6 +610,7 @@ MonoBehaviour:
   duration: 1
   spriteRenderer: {fileID: 6505175512079274118}
   rotationSpeed: 6
+  dead: {fileID: 21300000, guid: dbab315e051754441b287ec261ed1024, type: 3}
   particleDead: {fileID: 2437873799571823842}
 --- !u!1001 &8607790367604805558
 PrefabInstance:
