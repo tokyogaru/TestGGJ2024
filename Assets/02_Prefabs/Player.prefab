@@ -899,8 +899,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 3699594861996573783}
-  spritePieDer: {fileID: 5497182784212387467}
-  spritePieIzq: {fileID: 9109035332545668485}
+  spritePieDer: {fileID: 6100608261328231848}
+  spritePieIzq: {fileID: 4909193955572268408}
   noMoveExclamation: {fileID: 2608696474026226933}
   cry: {fileID: 1100453661654273166}
   tiempoMaximoTeclaPresionada: 3

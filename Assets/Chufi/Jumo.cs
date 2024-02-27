@@ -16,20 +16,16 @@ public class Jumo : MonoBehaviour
 
     [SerializeField] GameObject sprite;
 
-    public SpriteRenderer spriteRenderer;
+    private SpriteRenderer spriteRenderer;
 
     public Sprite agachado;
     public Sprite normal;
 
-    public Sprite caida;
+    public Sprite salto;
 
-    public PieMov pieMov;
+    public Sprite pose;
 
-    public PlayerEffect playerEffect;
-
-    public GameObject pata;
-
-    public GameObject playerFX;
+    private bool onAir;
 
     private void Start()
     {
@@ -40,44 +36,53 @@ public class Jumo : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         originalScale = transform.localScale;
         spriteRenderer = sprite.GetComponent<SpriteRenderer>();
-        pieMov = pata.GetComponent<PieMov>();
-        playerEffect = playerFX.GetComponent<PlayerEffect>();
+        onAir = false;
 
     }
 
     void Update()
     {
-        if (onGround)
+        if (onGround && !Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A))
         {
 
-            if (Input.GetKey(KeyCode.W) )
+            if (Input.GetKey(KeyCode.W))
             {
-                pieMov.enabled = false;
-                playerEffect.enabled = false;
-
                 if (jumpPressure < maxJumpPressure)
                 {
                     jumpPressure += Time.deltaTime * (maxJumpPressure / jumpTime);
                     spriteRenderer.sprite = agachado;
                     transform.localScale = new Vector2(originalScale.x, 0.5f); // Escalar en el eje Y a -1
+                    onAir = false;
                 }
             }
             else
             {
-                pieMov.enabled = true;
-                playerEffect.enabled = true;
                 if (jumpPressure > 0f)
                 {
+                    onAir = true;
+                    spriteRenderer.sprite = salto;
                     StartCoroutine(LockJump());
+                    if (Input.GetKey(KeyCode.A))
+                    {
+                        spriteRenderer.sprite = pose;
+                    }
+                    if (Input.GetKeyUp(KeyCode.A))
+                    {
+                        spriteRenderer.sprite = salto;
+                    }
+                    if (Input.GetKey(KeyCode.D))
+                    {
+                        spriteRenderer.sprite = pose;
+                    }
+                    if (Input.GetKeyUp(KeyCode.D))
+                    {
+                        spriteRenderer.sprite = salto;
+                    }
                     rb.velocity = new Vector2(0f, jumpPressure);
                     jumpPressure = 0f;
-                    spriteRenderer.sprite = caida;
                     transform.localScale = originalScale; // Restaurar la escala original
                 }
-
             }
-            
-
         }
 
 
@@ -88,15 +93,13 @@ public class Jumo : MonoBehaviour
         if (other.gameObject.CompareTag("Ground"))
         {
             onGround = true;
-            spriteRenderer.sprite = normal;
+            onAir = false;
         }
-
     }
     IEnumerator LockJump()
     {
         yield return new WaitForSeconds(0.025f);
         onGround = false;
-
     }
 }
 

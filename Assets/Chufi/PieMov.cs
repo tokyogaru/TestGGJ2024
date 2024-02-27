@@ -30,6 +30,9 @@ public class PieMov : MonoBehaviour
     [SerializeField] public Sprite pose;
     [SerializeField] public Sprite perder;
     [SerializeField] private Sprite noMove;
+    public Sprite agachado;
+    public Sprite salto;
+
 
     private Vector3 initialPiernaDerPosition;
     private Vector3 initialPiernaIzqPosition;
@@ -52,15 +55,13 @@ public class PieMov : MonoBehaviour
     public static bool movingLeftLeg = false;
     public float tiempoTeclaPresionada = 0.0f;
 
+
+
     public Transform posCuerpo;
     public Transform posPieIzq;
     public Transform posPieDer;
 
-    public Jumo jump;
-
-    public GameObject jumpObj;
-
-
+    public bool jumping;
 
     void Start()
     {
@@ -86,7 +87,7 @@ public class PieMov : MonoBehaviour
         noMoveExclamation.SetActive(false);
         cry.SetActive(false);
 
-        jump = jumpObj.GetComponent<Jumo>();
+
         spriteRendererCuerpo = sprite.GetComponent<SpriteRenderer>();
 
         // Verificar si los SpriteRenderer se encontraron correctamente
@@ -99,23 +100,25 @@ public class PieMov : MonoBehaviour
             Debug.LogError("El SpriteRenderer del cuerpo no se encontró.");
         }
         originalScale = transform.localScale;
+        jumping = false;
     }
 
     void Update()
     {
 
 
-        if (!movingLeftLeg && !reachedMaxXDer && walledDer == false && Input.GetKeyDown(KeyCode.D))
+        if (!movingLeftLeg && !reachedMaxXDer && walledDer == false && Input.GetKeyDown(KeyCode.D) && jumping == false)
         {
             movingRightLeg = true;
             spriteRendererCuerpo.sprite = pose;
             spriteRendererCuerpo.flipX = false;
             spritePieDer.SetActive(true);
             piernaDer.SetActive(true); // Mostrar pierna y pie derecho
-            pieDer.SetActive(true);
         }
-
-
+        if (!movingLeftLeg && !reachedMaxXDer && walledDer == false && Input.GetKeyDown(KeyCode.D) && Input.GetKey(KeyCode.W))
+        {
+            spriteRendererCuerpo.sprite = agachado;
+        }
 
         if (movingRightLeg)
         {
@@ -126,30 +129,45 @@ public class PieMov : MonoBehaviour
                 piernaDer.transform.localPosition += new Vector3(legPosDer * Time.deltaTime, 0, 0);
                 piernaDer.transform.localScale += new Vector3(legScaleDer * Time.deltaTime, 0, 0);
                 pieDer.transform.localPosition += new Vector3(footPosDer * Time.deltaTime, 0, 0);
+
             }
             else
             {
                 reachedMaxXDer = true;
-
             }
+        }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            jumping = true;
+
+        }
+
+        if (Input.GetKeyUp(KeyCode.W))
+        {
+            jumping = false;
+
         }
 
         if (movingRightLeg && Input.GetKeyUp(KeyCode.D))
         {
             StartCoroutine(StopDer());
-            
-            
+            spriteRendererCuerpo.sprite = normal;
 
         }
 
-        if (!movingRightLeg && !reachedMaxXIzq && walledIzq == false && Input.GetKeyDown(KeyCode.A))
+        if (!movingRightLeg && !reachedMaxXIzq && walledIzq == false && Input.GetKeyDown(KeyCode.A) && jumping == false)
         {
             movingLeftLeg = true;
             spriteRendererCuerpo.sprite = pose;
             spriteRendererCuerpo.flipX = true;
             spritePieIzq.SetActive(true);
-            piernaIzq.SetActive(true);
-            pieIzq.SetActive(true);  // Mostrar pierna y pie izquierdo
+            piernaIzq.SetActive(true); // Mostrar pierna y pie izquierdo
+        }
+        if (!movingRightLeg && !reachedMaxXIzq && walledIzq == false && Input.GetKeyDown(KeyCode.A) && Input.GetKey(KeyCode.W))
+        {
+
+            spriteRendererCuerpo.sprite = agachado;
+
         }
 
         if (movingLeftLeg)
@@ -172,21 +190,21 @@ public class PieMov : MonoBehaviour
         if (movingLeftLeg && Input.GetKeyUp(KeyCode.A))
         {
             StartCoroutine(StopIzq());
-            
-
+            spriteRendererCuerpo.sprite = normal;
         }
-
-
 
         if (movingLeftLeg && movingRightLeg)
         {
             spriteRendererCuerpo.sprite = pose;
         }
+
         //Detener movimiento
         if (walledDer == true)
         {
             stopMoveDer();
             //StartCoroutine(StopDer());
+            spritePieIzq.SetActive(false);
+            piernaIzq.SetActive(false);
             spriteRendererCuerpo.sprite = noMove;
             spriteRendererCuerpo.flipX = false;
 
@@ -195,30 +213,31 @@ public class PieMov : MonoBehaviour
         {
             stopMoveIzq();
             //StartCoroutine(StopIzq());
+            spritePieDer.SetActive(false);
+            piernaDer.SetActive(false);
             spriteRendererCuerpo.sprite = noMove;
             spriteRendererCuerpo.flipX = true;
+
         }
 
     }
 
-    public void SetGameObjectActive(bool rightSide)
+    public static void SetGameObjectActive(bool active, bool rightSide)
     {
         if (rightSide)
-        {   
-            spritePieDer.SetActive(true);
-            piernaDer.SetActive(true);
-            pieDer.SetActive(true);
+        {
+            piernaDer.SetActive(active);
+            pieDer.SetActive(active);
         }
         else
         {
-            spritePieIzq.SetActive(true);
-            piernaIzq.SetActive(true);
-            pieIzq.SetActive(true);
+            piernaIzq.SetActive(active);
+            pieIzq.SetActive(active);
         }
     }
     IEnumerator StopDer()
     {
-        yield return new WaitForSeconds(0.0f);
+        yield return new WaitForSeconds(0.01f);
         posCuerpo.position = new Vector3((posPieDer.position.x + 0.75f), posCuerpo.localPosition.y, posCuerpo.localPosition.z);
         tiempoTeclaPresionada = 0.0f;
         movingRightLeg = false;
@@ -230,15 +249,13 @@ public class PieMov : MonoBehaviour
         // Ocultar pierna y pie derecho cuando dejes de presionar la tecla
         resumeMove();
 
-        spriteRendererCuerpo.sprite = normal;
         spritePieDer.SetActive(false);
         piernaDer.SetActive(false);
-        pieDer.SetActive(false);
-        
+
     }
     IEnumerator StopIzq()
     {
-        yield return new WaitForSeconds(0.0f);
+        yield return new WaitForSeconds(0.01f);
         posCuerpo.position = new Vector3((posPieIzq.position.x + -0.75f), posCuerpo.localPosition.y, posCuerpo.localPosition.z);
         tiempoTeclaPresionada = 0.0f;
         movingLeftLeg = false;
@@ -250,11 +267,9 @@ public class PieMov : MonoBehaviour
 
         // Ocultar pierna y pie izquierdo cuando dejes de presionar la tecla
         resumeMove();
-        spriteRendererCuerpo.sprite = normal;
         spritePieIzq.SetActive(false);
         piernaIzq.SetActive(false);
-        pieIzq.SetActive(false);
-        
+
     }
 
     public void stopMoveDer()
@@ -267,7 +282,6 @@ public class PieMov : MonoBehaviour
         noMoveExclamation.SetActive(true);
         spritePieDer.SetActive(false);
         piernaDer.SetActive(false);
-        pieDer.SetActive(false);
 
     }
 
@@ -281,8 +295,6 @@ public class PieMov : MonoBehaviour
         noMoveExclamation.SetActive(true);
         spritePieIzq.SetActive(false);
         piernaIzq.SetActive(false);
-        pieIzq.SetActive(false);
-
 
     }
     public void resumeMove()
@@ -298,6 +310,6 @@ public class PieMov : MonoBehaviour
         footPosIzq = 1f;
         noMoveExclamation.SetActive(false);
     }
-    
+
 
 }

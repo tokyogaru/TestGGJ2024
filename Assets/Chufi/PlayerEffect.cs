@@ -32,10 +32,6 @@ public class PlayerEffect : MonoBehaviour
 
     public GameObject pata;
 
-    public Jumo jump;
-
-    public GameObject jumpObj;
-
     public static GameObject particleHit;
 
     public static GameObject particleDeadEnemy;
@@ -50,7 +46,6 @@ public class PlayerEffect : MonoBehaviour
         originalScale = transform.localScale;
         originalPosition = transform.position;
         pieMov = pata.GetComponent<PieMov>();
-        jump = jumpObj.GetComponent<Jumo>();
         isPulsating = false;
         isRotating = false;
         particleHit = GameObject.Find("hit_particle");
@@ -63,7 +58,7 @@ public class PlayerEffect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.D) && !Input.GetKey(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.D))
         {
             pieMov.tiempoTeclaPresionada = 0;
             pieMov.spriteRendererCuerpo.sprite = pieMov.pose;
@@ -75,18 +70,15 @@ public class PlayerEffect : MonoBehaviour
             if (pieMov.tiempoTeclaPresionada > pieMov.tiempoMaximoTeclaPresionada)
             {
                 Flash(Color.magenta);
-                currentRotation = 0f;
-                isRotating = true;
-                StartPulse();
-                pieMov.spritePieDer.SetActive(false);
-                PieMov.piernaDer.SetActive(false); // Mostrar pierna y pie derecho
+
                 Debug.Log("¡Has perdido!");
+
 
             }
 
 
         }
-        if (Input.GetKeyDown(KeyCode.A) && !Input.GetKey(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.A))
         {
             pieMov.tiempoTeclaPresionada = 0;
             pieMov.spriteRendererCuerpo.sprite = pieMov.pose;
@@ -100,35 +92,40 @@ public class PlayerEffect : MonoBehaviour
             if (pieMov.tiempoTeclaPresionada > pieMov.tiempoMaximoTeclaPresionada)
             {
                 Flash(Color.magenta);
+
+                Debug.Log("¡Has perdido!");
+            }
+
+        }
+        if (PieMov.movingLeftLeg && Input.GetKeyUp(KeyCode.A))
+        {
+            if (pieMov.tiempoTeclaPresionada > pieMov.tiempoMaximoTeclaPresionada)
+            {
+                Flash(Color.magenta);
                 currentRotation = 0f;
                 isRotating = true;
                 StartPulse();
                 pieMov.spritePieIzq.SetActive(false);
                 PieMov.piernaIzq.SetActive(false);
-                Debug.Log("¡Has perdido!");
+
             }
 
         }
-   
-        if (!jump.onGround && Input.GetKeyUp(KeyCode.A) && !Input.GetKey(KeyCode.D))
+        if (PieMov.movingRightLeg && Input.GetKeyUp(KeyCode.D))
         {
-            jump.spriteRenderer.sprite = jump.caida;
+            if (pieMov.tiempoTeclaPresionada > pieMov.tiempoMaximoTeclaPresionada)
+            {
+                Flash(Color.magenta);
+                currentRotation = 0f;
+                isRotating = true;
+                StartPulse();
+                pieMov.spritePieDer.SetActive(false);
+                PieMov.piernaDer.SetActive(false);
 
-            pieMov.spritePieIzq.SetActive(false);
-        }
 
-
-
-
-    
-        if (!jump.onGround && Input.GetKeyUp(KeyCode.D) && !Input.GetKey(KeyCode.A))
-        {
-            jump.spriteRenderer.sprite = jump.caida;
-            pieMov.spritePieDer.SetActive(false);
+            }
 
         }
-
-
 
         if (isRotating)
         {
@@ -154,28 +151,13 @@ public class PlayerEffect : MonoBehaviour
         }
     }
 
-    public void AnimPulsePlayerIzq()
-    {
-        Flash(Color.magenta);
-        currentRotation = 0f;
-        isRotating = true;
-        StartPulse();
-        pieMov.enabled = false;
-    }
-    public void AnimPulsePlayerDer()
-    {
-        Flash(Color.magenta);
-        currentRotation = 0f;
-        isRotating = true;
-        StartPulse();
-        pieMov.enabled = false;
-    }
+
 
     private void StartPulse()
     {
         // Iniciar el efecto de palpito
         isPulsating = true;
-        pieMov.spriteRendererCuerpo.sprite = pieMov.normal;
+        pieMov.spriteRendererCuerpo.sprite = pieMov.pose;
 
     }
 
@@ -232,7 +214,6 @@ public class PlayerEffect : MonoBehaviour
         spriteRenderer.material = originalMaterial;
         flashRoutine = null;
     }
-    
 
 
 }
