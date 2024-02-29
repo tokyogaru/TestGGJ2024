@@ -63,6 +63,7 @@ public class PieMov : MonoBehaviour
 
     public bool jumping;
 
+
     void Start()
     {
         piernaDer = GameObject.Find("Player/sprite_cuerpo/pata/sprite_piernaDer");
@@ -106,7 +107,6 @@ public class PieMov : MonoBehaviour
     void Update()
     {
 
-
         if (!movingLeftLeg && !reachedMaxXDer && walledDer == false && Input.GetKeyDown(KeyCode.D) && jumping == false)
         {
             movingRightLeg = true;
@@ -115,6 +115,8 @@ public class PieMov : MonoBehaviour
             spritePieDer.SetActive(true);
             piernaDer.SetActive(true); // Mostrar pierna y pie derecho
         }
+
+
         if (!movingLeftLeg && !reachedMaxXDer && walledDer == false && Input.GetKeyDown(KeyCode.D) && Input.GetKey(KeyCode.W))
         {
             spriteRendererCuerpo.sprite = agachado;
@@ -198,26 +200,16 @@ public class PieMov : MonoBehaviour
             spriteRendererCuerpo.sprite = pose;
         }
 
-        //Detener movimiento
-        if (walledDer == true)
+        
+        if ((walledDer && Input.GetKeyDown(KeyCode.D)) || (walledIzq && Input.GetKeyDown(KeyCode.A)))
         {
-            stopMoveDer();
-            //StartCoroutine(StopDer());
-            spritePieIzq.SetActive(false);
-            piernaIzq.SetActive(false);
-            spriteRendererCuerpo.sprite = noMove;
-            spriteRendererCuerpo.flipX = false;
+            // Activa el sprite y la partícula de "No Move"
+            noMoveExclamation.SetActive(true);
 
-        }
-        if (walledIzq == true)
-        {
-            stopMoveIzq();
-            //StartCoroutine(StopIzq());
-            spritePieDer.SetActive(false);
-            piernaDer.SetActive(false);
+            // Cambia el sprite del personaje
             spriteRendererCuerpo.sprite = noMove;
-            spriteRendererCuerpo.flipX = true;
 
+            StartCoroutine(ResetSpriteAndParticle());
         }
 
     }
@@ -247,7 +239,7 @@ public class PieMov : MonoBehaviour
         reachedMaxXDer = false;
 
         // Ocultar pierna y pie derecho cuando dejes de presionar la tecla
-        resumeMove();
+        ResumeMove();
 
         spritePieDer.SetActive(false);
         piernaDer.SetActive(false);
@@ -266,13 +258,13 @@ public class PieMov : MonoBehaviour
 
 
         // Ocultar pierna y pie izquierdo cuando dejes de presionar la tecla
-        resumeMove();
+        ResumeMove();
         spritePieIzq.SetActive(false);
         piernaIzq.SetActive(false);
 
     }
 
-    public void stopMoveDer()
+    public void StopMoveDer()
     {
         Debug.Log("StopDer");
         legScaleDer = 0f;
@@ -285,7 +277,7 @@ public class PieMov : MonoBehaviour
 
     }
 
-    public void stopMoveIzq()
+    public void StopMoveIzq()
     {
         Debug.Log("StopIzq");
         legScaleIzq = 0f;
@@ -297,7 +289,7 @@ public class PieMov : MonoBehaviour
         piernaIzq.SetActive(false);
 
     }
-    public void resumeMove()
+    public void ResumeMove()
     {
         Debug.Log("Resume Move");
         canMoveDer = true;
@@ -310,6 +302,14 @@ public class PieMov : MonoBehaviour
         footPosIzq = 1f;
         noMoveExclamation.SetActive(false);
     }
+    IEnumerator ResetSpriteAndParticle()
+    {
+        yield return new WaitForSeconds(1f);
+        spriteRendererCuerpo.sprite = normal;
+        noMoveExclamation.SetActive(false);
+    }
+    
+    
 
 
 }

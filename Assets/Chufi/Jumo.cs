@@ -44,7 +44,6 @@ public class Jumo : MonoBehaviour
     {
         if (onGround && !Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A))
         {
-
             if (Input.GetKey(KeyCode.W))
             {
                 if (jumpPressure < maxJumpPressure)
@@ -52,14 +51,12 @@ public class Jumo : MonoBehaviour
                     jumpPressure += Time.deltaTime * (maxJumpPressure / jumpTime);
                     spriteRenderer.sprite = agachado;
                     transform.localScale = new Vector2(originalScale.x, 0.5f); // Escalar en el eje Y a -1
-                    onAir = false;
                 }
             }
             else
             {
                 if (jumpPressure > 0f)
                 {
-                    onAir = true;
                     spriteRenderer.sprite = salto;
                     StartCoroutine(LockJump());
                     if (Input.GetKey(KeyCode.A))
@@ -85,6 +82,11 @@ public class Jumo : MonoBehaviour
             }
         }
 
+        if (!onGround && !Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A))
+        {
+            spriteRenderer.sprite = salto; // Cambia al sprite de salto
+        }
+
 
     }
 
@@ -94,6 +96,7 @@ public class Jumo : MonoBehaviour
         {
             onGround = true;
             onAir = false;
+            spriteRenderer.sprite = normal;
         }
     }
     IEnumerator LockJump()
