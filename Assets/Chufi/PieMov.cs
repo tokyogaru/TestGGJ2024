@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PieMov : MonoBehaviour
@@ -200,17 +201,21 @@ public class PieMov : MonoBehaviour
             spriteRendererCuerpo.sprite = pose;
         }
 
-        
-        if ((walledDer && Input.GetKeyDown(KeyCode.D)) || (walledIzq && Input.GetKeyDown(KeyCode.A)))
+
+        if (walledDer == true && Input.GetKey(KeyCode.D))
         {
-            // Activa el sprite y la partícula de "No Move"
-            noMoveExclamation.SetActive(true);
-
-            // Cambia el sprite del personaje
-            spriteRendererCuerpo.sprite = noMove;
-
-            StartCoroutine(ResetSpriteAndParticle());
+            StartCoroutine("StopMoveDer", StopMoveDer());
+            Invoke("StopMoveDer", 1f);
         }
+
+        if (walledIzq == true && Input.GetKey(KeyCode.A))
+        {
+            StartCoroutine("StopMoveIzq", StopMoveIzq());
+            Invoke("StopMoveIzq", 1f);
+
+
+        }
+
 
     }
 
@@ -264,20 +269,26 @@ public class PieMov : MonoBehaviour
 
     }
 
-    public void StopMoveDer()
+    public IEnumerator StopMoveDer()
     {
         Debug.Log("StopDer");
         legScaleDer = 0f;
         legPosDer = 0f;
         footPosDer = 0f;
-        canMoveDer = false; // Detiene el movimiento
+        canMoveDer = false;
         noMoveExclamation.SetActive(true);
+        spriteRendererCuerpo.sprite = noMove;
+        spriteRendererCuerpo.flipX = false;
         spritePieDer.SetActive(false);
         piernaDer.SetActive(false);
+        yield return new WaitForSeconds(0.5f);
+        noMoveExclamation.SetActive(false);
+        spriteRendererCuerpo.sprite = normal;
+
 
     }
 
-    public void StopMoveIzq()
+    public IEnumerator StopMoveIzq()
     {
         Debug.Log("StopIzq");
         legScaleIzq = 0f;
@@ -285,9 +296,13 @@ public class PieMov : MonoBehaviour
         footPosIzq = 0f;
         canMoveIzq = false; // Detiene el movimiento
         noMoveExclamation.SetActive(true);
+        spriteRendererCuerpo.sprite = noMove;
+        spriteRendererCuerpo.flipX = true;
         spritePieIzq.SetActive(false);
         piernaIzq.SetActive(false);
-
+        yield return new WaitForSeconds(0.5f);
+        noMoveExclamation.SetActive(false);
+        spriteRendererCuerpo.sprite = normal;
     }
     public void ResumeMove()
     {
@@ -302,14 +317,6 @@ public class PieMov : MonoBehaviour
         footPosIzq = 1f;
         noMoveExclamation.SetActive(false);
     }
-    IEnumerator ResetSpriteAndParticle()
-    {
-        yield return new WaitForSeconds(1f);
-        spriteRendererCuerpo.sprite = normal;
-        noMoveExclamation.SetActive(false);
-    }
-    
-    
 
 
 }
