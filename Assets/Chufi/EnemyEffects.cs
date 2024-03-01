@@ -17,6 +17,8 @@ public class EnemyEffects : MonoBehaviour
     public Sprite dead;
 
     public GameObject particleDead;
+
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -145,5 +147,22 @@ public class EnemyEffects : MonoBehaviour
         // Al terminar la transición, restaurar el color, la escala y la posición originales
         spriteRenderer.color = originalColor;
         //transform.localScale = originalScale;
+    }
+    public IEnumerator FadeSpriteOpacity(float targetOpacity, float duration)
+    {
+        Color originalColor = spriteRenderer.color;
+        Color targetColor = new Color(originalColor.r, originalColor.g, originalColor.b, targetOpacity);
+
+        float elapsedTime = 0f;
+        while (elapsedTime < duration)
+        {
+            float t = elapsedTime / duration;
+            spriteRenderer.color = Color.Lerp(originalColor, targetColor, t);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Asegurarse de que el color objetivo sea exacto al final de la transición
+        spriteRenderer.color = targetColor;
     }
 }

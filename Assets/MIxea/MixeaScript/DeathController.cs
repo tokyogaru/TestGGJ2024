@@ -10,12 +10,14 @@ public class DeathController : MonoBehaviour
 
     private EnemyEffects enemyEff;
     public GameObject enemyFx;
+    public GameObject fartHitbox;
 
 
     private void Start()
     {
         selfColliders = gameObject.GetComponents<BoxCollider2D>();
         rb = gameObject.GetComponent<Rigidbody2D>();
+       
 
     }
 
@@ -34,9 +36,11 @@ public class DeathController : MonoBehaviour
         foreach (var col in selfColliders)
         {
             col.enabled = false;
+            enemyEff = enemyFx.GetComponent<EnemyEffects>();
+            enemyEff.StartCoroutine(enemyEff.FadeSpriteOpacity(0f, 2f));
+            //fartHitbox.SetActive(false);
         }
-        enemyEff = enemyFx.GetComponent<EnemyEffects>();
-        enemyEff.StartCoroutine(enemyEff.EnemysDead());
+        
         rb.gravityScale = 0f;
         disableScript.enabled = false;
         Debug.Log("morido");
