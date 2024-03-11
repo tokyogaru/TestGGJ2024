@@ -64,6 +64,10 @@ public class PieMov : MonoBehaviour
 
     public bool jumping;
 
+    private PlayerEffect playerEffect;
+
+    
+
 
     void Start()
     {
@@ -194,6 +198,7 @@ public class PieMov : MonoBehaviour
         {
             StartCoroutine(StopIzq());
             spriteRendererCuerpo.sprite = normal;
+          
         }
 
         if (movingLeftLeg && movingRightLeg)
@@ -206,13 +211,16 @@ public class PieMov : MonoBehaviour
         {
             StartCoroutine("StopMoveDer", StopMoveDer());
             Invoke("StopMoveDer", 1f);
+            movingLeftLeg = true;
+           
         }
 
         if (walledIzq == true && Input.GetKey(KeyCode.A))
         {
             StartCoroutine("StopMoveIzq", StopMoveIzq());
             Invoke("StopMoveIzq", 1f);
-
+            movingRightLeg = true;
+            
 
         }
 
@@ -317,6 +325,7 @@ public class PieMov : MonoBehaviour
         footPosIzq = 1f;
         noMoveExclamation.SetActive(false);
     }
+   
 
 
 }

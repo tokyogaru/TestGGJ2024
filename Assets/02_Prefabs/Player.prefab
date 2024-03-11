@@ -187,6 +187,7 @@ MonoBehaviour:
   rotationSpeedPlayer: 300
   spriteRenderer: {fileID: 7591620682064913289}
   originalMaterial: {fileID: 0}
+  flashColor: {r: 0, g: 0, b: 0, a: 0}
   originalScale: {x: 0, y: 0, z: 0}
   pulseSpeed: 6
   minScale: 0.5
@@ -194,8 +195,6 @@ MonoBehaviour:
   moveSpeed: 1
   pieMov: {fileID: 5066304532123424568}
   pata: {fileID: 8589202020632628597}
-  jump: {fileID: 8480863735005550922}
-  jumpObj: {fileID: 3948409094907487749}
   isPulsating: 0
 --- !u!1 &3948409094907487749
 GameObject:
@@ -266,14 +265,10 @@ MonoBehaviour:
   jumpForce: 10
   jumpTime: 0.5
   sprite: {fileID: 3699594861996573783}
-  spriteRenderer: {fileID: 7591620682064913289}
   agachado: {fileID: 21300000, guid: 4d4961fb11ba956488ee28fbb9e01424, type: 3}
   normal: {fileID: 21300000, guid: 7a2866d12aae4c74b8a1a5c45c7662e4, type: 3}
-  caida: {fileID: 21300000, guid: 987ec0c4996caa642a72dd975060ff08, type: 3}
-  pieMov: {fileID: 5066304532123424568}
-  playerEffect: {fileID: 7433432570397076982}
-  pata: {fileID: 8589202020632628597}
-  playerFX: {fileID: 3699594861996573783}
+  salto: {fileID: 0}
+  pose: {fileID: 0}
 --- !u!50 &8210101088382291497
 Rigidbody2D:
   serializedVersion: 4
@@ -908,13 +903,14 @@ MonoBehaviour:
   pose: {fileID: 21300000, guid: 956819ad920a0d44badfeb5baa58c258, type: 3}
   perder: {fileID: 21300000, guid: 15335021787183345b2c2f5945c8df68, type: 3}
   noMove: {fileID: 21300000, guid: 45fdd94d5e7ad6d4585bfc601d6463de, type: 3}
+  agachado: {fileID: 0}
+  salto: {fileID: 0}
   spriteRendererCuerpo: {fileID: 7591620682064913289}
   tiempoTeclaPresionada: 3
   posCuerpo: {fileID: 2555391833827710822}
   posPieIzq: {fileID: 9092370198697902102}
   posPieDer: {fileID: 978642705834781774}
-  jump: {fileID: 8480863735005550922}
-  jumpObj: {fileID: 3948409094907487749}
+  jumping: 0
 --- !u!1 &9109035332545668485
 GameObject:
   m_ObjectHideFlags: 0

@@ -956,6 +956,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &429860087 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 49140742478611984, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+  m_PrefabInstance: {fileID: 602330367}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &435209403 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2564803585036969182, guid: 5ca7cdcd8a6fa3b46bbc76a36397f61b, type: 3}
@@ -1090,6 +1095,102 @@ PrefabInstance:
       propertyPath: agachado
       value: 
       objectReference: {fileID: 21300000, guid: 4d4961fb11ba956488ee28fbb9e01424, type: 3}
+    - target: {fileID: 7433432570397076982, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+      propertyPath: pata1Mat
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 7433432570397076982, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+      propertyPath: pata2Mat
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 7433432570397076982, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+      propertyPath: flashColor
+      value: 
+      objectReference: {fileID: 2100000, guid: 08614b2bb1beaaa4daf19dee6609baa0, type: 2}
+    - target: {fileID: 7433432570397076982, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+      propertyPath: pierna1Mat
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 7433432570397076982, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+      propertyPath: pierna2Mat
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 7433432570397076982, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+      propertyPath: spritePata
+      value: 
+      objectReference: {fileID: 1568022906}
+    - target: {fileID: 7433432570397076982, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+      propertyPath: spritePata2
+      value: 
+      objectReference: {fileID: 1568140112}
+    - target: {fileID: 7433432570397076982, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+      propertyPath: flashColor.b
+      value: 0.13887496
+      objectReference: {fileID: 0}
+    - target: {fileID: 7433432570397076982, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+      propertyPath: flashColor.g
+      value: 0.13887496
+      objectReference: {fileID: 0}
+    - target: {fileID: 7433432570397076982, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+      propertyPath: flashColor.r
+      value: 0.8867924
+      objectReference: {fileID: 0}
+    - target: {fileID: 7433432570397076982, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+      propertyPath: spritePierna
+      value: 
+      objectReference: {fileID: 1469643328}
+    - target: {fileID: 7433432570397076982, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+      propertyPath: colorCustom.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7433432570397076982, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+      propertyPath: colorCustom.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7433432570397076982, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+      propertyPath: colorCustom.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7433432570397076982, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+      propertyPath: originalColor
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 7433432570397076982, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+      propertyPath: spritePierna2
+      value: 
+      objectReference: {fileID: 429860087}
+    - target: {fileID: 7433432570397076982, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+      propertyPath: originalColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7433432570397076982, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+      propertyPath: originalColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7433432570397076982, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+      propertyPath: originalColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7433432570397076982, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+      propertyPath: originalMaterial
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 7591620682064913289, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7591620682064913289, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7591620682064913289, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7591620682064913289, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8076753325229536510, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1744,6 +1845,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!212 &1469643328 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2709434178368528123, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+  m_PrefabInstance: {fileID: 602330367}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1490787868
 GameObject:
   m_ObjectHideFlags: 0
@@ -1874,6 +1980,16 @@ Transform:
   - {fileID: 1768795533}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1568022906 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3981200159953154334, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+  m_PrefabInstance: {fileID: 602330367}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1568140112 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3077912943560186976, guid: 0f28106dcd45dfd48b53793a18368be3, type: 3}
+  m_PrefabInstance: {fileID: 602330367}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1599268409
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2178,7 +2294,7 @@ GameObject:
   - component: {fileID: 1768795535}
   - component: {fileID: 1768795534}
   - component: {fileID: 1768795536}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tilemap (2)
   m_TagString: Wall
   m_Icon: {fileID: 0}

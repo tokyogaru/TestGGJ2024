@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerEffect : MonoBehaviour
 {
-    [SerializeField] public Material flashMaterial;
+    [SerializeField] public Material flashColor;
 
     [SerializeField] private float duration;
 
@@ -16,7 +16,19 @@ public class PlayerEffect : MonoBehaviour
     private Vector3 originalPosition;
 
     public SpriteRenderer spriteRenderer;
-    public Material originalMaterial;
+
+    public SpriteRenderer spritePata;
+
+    public SpriteRenderer spritePata2;
+    public SpriteRenderer spritePierna;
+    public SpriteRenderer spritePierna2;
+
+    public Material pata1Mat;
+    public Material pata2Mat;
+    public Material pierna1Mat;
+    public Material pierna2Mat;
+    public Material originalColor;
+    
     public Coroutine flashRoutine;
 
     private float currentRotation = 0f;
@@ -41,8 +53,8 @@ public class PlayerEffect : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        originalMaterial = spriteRenderer.material;
-        flashMaterial = new Material(flashMaterial);
+        
+        originalColor = spriteRenderer.material;
         originalScale = transform.localScale;
         originalPosition = transform.position;
         pieMov = pata.GetComponent<PieMov>();
@@ -52,6 +64,15 @@ public class PlayerEffect : MonoBehaviour
         particleHit.SetActive(false);
         particleDeadEnemy = GameObject.Find("ENEMYdeath_particles");
         particleDeadEnemy.SetActive(false);
+
+        spritePierna = GameObject.Find("sprite_piernaDer").GetComponent<SpriteRenderer>();
+        pierna1Mat = spritePata.material;
+        spritePierna2 = GameObject.Find("sprite_piernaIzq").GetComponent<SpriteRenderer>();
+        pierna2Mat = spritePata.material;
+        spritePata = GameObject.Find("sprite_pata").GetComponent<SpriteRenderer>();
+        pata1Mat = spritePata.material;
+        spritePata2 = GameObject.Find("sprite_pata2").GetComponent<SpriteRenderer>();
+        pata2Mat = spritePata.material;
 
     }
 
@@ -69,7 +90,7 @@ public class PlayerEffect : MonoBehaviour
 
             if (pieMov.tiempoTeclaPresionada > pieMov.tiempoMaximoTeclaPresionada)
             {
-                Flash(Color.magenta);
+                Flash(flashColor);
 
                 Debug.Log("¡Has perdido!");
 
@@ -91,7 +112,7 @@ public class PlayerEffect : MonoBehaviour
 
             if (pieMov.tiempoTeclaPresionada > pieMov.tiempoMaximoTeclaPresionada)
             {
-                Flash(Color.magenta);
+                Flash(flashColor);
 
                 Debug.Log("¡Has perdido!");
             }
@@ -99,9 +120,11 @@ public class PlayerEffect : MonoBehaviour
         }
         if (PieMov.movingLeftLeg && Input.GetKeyUp(KeyCode.A))
         {
+            transform.localScale = new Vector3(originalScale.x * -0.5f, transform.localScale.y, transform.localScale.z);
+            StartCoroutine(ScaleHorizontally(2.0f, 0.25f));
             if (pieMov.tiempoTeclaPresionada > pieMov.tiempoMaximoTeclaPresionada)
             {
-                Flash(Color.magenta);
+                Flash(flashColor);
                 currentRotation = 0f;
                 isRotating = true;
                 StartPulse();
@@ -113,9 +136,11 @@ public class PlayerEffect : MonoBehaviour
         }
         if (PieMov.movingRightLeg && Input.GetKeyUp(KeyCode.D))
         {
+            transform.localScale = new Vector3(originalScale.x * -0.5f, transform.localScale.y, transform.localScale.z);
+            StartCoroutine(ScaleHorizontally(2.0f, 0.25f));
             if (pieMov.tiempoTeclaPresionada > pieMov.tiempoMaximoTeclaPresionada)
             {
-                Flash(Color.magenta);
+                Flash(flashColor);
                 currentRotation = 0f;
                 isRotating = true;
                 StartPulse();
@@ -165,54 +190,80 @@ public class PlayerEffect : MonoBehaviour
     {
         // Detener el efecto de palpito
         isPulsating = false;
-
-        // Reiniciar la escala gradualmente a la escala original
-        StartCoroutine(ScaleToOriginal());
         pieMov.spriteRendererCuerpo.sprite = pieMov.normal;
     }
 
-    private IEnumerator ScaleToOriginal()
+    public IEnumerator ScaleToOriginal()
     {
         float elapsedTime = 0f;
-        float duration = 0.5f; // Duración de la transición de escala
+        float duration = 0.5f;
 
-        // Escalar gradualmente el objeto a su escala original
+        Vector3 targetScale = originalScale;
+
         while (elapsedTime < duration)
         {
-            // Calcular el valor de escala entre el valor actual y la escala original
             float t = elapsedTime / duration;
-            transform.localScale = Vector3.Lerp(transform.localScale, originalScale, t);
-
-            // Actualizar el tiempo transcurrido
+            transform.localScale = Vector3.Lerp(transform.localScale, targetScale, t);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-        // Asegurarse de que la escala sea exactamente la escala original al finalizar la transición
-        transform.localScale = originalScale;
+        transform.localScale = targetScale;
     }
 
-    public void Flash(Color color)
+    public void Flash(Material material)
     {
-        if (flashRoutine != null)
+       if (flashRoutine != null)
         {
             StopCoroutine(flashRoutine);
         }
-        flashRoutine = StartCoroutine(FlashRoutine(color));
+        flashRoutine = StartCoroutine(FlashRoutine(material));
     }
 
-    private IEnumerator FlashRoutine(Color color)
+    private IEnumerator FlashRoutine(Material material)
     {
-        spriteRenderer.material = flashMaterial;
-        flashMaterial.color = color;
+        spriteRenderer.material = material;
+        spritePata.material = material;
+        spritePierna.material = material;
+        spritePata2.material = material;
+        spritePierna2.material = material;
         yield return new WaitForSeconds(duration);
-        spriteRenderer.material = originalMaterial;
+        spriteRenderer.material = originalColor;
+        spritePata.material = pata1Mat;
+        spritePierna.material = pierna1Mat;
+        spritePata2.material = pata2Mat;
+        spritePierna2.material = pierna2Mat;
         yield return new WaitForSeconds(duration);
-        spriteRenderer.material = flashMaterial;
-        flashMaterial.color = color;
+        spriteRenderer.material = material;
+        spritePata.material = material;
+        spritePierna.material = material;
+        spritePata2.material = material;
+        spritePierna2.material = material;
         yield return new WaitForSeconds(duration);
-        spriteRenderer.material = originalMaterial;
+        spriteRenderer.material = originalColor;
+        spritePata.material = pata1Mat;
+        spritePierna.material = pierna1Mat;
+        spritePata2.material = pata2Mat;
+        spritePierna2.material = pierna2Mat;
         flashRoutine = null;
+    }
+    public IEnumerator ScaleHorizontally(float scaleFactor, float duration)
+    {
+        Vector3 originalScale = transform.localScale;
+        Vector3 destinationScale = new Vector3(scaleFactor, originalScale.y, originalScale.z);
+        float startTime = Time.time;
+
+        while (Time.time - startTime < duration)
+        {
+            float progress = (Time.time - startTime) / duration;
+            transform.localScale = Vector3.Lerp(originalScale, destinationScale, progress);
+            yield return null;
+        }
+
+        transform.localScale = destinationScale;
+
+        // Luego de escalar, se llama al método para volver a la escala original
+        StartCoroutine(ScaleToOriginal());
     }
 
 

@@ -82,14 +82,14 @@ public class PlayerHealth : MonoBehaviour
         {
 
             LooseHp(25);
-            playerEffect.Flash(Color.magenta);
+            playerEffect.Flash(playerEffect.flashColor);
             Debug.Log("Damaged");
         }
 
         if (col.CompareTag("Obstacle"))
         {
             LooseHp(25);
-            playerEffect.Flash(Color.magenta);
+            playerEffect.Flash(playerEffect.flashColor);
             //Jump away
             rb.velocity = new Vector2(rb.velocity.x, bounce * 2);
         }
@@ -128,7 +128,7 @@ public class PlayerHealth : MonoBehaviour
         }
 
         hpCurrent -= dmg;
-        playerEffect.Flash(Color.magenta);
+        playerEffect.Flash(playerEffect.flashColor);
         SoundManager.Instance.PlaySound(sfxHurt, transform, 1f, 0);
 
         if (hpCurrent < 25 && lastHit == false)
