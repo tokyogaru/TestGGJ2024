@@ -32,7 +32,7 @@ public class DeathController : MonoBehaviour
 
     public void DeathSelf()
     {
-        //Disable Colliders
+        //Disable Colliderss
         foreach (var col in selfColliders)
         {
             col.enabled = false;

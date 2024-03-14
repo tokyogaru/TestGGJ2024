@@ -17,8 +17,14 @@ public class EnemyEffects : MonoBehaviour
     public Sprite dead;
 
     public GameObject particleDead;
+    public bool isPulsating = false;
 
-    
+
+    [SerializeField] private float pulseSpeed = 3f;
+    [SerializeField] private float minScale = 0.1f;
+    [SerializeField] private float maxScale = 10f;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +43,20 @@ public class EnemyEffects : MonoBehaviour
     {
 
     }
+    private void StartPulse()
+    {
+
+        isPulsating = true;
+
+    }
+
+    private void StopPulse()
+    {
+
+        isPulsating = false;
+
+    }
+
 
     public IEnumerator EnemysDead()
     {
@@ -121,12 +141,12 @@ public class EnemyEffects : MonoBehaviour
     {
         float elapsedTime = 0f;
         float duration = 1f; // Duración total de la transición (5 segundos)
-      
+
 
         // Guardar el color original y la escala original
         Color originalColor = spriteRenderer.color;
         //Vector3 originalScale = transform.localScale;
-        
+
 
         // Cambiar gradualmente el color a rojo
         while (elapsedTime < duration)
@@ -152,17 +172,31 @@ public class EnemyEffects : MonoBehaviour
     {
         Color originalColor = spriteRenderer.color;
         Color targetColor = new Color(originalColor.r, originalColor.g, originalColor.b, targetOpacity);
+        spriteRenderer.sprite = dead;
+       
 
         float elapsedTime = 0f;
+
         while (elapsedTime < duration)
         {
             float t = elapsedTime / duration;
+
+            // Aplicar una función de easing (EaseInOutQuad) para suavizar el cambio de opacidad
+            t = t < 0.5f ? 2f * t * t : -1f + (4f - 2f * t) * t;
+
             spriteRenderer.color = Color.Lerp(originalColor, targetColor, t);
+
+            // Calcular la escala gradualmente utilizando la misma función de easing, pero invertida
+            float scaleT = t < 0.5f ? -2f * t * t + 2f * t : -1f * (t - 1f) * (t - 1f) + 1f;
+            float scale = Mathf.Lerp(3f, 0.5f, scaleT);
+            transform.localScale = originalScale * scale;
+
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
         // Asegurarse de que el color objetivo sea exacto al final de la transición
         spriteRenderer.color = targetColor;
+        
     }
 }
