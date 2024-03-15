@@ -10,13 +10,17 @@ public class DeathController : MonoBehaviour
 
     private EnemyEffects enemyEff;
     public GameObject enemyFx;
-    public GameObject fartHitbox;
+    
+    public bool isDead;
 
 
     private void Start()
     {
         selfColliders = gameObject.GetComponents<BoxCollider2D>();
         rb = gameObject.GetComponent<Rigidbody2D>();
+        isDead = false;
+       
+        
        
 
     }
@@ -43,6 +47,7 @@ public class DeathController : MonoBehaviour
         
         rb.gravityScale = 0f;
         disableScript.enabled = false;
+        isDead = true;
         Debug.Log("morido");
     }
 }

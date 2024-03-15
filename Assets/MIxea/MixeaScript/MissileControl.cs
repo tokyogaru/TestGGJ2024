@@ -49,6 +49,7 @@ public class MissileControl : MonoBehaviour
     public GameObject enemyFxs;
 
 
+
     void Start()
     {
         moveRight = true;
@@ -74,10 +75,12 @@ public class MissileControl : MonoBehaviour
         spriteRenderer = enemyEff.GetComponent<SpriteRenderer>();
 
         enemyEff = enemyFxs.GetComponent<EnemyEffects>();
+      
     }
 
     void Update()
     {
+
         //Check if in camera
         targetScreenPos = camRef.WorldToScreenPoint(gameObject.transform.position);
 
@@ -96,6 +99,7 @@ public class MissileControl : MonoBehaviour
 
     private void FixedUpdate()
     {
+
         AvoidFall();
         if (!isOffscreen)
         {
@@ -110,6 +114,8 @@ public class MissileControl : MonoBehaviour
                 enemyEff.GetComponent<SpriteRenderer>().sprite = spShoot;
             }
         }
+
+       
     }
 
     private void OnCollisionEnter2D(Collision2D col)
@@ -150,16 +156,16 @@ public class MissileControl : MonoBehaviour
         {
             transform.Translate(Time.deltaTime * speed, 0, 0);
             enemyEff.MoveChar();
-           
+
         }
         else
         {
             transform.Translate(-1 * Time.deltaTime * speed, 0, 0);
             enemyEff.MoveChar();
-           
+
         }
     }
-    
+
 
     void ChangeDirection()
     {
@@ -183,10 +189,10 @@ public class MissileControl : MonoBehaviour
             restWaitCurrent = restWait;
             enemyEff.StartCoroutine(enemyEff.RedFadeAndScale());
             //Start shooting
-            
+
             shooting = true;
             SoundManager.Instance.PlaySound(sfxCharge, transform, 1f, 3);
-            
+
         }
     }
 
@@ -226,6 +232,6 @@ public class MissileControl : MonoBehaviour
             shootStartupCurrent -= Time.deltaTime;
         }
     }
-    
+
 
 }

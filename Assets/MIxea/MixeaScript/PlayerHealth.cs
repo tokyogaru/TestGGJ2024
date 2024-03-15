@@ -37,6 +37,8 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private AudioClip sfxHit;
 
     private EnemyEffects enemyEff;
+
+    
     
 
     
@@ -69,6 +71,7 @@ public class PlayerHealth : MonoBehaviour
         if (col.CompareTag("Enemy"))
         {
             PlayerEffect.particleHit.SetActive(true);
+
             col.GetComponent<DeathController>().DeathSelf();
 
             SoundManager.Instance.PlaySound(sfxHit, transform, 1f, 0);

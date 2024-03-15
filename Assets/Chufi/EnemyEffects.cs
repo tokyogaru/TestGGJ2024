@@ -16,13 +16,15 @@ public class EnemyEffects : MonoBehaviour
 
     public Sprite dead;
 
-    public GameObject particleDead;
     public bool isPulsating = false;
 
+    public GameObject deadParticle;
 
     [SerializeField] private float pulseSpeed = 3f;
     [SerializeField] private float minScale = 0.1f;
     [SerializeField] private float maxScale = 10f;
+
+    public FartControl fartControl;
 
 
     // Start is called before the first frame update
@@ -34,8 +36,8 @@ public class EnemyEffects : MonoBehaviour
         flashMaterial = new Material(flashMaterial);
         originalScale = transform.localScale;
         originalPosition = transform.position;
-        particleDead = GameObject.Find("ENEMYdeath_particles");
-        particleDead.SetActive(false);
+        deadParticle.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -63,7 +65,6 @@ public class EnemyEffects : MonoBehaviour
         Flash(Color.magenta);
         Vector3 newScale = new Vector3(1f, 0.5f, 1f); // Define la nueva escala (50% de la escala original en el eje Y)
         transform.localScale = Vector3.Scale(originalScale, newScale);
-        particleDead.SetActive(true);
         spriteRenderer.sprite = dead;
         yield return null;
     }
@@ -99,42 +100,38 @@ public class EnemyEffects : MonoBehaviour
     public IEnumerator RedFadeAndScale()
     {
         float elapsedTime = 0f;
-        float duration = 1f; // Duración total de la transición (5 segundos)
-        float moveY = -0.5f;
+        float duration = 1f;
 
-        // Guardar el color original y la escala original
         Color originalColor = spriteRenderer.color;
         Vector3 originalScale = transform.localScale;
         Vector3 originalPosition = transform.position;
 
-        // Cambiar gradualmente el color a rojo
+        // Define el nuevo vector de escala donde solo el eje X se reduce a la mitad
+        Vector3 newScale = new Vector3(2f, 0.5f, originalScale.z);
+
+        // Define el nuevo vector de posición
+        Vector3 newPosition = new Vector3(originalPosition.x, originalPosition.y - 0.5f, originalPosition.z);
+
         while (elapsedTime < duration)
         {
-            // Calcular el factor de progreso de la transición
             float t = elapsedTime / duration;
-
-            // Calcular el nuevo color interpolando entre el color original y el rojo
             Color newColor = Color.Lerp(originalColor, Color.red, t);
-
-            // Aplicar el nuevo color al objeto
             spriteRenderer.color = newColor;
 
-            // Escalar gradualmente en el eje Y
-            transform.localScale = Vector3.Lerp(originalScale, new Vector3(originalScale.x, 0.5f, originalScale.z), t);
-            transform.localPosition -= Vector3.down * moveY * Time.deltaTime;
+            // Interpola entre la escala original y la nueva escala
+            transform.localScale = Vector3.Lerp(originalScale, newScale, t);
 
-            // Mover el objeto de izquierda a derecha rápidamente
-            float moveX = Mathf.PingPong(Time.time * 5f, 1f) - 0.5f; // Rango de movimiento de -1 a 1
-            transform.position += Vector3.right * moveX * Time.deltaTime * 5f; // Movimiento rápido de izquierda a derecha
+            // Interpola entre la posición original y la nueva posición
+            transform.position = Vector3.Lerp(originalPosition, newPosition, t);
 
-            // Actualizar el tiempo transcurrido
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        // Al terminar la transición, restaurar el color, la escala y la posición originales
+
+        // Asegura que el objeto se restaure a su estado original después de la transición
         spriteRenderer.color = originalColor;
         transform.localScale = originalScale;
-        transform.position = new Vector3(transform.position.x, originalPosition.y, transform.position.z);
+        transform.position = originalPosition;
 
     }
     public IEnumerator RechargerPeo()
@@ -173,7 +170,8 @@ public class EnemyEffects : MonoBehaviour
         Color originalColor = spriteRenderer.color;
         Color targetColor = new Color(originalColor.r, originalColor.g, originalColor.b, targetOpacity);
         spriteRenderer.sprite = dead;
-       
+        deadParticle.SetActive(true);
+        fartControl.hitBox.SetActive(false);
 
         float elapsedTime = 0f;
 
@@ -197,6 +195,7 @@ public class EnemyEffects : MonoBehaviour
 
         // Asegurarse de que el color objetivo sea exacto al final de la transición
         spriteRenderer.color = targetColor;
-        
+        deadParticle.SetActive(false);
+
     }
 }

@@ -14,6 +14,8 @@ public class GombaControl : MonoBehaviour
 
     public GameObject enemyFxs;
 
+
+
     void Start()
     {
         moveRight = true;
@@ -72,4 +74,5 @@ public class GombaControl : MonoBehaviour
             
         }
     }
+
 }

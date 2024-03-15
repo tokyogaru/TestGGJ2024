@@ -19,7 +19,7 @@ public class FartControl : MonoBehaviour
     private float restWaitCurrent;
 
     private bool fartCreated;
-    private GameObject hitBox;
+    public GameObject hitBox;
 
     public Sprite sp1, sp2;
 
@@ -38,7 +38,7 @@ public class FartControl : MonoBehaviour
 
     public EnemyEffects enemyEff;
 
-
+    
 
     void Start()
     {
@@ -85,6 +85,7 @@ public class FartControl : MonoBehaviour
     private void FixedUpdate()
     {
         AvoidFall();
+        
 
         if (!isOffscreen)
         {
@@ -202,5 +203,6 @@ public class FartControl : MonoBehaviour
             fartStartupCurrent -= Time.deltaTime;
         }
     }
+    
 
 }
