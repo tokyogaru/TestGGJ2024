@@ -488,6 +488,7 @@ MonoBehaviour:
   fartTimer: 1.95
   fartStartup: 0.98
   restWait: 1.85
+  hitBox: {fileID: 0}
   sp1: {fileID: 21300000, guid: 03f69acac6de3244794828b709f06a2d, type: 3}
   sp2: {fileID: 21300000, guid: 1e8b0d8d8e71ab74aa4d1a2d45f68ced, type: 3}
   camRef: {fileID: 0}
@@ -509,6 +510,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   disableScript: {fileID: 6362187280687957951}
   enemyFx: {fileID: 7522537230031202291}
+  isDead: 0
 --- !u!1 &7522537230031202291
 GameObject:
   m_ObjectHideFlags: 0
@@ -611,7 +613,12 @@ MonoBehaviour:
   spriteRenderer: {fileID: 6505175512079274118}
   rotationSpeed: 6
   dead: {fileID: 21300000, guid: dbab315e051754441b287ec261ed1024, type: 3}
-  particleDead: {fileID: 2437873799571823842}
+  isPulsating: 0
+  deadParticle: {fileID: 0}
+  pulseSpeed: 3
+  minScale: 0.1
+  maxScale: 10
+  fartControl: {fileID: 0}
 --- !u!1001 &8607790367604805558
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -626,23 +633,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7497615762523377945, guid: 042a8159cba9a3f499fc4a118833b66f, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7497615762523377945, guid: 042a8159cba9a3f499fc4a118833b66f, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7497615762523377945, guid: 042a8159cba9a3f499fc4a118833b66f, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7497615762523377945, guid: 042a8159cba9a3f499fc4a118833b66f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.02
       objectReference: {fileID: 0}
     - target: {fileID: 7497615762523377945, guid: 042a8159cba9a3f499fc4a118833b66f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.49
       objectReference: {fileID: 0}
     - target: {fileID: 7497615762523377945, guid: 042a8159cba9a3f499fc4a118833b66f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -684,10 +691,5 @@ PrefabInstance:
 --- !u!4 &2268092876838559407 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7497615762523377945, guid: 042a8159cba9a3f499fc4a118833b66f, type: 3}
-  m_PrefabInstance: {fileID: 8607790367604805558}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2437873799571823842 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6242009932861330260, guid: 042a8159cba9a3f499fc4a118833b66f, type: 3}
   m_PrefabInstance: {fileID: 8607790367604805558}
   m_PrefabAsset: {fileID: 0}

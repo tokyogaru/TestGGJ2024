@@ -102,7 +102,12 @@ MonoBehaviour:
   spriteRenderer: {fileID: 2326142091269421602}
   rotationSpeed: 6
   dead: {fileID: 21300000, guid: d2cda4f51df95fb4f99c4a21f0e7ad0e, type: 3}
-  particleDead: {fileID: 3293827455467384627}
+  isPulsating: 0
+  deadParticle: {fileID: 0}
+  pulseSpeed: 3
+  minScale: 0.1
+  maxScale: 10
+  fartControl: {fileID: 0}
 --- !u!1 &3574293778046584629
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,6 +339,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   disableScript: {fileID: 5975269048440455289}
   enemyFx: {fileID: 2564803585036969182}
+  isDead: 0
 --- !u!1 &6634551936397790117
 GameObject:
   m_ObjectHideFlags: 0
@@ -410,11 +416,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7497615762523377945, guid: 042a8159cba9a3f499fc4a118833b66f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.875
       objectReference: {fileID: 0}
     - target: {fileID: 7497615762523377945, guid: 042a8159cba9a3f499fc4a118833b66f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.384
       objectReference: {fileID: 0}
     - target: {fileID: 7497615762523377945, guid: 042a8159cba9a3f499fc4a118833b66f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -456,10 +462,5 @@ PrefabInstance:
 --- !u!4 &1376682733953379710 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7497615762523377945, guid: 042a8159cba9a3f499fc4a118833b66f, type: 3}
-  m_PrefabInstance: {fileID: 8869298956654820455}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &3293827455467384627 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6242009932861330260, guid: 042a8159cba9a3f499fc4a118833b66f, type: 3}
   m_PrefabInstance: {fileID: 8869298956654820455}
   m_PrefabAsset: {fileID: 0}
