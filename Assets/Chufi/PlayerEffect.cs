@@ -28,7 +28,7 @@ public class PlayerEffect : MonoBehaviour
     public Material pierna1Mat;
     public Material pierna2Mat;
     public Material originalColor;
-    
+
     public Coroutine flashRoutine;
 
     private float currentRotation = 0f;
@@ -53,7 +53,7 @@ public class PlayerEffect : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        
+
         originalColor = spriteRenderer.material;
         originalScale = transform.localScale;
         originalPosition = transform.position;
@@ -128,6 +128,7 @@ public class PlayerEffect : MonoBehaviour
                 currentRotation = 0f;
                 isRotating = true;
                 StartPulse();
+                StopCoroutine("ScaleHorizontally");
                 pieMov.spritePieIzq.SetActive(false);
                 PieMov.piernaIzq.SetActive(false);
 
@@ -144,6 +145,7 @@ public class PlayerEffect : MonoBehaviour
                 currentRotation = 0f;
                 isRotating = true;
                 StartPulse();
+                StopCoroutine("ScaleHorizontally");
                 pieMov.spritePieDer.SetActive(false);
                 PieMov.piernaDer.SetActive(false);
 
@@ -174,6 +176,7 @@ public class PlayerEffect : MonoBehaviour
             transform.localScale = originalScale * scale;
 
         }
+
     }
 
 
@@ -191,6 +194,8 @@ public class PlayerEffect : MonoBehaviour
         // Detener el efecto de palpito
         isPulsating = false;
         pieMov.spriteRendererCuerpo.sprite = pieMov.normal;
+        StartCoroutine(ScaleToOriginal());
+
     }
 
     public IEnumerator ScaleToOriginal()
@@ -213,7 +218,7 @@ public class PlayerEffect : MonoBehaviour
 
     public void Flash(Material material)
     {
-       if (flashRoutine != null)
+        if (flashRoutine != null)
         {
             StopCoroutine(flashRoutine);
         }
@@ -265,6 +270,7 @@ public class PlayerEffect : MonoBehaviour
         // Luego de escalar, se llama al método para volver a la escala original
         StartCoroutine(ScaleToOriginal());
     }
+    
 
 
 }

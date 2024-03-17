@@ -66,7 +66,7 @@ public class PieMov : MonoBehaviour
 
     private PlayerEffect playerEffect;
 
-    
+
 
 
     void Start()
@@ -119,6 +119,7 @@ public class PieMov : MonoBehaviour
             spriteRendererCuerpo.flipX = false;
             spritePieDer.SetActive(true);
             piernaDer.SetActive(true); // Mostrar pierna y pie derecho
+         
         }
 
 
@@ -157,6 +158,7 @@ public class PieMov : MonoBehaviour
 
         if (movingRightLeg && Input.GetKeyUp(KeyCode.D))
         {
+            
             StartCoroutine(StopDer());
             spriteRendererCuerpo.sprite = normal;
 
@@ -169,6 +171,7 @@ public class PieMov : MonoBehaviour
             spriteRendererCuerpo.flipX = true;
             spritePieIzq.SetActive(true);
             piernaIzq.SetActive(true); // Mostrar pierna y pie izquierdo
+        
         }
         if (!movingRightLeg && !reachedMaxXIzq && walledIzq == false && Input.GetKeyDown(KeyCode.A) && Input.GetKey(KeyCode.W))
         {
@@ -196,35 +199,40 @@ public class PieMov : MonoBehaviour
 
         if (movingLeftLeg && Input.GetKeyUp(KeyCode.A))
         {
+            
             StartCoroutine(StopIzq());
             spriteRendererCuerpo.sprite = normal;
-          
+
+
         }
 
-        if (movingLeftLeg && movingRightLeg)
+        if(movingLeftLeg && Input.GetKey(KeyCode.A))
         {
+            movingRightLeg = false;
             spriteRendererCuerpo.sprite = pose;
+            spriteRendererCuerpo.flipX = true;
+        }
+        if(movingRightLeg && Input.GetKey(KeyCode.D))
+        {
+            movingLeftLeg = false;
+            spriteRendererCuerpo.sprite = pose;
+            spriteRendererCuerpo.flipX = false;
         }
 
+       
 
         if (walledDer == true && Input.GetKey(KeyCode.D))
         {
-            StartCoroutine("StopMoveDer", StopMoveDer());
-            Invoke("StopMoveDer", 1f);
-            movingLeftLeg = true;
-           
-        }
+            StartCoroutine(StopMoveDer());
 
+
+        }
         if (walledIzq == true && Input.GetKey(KeyCode.A))
         {
-            StartCoroutine("StopMoveIzq", StopMoveIzq());
-            Invoke("StopMoveIzq", 1f);
-            movingRightLeg = true;
-            
+            StartCoroutine(StopMoveIzq());
+
 
         }
-
-
     }
 
     public static void SetGameObjectActive(bool active, bool rightSide)
@@ -292,8 +300,6 @@ public class PieMov : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         noMoveExclamation.SetActive(false);
         spriteRendererCuerpo.sprite = normal;
-
-
     }
 
     public IEnumerator StopMoveIzq()
@@ -325,7 +331,7 @@ public class PieMov : MonoBehaviour
         footPosIzq = 1f;
         noMoveExclamation.SetActive(false);
     }
-   
+
 
 
 }
