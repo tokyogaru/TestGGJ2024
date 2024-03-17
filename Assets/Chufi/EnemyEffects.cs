@@ -186,7 +186,7 @@ public class EnemyEffects : MonoBehaviour
 
             // Calcular la escala gradualmente utilizando la misma función de easing, pero invertida
             float scaleT = t < 0.5f ? -2f * t * t + 2f * t : -1f * (t - 1f) * (t - 1f) + 1f;
-            float scale = Mathf.Lerp(3f, 0.5f, scaleT);
+            float scale = Mathf.Lerp(1.5f, 0.5f, scaleT);
             transform.localScale = originalScale * scale;
 
             elapsedTime += Time.deltaTime;
