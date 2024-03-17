@@ -86,6 +86,10 @@ public class Jumo : MonoBehaviour
         {
             spriteRenderer.sprite = salto; // Cambia al sprite de salto
         }
+        if (onGround && !Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A))
+        {
+            spriteRenderer.sprite = normal; 
+        }
 
 
     }

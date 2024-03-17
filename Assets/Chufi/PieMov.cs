@@ -231,7 +231,6 @@ public class PieMov : MonoBehaviour
         {
             StartCoroutine(StopMoveIzq());
 
-
         }
     }
 
@@ -297,9 +296,8 @@ public class PieMov : MonoBehaviour
         spriteRendererCuerpo.flipX = false;
         spritePieDer.SetActive(false);
         piernaDer.SetActive(false);
-        yield return new WaitForSeconds(0.5f);
-        noMoveExclamation.SetActive(false);
-        spriteRendererCuerpo.sprite = normal;
+        yield return null;
+        
     }
 
     public IEnumerator StopMoveIzq()
@@ -314,9 +312,8 @@ public class PieMov : MonoBehaviour
         spriteRendererCuerpo.flipX = true;
         spritePieIzq.SetActive(false);
         piernaIzq.SetActive(false);
-        yield return new WaitForSeconds(0.5f);
-        noMoveExclamation.SetActive(false);
-        spriteRendererCuerpo.sprite = normal;
+        yield return null;
+
     }
     public void ResumeMove()
     {
