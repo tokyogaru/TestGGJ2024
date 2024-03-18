@@ -5,14 +5,14 @@ using UnityEngine.AI;
 
 public class Jumo : MonoBehaviour
 {
-    public bool onGround;
-    private float jumpPressure;
+   private float jumpPressure;
     private float minJump;
     private float maxJumpPressure;
     private Rigidbody2D rb;
     private Vector3 originalScale;
     public float jumpForce = 50;
     public float jumpTime = 0.5f;
+    private bool canJump = true;
 
     [SerializeField] GameObject sprite;
 
@@ -25,26 +25,24 @@ public class Jumo : MonoBehaviour
 
     public Sprite pose;
 
-    private bool onAir;
-
     private void Start()
     {
-        onGround = true;
         jumpPressure = 0f;
         minJump = 5f;
         maxJumpPressure = 15f;
         rb = GetComponent<Rigidbody2D>();
         originalScale = transform.localScale;
         spriteRenderer = sprite.GetComponent<SpriteRenderer>();
-        onAir = false;
-
     }
 
     void Update()
     {
-        if (onGround && !Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A))
+        // Raycast para detectar el suelo
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.1f);
+
+        if (hit.collider != null)
         {
-            if (Input.GetKey(KeyCode.W))
+            if (Input.GetKey(KeyCode.W) && canJump)
             {
                 if (jumpPressure < maxJumpPressure)
                 {
@@ -78,35 +76,28 @@ public class Jumo : MonoBehaviour
                     rb.velocity = new Vector2(0f, jumpPressure);
                     jumpPressure = 0f;
                     transform.localScale = originalScale; // Restaurar la escala original
+                    canJump = false; // Desactivar el salto
                 }
             }
         }
-
-        if (!onGround && !Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A))
+        else
         {
             spriteRenderer.sprite = salto; // Cambia al sprite de salto
         }
-        if (onGround && !Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A))
-        {
-            spriteRenderer.sprite = normal; 
-        }
-
-
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Ground"))
         {
-            onGround = true;
-            onAir = false;
             spriteRenderer.sprite = normal;
+            canJump = true; // Permitir saltar cuando toque el suelo
         }
     }
+
     IEnumerator LockJump()
     {
         yield return new WaitForSeconds(0.025f);
-        onGround = false;
     }
 }
 
